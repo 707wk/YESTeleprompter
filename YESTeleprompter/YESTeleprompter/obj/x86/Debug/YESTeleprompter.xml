@@ -32,6 +32,11 @@ YESTeleprompter
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
+<member name="P:YESTeleprompter.My.Resources.Resources.export_32px">
+<summary>
+  查找 System.Drawing.Bitmap 类型的本地化资源。
+</summary>
+</member>
 <member name="P:YESTeleprompter.My.Resources.Resources.font_32px">
 <summary>
   查找 System.Drawing.Bitmap 类型的本地化资源。
@@ -73,6 +78,11 @@ YESTeleprompter
 </summary>
 </member>
 <member name="P:YESTeleprompter.My.Resources.Resources.stop_32px">
+<summary>
+  查找 System.Drawing.Bitmap 类型的本地化资源。
+</summary>
+</member>
+<member name="P:YESTeleprompter.My.Resources.Resources.transcribe_32px">
 <summary>
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
@@ -142,6 +152,73 @@ YESTeleprompter
 <member name="F:YESTeleprompter.AppSetting.WindowLocation">
  <summary>
  主窗口位置
+ </summary>
+</member>
+<member name="T:YESTeleprompter.FileBaseInfo">
+ <summary>
+ 文件基础信息
+ </summary>
+</member>
+<member name="F:YESTeleprompter.FileBaseInfo.SourceFilePath">
+ <summary>
+ 源文件路径
+ </summary>
+</member>
+<member name="F:YESTeleprompter.FileBaseInfo.ParagraphItems">
+ <summary>
+ 段落内容
+ </summary>
+</member>
+<member name="F:YESTeleprompter.FileBaseInfo.EnabledEdit">
+ <summary>
+ 是否允许编辑
+ </summary>
+</member>
+<member name="F:YESTeleprompter.FileBaseInfo.HaveTimestamp">
+ <summary>
+ 是否有时间戳
+ </summary>
+</member>
+<member name="T:YESTeleprompter.FileTypeDocx">
+ <summary>
+ docx文档类型
+ </summary>
+</member>
+<member name="T:YESTeleprompter.FileTypeFactory">
+ <summary>
+ 文件类型工厂类
+ </summary>
+</member>
+<member name="M:YESTeleprompter.FileTypeFactory.Create(System.String)">
+ <summary>
+ 根据文件类型创建对应类
+ </summary>
+ <param name="filePath"></param>
+ <returns></returns>
+</member>
+<member name="T:YESTeleprompter.FileTypeLrc">
+ <summary>
+ lrc歌词类型
+ </summary>
+</member>
+<member name="T:YESTeleprompter.FileTypeTxt">
+ <summary>
+ txt文本类型
+ </summary>
+</member>
+<member name="T:YESTeleprompter.ParagraphInfo">
+ <summary>
+ 段落内容
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ParagraphInfo.value">
+ <summary>
+ 内容
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ParagraphInfo.Timestamp">
+ <summary>
+ 时间戳
  </summary>
 </member>
 </members>

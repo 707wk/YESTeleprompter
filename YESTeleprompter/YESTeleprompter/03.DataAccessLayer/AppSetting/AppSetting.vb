@@ -11,4 +11,11 @@ Public Class AppSetting
     ''' </summary>
     Public WindowLocation As Point
 
+    '''' <summary>
+    '''' 播放速度
+    '''' </summary>
+    'Public PlaySpeed As Integer
+
+
+
 End Class
