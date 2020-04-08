@@ -23,16 +23,16 @@ Public Class FileTypeLrc
                     Exit Do
                 End If
 
-                Dim timeStr = tmpStrArray(0).Substring(1, 5)
+                Dim timeStr = tmpStrArray(0).Substring(1, tmpStrArray(0).Length - 1)
 
                 Try
-                    DateTime.Parse(timeStr)
+                    DateTime.ParseExact(timeStr, "mm:ss.ff", Nothing)
                 Catch ex As Exception
                     Continue Do
                 End Try
 
                 ParagraphItems.Add(New ParagraphInfo With {
-                                   .Timestamp = DateTime.Parse(timeStr),
+                                   .Timestamp = DateTime.ParseExact(timeStr, "mm:ss.ff", Nothing).TimeOfDay,
                                    .value = tmpStrArray(1)
                                    })
 

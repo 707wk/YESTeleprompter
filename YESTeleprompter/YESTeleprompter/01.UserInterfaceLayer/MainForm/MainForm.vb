@@ -27,7 +27,7 @@ Public Class MainForm
             .AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(56, 56, 60)
             .EditMode = DataGridViewEditMode.EditOnEnter
             .GridColor = Color.FromArgb(45, 45, 48)
-            .CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+            .CellBorderStyle = DataGridViewCellBorderStyle.None
             .RowTemplate.Height = 30
             .MultiSelect = False
         End With
@@ -43,7 +43,7 @@ Public Class MainForm
             .AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(56, 56, 60)
             .EditMode = DataGridViewEditMode.EditOnEnter
             .GridColor = Color.FromArgb(45, 45, 48)
-            .CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+            .CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical
             .RowTemplate.Height = 30
             .MultiSelect = True
             .ReadOnly = False
@@ -53,6 +53,7 @@ Public Class MainForm
             item.SortMode = DataGridViewColumnSortMode.NotSortable
             item.ReadOnly = True
         Next
+        CheckBoxDataGridView2.Columns(1).ReadOnly = False
         CheckBoxDataGridView2.Columns(2).ReadOnly = False
 
         ChildPlayWindow.Show()
@@ -89,9 +90,65 @@ Public Class MainForm
             CheckBoxDataGridView1.Rows.Add({False, IO.Path.GetFileNameWithoutExtension(filePath)})
 
             For Each item In tmpFileBaseInfo.ParagraphItems
-                CheckBoxDataGridView2.Rows.Add({False, If(item.Timestamp = Nothing, "-", item.Timestamp.ToString("mm:ss")), item.value})
+                'CheckBoxDataGridView2.Rows.Add({False, If(item.Timestamp = Nothing, "00:00.00", item.Timestamp.ToString), item.value})
+                Dim addID = CheckBoxDataGridView2.Rows.Add({False, item.Timestamp.ToString("mm\:ss\.ff"), item.value})
+                CheckBoxDataGridView2.Rows(addID).Cells(1).Tag = CheckBoxDataGridView2.Rows(addID).Cells(1).Value
             Next
 
         Next
+    End Sub
+
+    Private Sub CheckBoxDataGridView2_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles CheckBoxDataGridView2.CellValueChanged
+        If e.ColumnIndex <> 1 OrElse
+            e.RowIndex < 0 Then
+            Exit Sub
+        End If
+
+        Dim tmpCell = CheckBoxDataGridView2.Rows(e.RowIndex).Cells(e.ColumnIndex)
+
+        Try
+            If String.IsNullOrWhiteSpace(tmpCell.Value) Then
+                Throw New Exception("时间戳不能为空")
+            End If
+
+            Dim tmpValueStr = tmpCell.Value.ToString
+
+            Dim mID = tmpValueStr.IndexOf(":")
+            If mID = -1 Then
+                Throw New Exception("时间格式错误")
+            End If
+
+            Dim mStr = tmpValueStr.Substring(0, mID)
+            Dim mValue As Integer = Val(mStr)
+
+            Dim sStr = tmpValueStr.Substring(mID + 1)
+            Dim sValue As Double = CDbl(sStr)
+
+            Dim tmpTimeSpan = DateTime.ParseExact($"{mValue:00}:{sValue:00.00}", "mm:ss.ff", Nothing).TimeOfDay
+            tmpCell.Value = tmpTimeSpan.ToString("mm\:ss\.ff")
+            tmpCell.Tag = tmpCell.Value
+
+        Catch ex As Exception
+            tmpCell.Value = $"{tmpCell.Tag}"
+            MsgBox(ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+        If CheckBoxDataGridView2.CurrentCell Is Nothing Then
+            Exit Sub
+        End If
+
+        CheckBoxDataGridView2.Rows.Insert(CheckBoxDataGridView2.CurrentCell.RowIndex, {False, CheckBoxDataGridView2.Rows(CheckBoxDataGridView2.CurrentCell.RowIndex).Cells(1).Value, ""})
+
+    End Sub
+
+    Private Sub ToolStripButton4_Click(sender As Object, e As EventArgs) Handles ToolStripButton4.Click
+
+    End Sub
+
+    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+
     End Sub
 End Class

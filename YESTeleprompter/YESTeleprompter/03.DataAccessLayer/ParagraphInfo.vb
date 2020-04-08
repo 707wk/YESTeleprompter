@@ -10,6 +10,6 @@ Public Class ParagraphInfo
     ''' <summary>
     ''' 时间戳
     ''' </summary>
-    Public Timestamp As DateTime
+    Public Timestamp As TimeSpan
 
 End Class
