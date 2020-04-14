@@ -62,6 +62,11 @@ YESTeleprompter
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
+<member name="P:YESTeleprompter.My.Resources.Resources.next_20px">
+<summary>
+  查找 System.Drawing.Bitmap 类型的本地化资源。
+</summary>
+</member>
 <member name="P:YESTeleprompter.My.Resources.Resources.no_16px">
 <summary>
   查找 System.Drawing.Bitmap 类型的本地化资源。
@@ -77,12 +82,22 @@ YESTeleprompter
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
+<member name="P:YESTeleprompter.My.Resources.Resources.pause_20px">
+<summary>
+  查找 System.Drawing.Bitmap 类型的本地化资源。
+</summary>
+</member>
 <member name="P:YESTeleprompter.My.Resources.Resources.pause_32px">
 <summary>
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
 <member name="P:YESTeleprompter.My.Resources.Resources.play_32px">
+<summary>
+  查找 System.Drawing.Bitmap 类型的本地化资源。
+</summary>
+</member>
+<member name="P:YESTeleprompter.My.Resources.Resources.return_20px">
 <summary>
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
@@ -164,57 +179,22 @@ YESTeleprompter
  主窗口位置
  </summary>
 </member>
-<member name="T:YESTeleprompter.FileBaseInfo">
+<member name="F:YESTeleprompter.AppSetting.ActiveProgram">
  <summary>
- 文件基础信息
+ 激活的素材
  </summary>
 </member>
-<member name="F:YESTeleprompter.FileBaseInfo.SourceFilePath">
- <summary>
- 源文件路径
- </summary>
-</member>
-<member name="F:YESTeleprompter.FileBaseInfo.ParagraphItems">
- <summary>
- 段落内容
- </summary>
-</member>
-<member name="F:YESTeleprompter.FileBaseInfo.EnabledEdit">
- <summary>
- 是否允许编辑
- </summary>
-</member>
-<member name="F:YESTeleprompter.FileBaseInfo.HaveTimestamp">
- <summary>
- 是否有时间戳
- </summary>
-</member>
-<member name="T:YESTeleprompter.FileTypeDocx">
- <summary>
- docx文档类型
- </summary>
-</member>
-<member name="T:YESTeleprompter.FileTypeFactory">
+<member name="T:YESTeleprompter.ProgramFactory">
  <summary>
  文件类型工厂类
  </summary>
 </member>
-<member name="M:YESTeleprompter.FileTypeFactory.Create(System.String)">
+<member name="M:YESTeleprompter.ProgramFactory.Create(System.String)">
  <summary>
  根据文件类型创建对应类
  </summary>
  <param name="filePath"></param>
  <returns></returns>
-</member>
-<member name="T:YESTeleprompter.FileTypeLrc">
- <summary>
- lrc歌词类型
- </summary>
-</member>
-<member name="T:YESTeleprompter.FileTypeTxt">
- <summary>
- txt文本类型
- </summary>
 </member>
 <member name="T:YESTeleprompter.ParagraphInfo">
  <summary>
@@ -229,6 +209,71 @@ YESTeleprompter
 <member name="F:YESTeleprompter.ParagraphInfo.Timestamp">
  <summary>
  时间戳
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ParagraphInfo.HaveTimestamp">
+ <summary>
+ 是否有时间戳
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ParagraphInfo.Checked">
+ <summary>
+ 是否选中
+ </summary>
+</member>
+<member name="T:YESTeleprompter.ProgramInfo">
+ <summary>
+ 素材信息
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramInfo.SourceFilePath">
+ <summary>
+ 源文件路径
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramInfo.ParagraphItems">
+ <summary>
+ 段落内容
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramInfo.PrintFont">
+ <summary>
+ 显示字体
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramInfo.PrintFontColor">
+ <summary>
+ 显示字体颜色
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramInfo.PrintBackColor">
+ <summary>
+ 显示背景色
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramInfo.PrintIntervalSec">
+ <summary>
+ 默认显示时长
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramInfo.PrintMirror">
+ <summary>
+ 镜像显示
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramInfo.WindowSize">
+ <summary>
+ 播放窗口尺寸
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramInfo.WindowLocation">
+ <summary>
+ 播放窗口位置
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramInfo.IsFullScreen">
+ <summary>
+ 全屏显示
  </summary>
 </member>
 </members>

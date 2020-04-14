@@ -48,4 +48,5 @@ T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.xml
 T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.pdb
 T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.HotKeysSettingForm.resources
 T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.PlaySettingForm.resources
+T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.RecordShowForm.resources
 T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.vbprojAssemblyReference.cache

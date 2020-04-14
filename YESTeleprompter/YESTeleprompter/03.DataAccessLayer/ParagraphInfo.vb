@@ -12,4 +12,15 @@ Public Class ParagraphInfo
     ''' </summary>
     Public Timestamp As TimeSpan
 
+    ''' <summary>
+    ''' 是否有时间戳
+    ''' </summary>
+    Public HaveTimestamp As Boolean
+
+    ''' <summary>
+    ''' 是否选中
+    ''' </summary>
+    <Newtonsoft.Json.JsonIgnore>
+    Public Checked As Boolean
+
 End Class
