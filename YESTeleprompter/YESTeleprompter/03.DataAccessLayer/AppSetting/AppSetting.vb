@@ -11,9 +11,16 @@ Public Class AppSetting
     ''' </summary>
     Public WindowLocation As Point
 
+    '''' <summary>
+    '''' 激活的素材
+    '''' </summary>
+    '<Newtonsoft.Json.JsonIgnore>
+    'Public ActiveProgram As ProgramInfo
+
     ''' <summary>
-    ''' 激活的素材
+    ''' 素材集合
     ''' </summary>
-    Public ActiveProgram As ProgramInfo
+    <Newtonsoft.Json.JsonIgnore>
+    Public ProgramItems As New List(Of ProgramInfo)
 
 End Class

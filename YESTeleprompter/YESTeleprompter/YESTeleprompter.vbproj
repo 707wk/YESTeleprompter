@@ -125,12 +125,6 @@
     <Compile Include="01.UserInterfaceLayer\MainForm\ChildForm\PlayForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="01.UserInterfaceLayer\MainForm\ChildForm\PlaySettingForm.Designer.vb">
-      <DependentUpon>PlaySettingForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="01.UserInterfaceLayer\MainForm\ChildForm\PlaySettingForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="01.UserInterfaceLayer\MainForm\ChildForm\RecordShowForm.Designer.vb">
       <DependentUpon>RecordShowForm.vb</DependentUpon>
     </Compile>
@@ -171,9 +165,6 @@
     <EmbeddedResource Include="01.UserInterfaceLayer\MainForm\ChildForm\PlayForm.resx">
       <DependentUpon>PlayForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="01.UserInterfaceLayer\MainForm\ChildForm\PlaySettingForm.resx">
-      <DependentUpon>PlaySettingForm.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="01.UserInterfaceLayer\MainForm\ChildForm\RecordShowForm.resx">
       <DependentUpon>RecordShowForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -209,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="res\new_32px.png" />
     <None Include="res\return_20px.png" />
     <None Include="res\pause_20px.png" />
     <None Include="res\next_20px.png" />

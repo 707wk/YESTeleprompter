@@ -44,6 +44,7 @@ Partial Class MainForm
         Me.ButtonItem5 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem6 = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar1 = New DevComponents.DotNetBar.RibbonBar()
+        Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem10 = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonTabItem1 = New DevComponents.DotNetBar.RibbonTabItem()
@@ -86,15 +87,14 @@ Partial Class MainForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.CheckBoxDataGridView2 = New Wangk.Resource.CheckBoxDataGridView()
-        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.RibbonControl1.SuspendLayout()
         Me.RibbonPanel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -133,7 +133,7 @@ Partial Class MainForm
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.QuickToolbarItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.QatCustomizeItem1})
-        Me.RibbonControl1.Size = New System.Drawing.Size(1184, 110)
+        Me.RibbonControl1.Size = New System.Drawing.Size(1264, 110)
         Me.RibbonControl1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonControl1.SystemText.MaximizeRibbonText = "&Maximize the Ribbon"
         Me.RibbonControl1.SystemText.MinimizeRibbonText = "Mi&nimize the Ribbon"
@@ -165,7 +165,7 @@ Partial Class MainForm
         Me.RibbonPanel1.Location = New System.Drawing.Point(0, 27)
         Me.RibbonPanel1.Name = "RibbonPanel1"
         Me.RibbonPanel1.Padding = New System.Windows.Forms.Padding(3, 0, 3, 2)
-        Me.RibbonPanel1.Size = New System.Drawing.Size(1184, 83)
+        Me.RibbonPanel1.Size = New System.Drawing.Size(1264, 83)
         '
         '
         '
@@ -196,7 +196,7 @@ Partial Class MainForm
         Me.RibbonBar4.DragDropSupport = True
         Me.RibbonBar4.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem7, Me.ItemContainer1})
         Me.RibbonBar4.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar4.Location = New System.Drawing.Point(622, 0)
+        Me.RibbonBar4.Location = New System.Drawing.Point(704, 0)
         Me.RibbonBar4.Name = "RibbonBar4"
         Me.RibbonBar4.Size = New System.Drawing.Size(302, 81)
         Me.RibbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -263,7 +263,7 @@ Partial Class MainForm
         Me.RibbonBar3.DragDropSupport = True
         Me.RibbonBar3.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem8})
         Me.RibbonBar3.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar3.Location = New System.Drawing.Point(498, 0)
+        Me.RibbonBar3.Location = New System.Drawing.Point(580, 0)
         Me.RibbonBar3.Name = "RibbonBar3"
         Me.RibbonBar3.Size = New System.Drawing.Size(124, 81)
         Me.RibbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -311,7 +311,7 @@ Partial Class MainForm
         Me.RibbonBar2.DragDropSupport = True
         Me.RibbonBar2.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem2, Me.ButtonItem3, Me.ButtonItem5, Me.ButtonItem6})
         Me.RibbonBar2.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar2.Location = New System.Drawing.Point(230, 0)
+        Me.RibbonBar2.Location = New System.Drawing.Point(312, 0)
         Me.RibbonBar2.Name = "RibbonBar2"
         Me.RibbonBar2.Size = New System.Drawing.Size(268, 81)
         Me.RibbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -377,11 +377,11 @@ Partial Class MainForm
         Me.RibbonBar1.ContainerControlProcessDialogKey = True
         Me.RibbonBar1.Dock = System.Windows.Forms.DockStyle.Left
         Me.RibbonBar1.DragDropSupport = True
-        Me.RibbonBar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem1, Me.ButtonItem10})
+        Me.RibbonBar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem4, Me.ButtonItem1, Me.ButtonItem10})
         Me.RibbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar1.Location = New System.Drawing.Point(3, 0)
         Me.RibbonBar1.Name = "RibbonBar1"
-        Me.RibbonBar1.Size = New System.Drawing.Size(227, 81)
+        Me.RibbonBar1.Size = New System.Drawing.Size(309, 81)
         Me.RibbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar1.TabIndex = 0
         Me.RibbonBar1.Text = "RibbonBar1"
@@ -395,6 +395,15 @@ Partial Class MainForm
         Me.RibbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonBar1.TitleVisible = False
         '
+        'ButtonItem4
+        '
+        Me.ButtonItem4.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem4.Image = Global.YESTeleprompter.My.Resources.Resources.new_32px
+        Me.ButtonItem4.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem4.Name = "ButtonItem4"
+        Me.ButtonItem4.SubItemsExpandWidth = 14
+        Me.ButtonItem4.Text = "新建素材"
+        '
         'ButtonItem1
         '
         Me.ButtonItem1.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
@@ -402,7 +411,7 @@ Partial Class MainForm
         Me.ButtonItem1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.ButtonItem1.Name = "ButtonItem1"
         Me.ButtonItem1.SubItemsExpandWidth = 14
-        Me.ButtonItem1.Text = "导入播放素材"
+        Me.ButtonItem1.Text = "导入素材"
         '
         'ButtonItem10
         '
@@ -445,8 +454,8 @@ Partial Class MainForm
         Me.SplitContainer1.Panel2.Controls.Add(Me.GroupBox4)
         Me.SplitContainer1.Panel2.Controls.Add(Me.GroupBox3)
         Me.SplitContainer1.Panel2.Controls.Add(Me.GroupBox2)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1184, 549)
-        Me.SplitContainer1.SplitterDistance = 266
+        Me.SplitContainer1.Size = New System.Drawing.Size(1264, 549)
+        Me.SplitContainer1.SplitterDistance = 311
         Me.SplitContainer1.TabIndex = 1
         '
         'GroupBox1
@@ -459,7 +468,7 @@ Partial Class MainForm
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
         Me.GroupBox1.Location = New System.Drawing.Point(3, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(260, 540)
+        Me.GroupBox1.Size = New System.Drawing.Size(305, 540)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "素材列表"
@@ -494,7 +503,7 @@ Partial Class MainForm
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.CheckBoxDataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.CheckBoxDataGridView1.RowTemplate.Height = 23
-        Me.CheckBoxDataGridView1.Size = New System.Drawing.Size(254, 491)
+        Me.CheckBoxDataGridView1.Size = New System.Drawing.Size(299, 491)
         Me.CheckBoxDataGridView1.TabIndex = 1
         '
         'DataGridViewCheckBoxColumn2
@@ -520,7 +529,7 @@ Partial Class MainForm
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton3})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 19)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(254, 27)
+        Me.ToolStrip1.Size = New System.Drawing.Size(299, 27)
         Me.ToolStrip1.TabIndex = 0
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -530,8 +539,9 @@ Partial Class MainForm
         Me.ToolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(104, 24)
-        Me.ToolStripButton3.Text = "删除选中素材"
+        Me.ToolStripButton3.Size = New System.Drawing.Size(56, 24)
+        Me.ToolStripButton3.Text = "删除"
+        Me.ToolStripButton3.ToolTipText = "删除"
         '
         'GroupBox4
         '
@@ -550,7 +560,7 @@ Partial Class MainForm
         Me.GroupBox4.Controls.Add(Me.Label16)
         Me.GroupBox4.Controls.Add(Me.Label17)
         Me.GroupBox4.ForeColor = System.Drawing.Color.White
-        Me.GroupBox4.Location = New System.Drawing.Point(603, 295)
+        Me.GroupBox4.Location = New System.Drawing.Point(638, 295)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(308, 251)
         Me.GroupBox4.TabIndex = 47
@@ -560,7 +570,7 @@ Partial Class MainForm
         'CheckBox2
         '
         Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(91, 169)
+        Me.CheckBox2.Location = New System.Drawing.Point(107, 169)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(51, 21)
         Me.CheckBox2.TabIndex = 2
@@ -569,7 +579,7 @@ Partial Class MainForm
         '
         'NumericUpDown4
         '
-        Me.NumericUpDown4.Location = New System.Drawing.Point(91, 132)
+        Me.NumericUpDown4.Location = New System.Drawing.Point(107, 132)
         Me.NumericUpDown4.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.NumericUpDown4.Name = "NumericUpDown4"
         Me.NumericUpDown4.Size = New System.Drawing.Size(75, 23)
@@ -577,7 +587,7 @@ Partial Class MainForm
         '
         'NumericUpDown3
         '
-        Me.NumericUpDown3.Location = New System.Drawing.Point(91, 99)
+        Me.NumericUpDown3.Location = New System.Drawing.Point(107, 99)
         Me.NumericUpDown3.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.NumericUpDown3.Name = "NumericUpDown3"
         Me.NumericUpDown3.Size = New System.Drawing.Size(75, 23)
@@ -585,7 +595,7 @@ Partial Class MainForm
         '
         'NumericUpDown2
         '
-        Me.NumericUpDown2.Location = New System.Drawing.Point(91, 53)
+        Me.NumericUpDown2.Location = New System.Drawing.Point(107, 53)
         Me.NumericUpDown2.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.NumericUpDown2.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.NumericUpDown2.Name = "NumericUpDown2"
@@ -595,7 +605,7 @@ Partial Class MainForm
         '
         'NumericUpDown5
         '
-        Me.NumericUpDown5.Location = New System.Drawing.Point(91, 22)
+        Me.NumericUpDown5.Location = New System.Drawing.Point(107, 22)
         Me.NumericUpDown5.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.NumericUpDown5.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.NumericUpDown5.Name = "NumericUpDown5"
@@ -684,7 +694,7 @@ Partial Class MainForm
         Me.GroupBox3.Controls.Add(Me.Label2)
         Me.GroupBox3.Controls.Add(Me.Label1)
         Me.GroupBox3.ForeColor = System.Drawing.Color.White
-        Me.GroupBox3.Location = New System.Drawing.Point(603, 6)
+        Me.GroupBox3.Location = New System.Drawing.Point(638, 6)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(308, 283)
         Me.GroupBox3.TabIndex = 1
@@ -748,6 +758,7 @@ Partial Class MainForm
         Me.TextBox1.ForeColor = System.Drawing.Color.White
         Me.TextBox1.Location = New System.Drawing.Point(107, 29)
         Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
         Me.TextBox1.Size = New System.Drawing.Size(100, 23)
         Me.TextBox1.TabIndex = 1
         '
@@ -778,7 +789,6 @@ Partial Class MainForm
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(131, 47)
         Me.Label6.TabIndex = 0
-        Me.Label6.Text = "测试文字 Test string"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label5
@@ -836,7 +846,7 @@ Partial Class MainForm
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
         Me.GroupBox2.Location = New System.Drawing.Point(3, 6)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(594, 540)
+        Me.GroupBox2.Size = New System.Drawing.Size(629, 540)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "素材内容"
@@ -870,62 +880,8 @@ Partial Class MainForm
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.CheckBoxDataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.CheckBoxDataGridView2.RowTemplate.Height = 23
-        Me.CheckBoxDataGridView2.Size = New System.Drawing.Size(588, 491)
+        Me.CheckBoxDataGridView2.Size = New System.Drawing.Size(623, 491)
         Me.CheckBoxDataGridView2.TabIndex = 1
-        '
-        'ToolStrip2
-        '
-        Me.ToolStrip2.BackColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer))
-        Me.ToolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton4, Me.ToolStripButton2})
-        Me.ToolStrip2.Location = New System.Drawing.Point(3, 19)
-        Me.ToolStrip2.Name = "ToolStrip2"
-        Me.ToolStrip2.Size = New System.Drawing.Size(588, 27)
-        Me.ToolStrip2.TabIndex = 0
-        Me.ToolStrip2.Text = "ToolStrip2"
-        '
-        'ToolStripButton1
-        '
-        Me.ToolStripButton1.Image = Global.YESTeleprompter.My.Resources.Resources.insertUp_20px
-        Me.ToolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(104, 24)
-        Me.ToolStripButton1.Text = "向前插入新行"
-        '
-        'ToolStripButton4
-        '
-        Me.ToolStripButton4.Image = Global.YESTeleprompter.My.Resources.Resources.insertDn_20px
-        Me.ToolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton4.Name = "ToolStripButton4"
-        Me.ToolStripButton4.Size = New System.Drawing.Size(104, 24)
-        Me.ToolStripButton4.Text = "向后插入新行"
-        '
-        'ToolStripButton2
-        '
-        Me.ToolStripButton2.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
-        Me.ToolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(92, 24)
-        Me.ToolStripButton2.Text = "删除选中行"
-        '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.BackColor = System.Drawing.SystemColors.Control
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 659)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1184, 22)
-        Me.StatusStrip1.TabIndex = 2
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(68, 17)
-        Me.ToolStripStatusLabel1.Text = "无操作信息"
         '
         'DataGridViewCheckBoxColumn1
         '
@@ -955,12 +911,60 @@ Partial Class MainForm
         Me.Column3.Name = "Column3"
         Me.Column3.ReadOnly = True
         '
+        'ToolStrip2
+        '
+        Me.ToolStrip2.BackColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer))
+        Me.ToolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2})
+        Me.ToolStrip2.Location = New System.Drawing.Point(3, 19)
+        Me.ToolStrip2.Name = "ToolStrip2"
+        Me.ToolStrip2.Size = New System.Drawing.Size(623, 27)
+        Me.ToolStrip2.TabIndex = 0
+        Me.ToolStrip2.Text = "ToolStrip2"
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.Image = Global.YESTeleprompter.My.Resources.Resources.insertUp_20px
+        Me.ToolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(56, 24)
+        Me.ToolStripButton1.Text = "插入"
+        Me.ToolStripButton1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
+        Me.ToolStripButton1.ToolTipText = "插入"
+        '
+        'ToolStripButton2
+        '
+        Me.ToolStripButton2.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
+        Me.ToolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton2.Name = "ToolStripButton2"
+        Me.ToolStripButton2.Size = New System.Drawing.Size(56, 24)
+        Me.ToolStripButton2.Text = "删除"
+        Me.ToolStripButton2.ToolTipText = "删除"
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.BackColor = System.Drawing.SystemColors.Control
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 659)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(1264, 22)
+        Me.StatusStrip1.TabIndex = 2
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(68, 17)
+        Me.ToolStripStatusLabel1.Text = "无操作信息"
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1184, 681)
+        Me.ClientSize = New System.Drawing.Size(1264, 681)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.RibbonControl1)
         Me.Controls.Add(Me.StatusStrip1)
@@ -1048,7 +1052,6 @@ Partial Class MainForm
     Friend WithEvents ButtonItem10 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents SwitchButtonItem1 As DevComponents.DotNetBar.SwitchButtonItem
     Friend WithEvents ItemContainer1 As DevComponents.DotNetBar.ItemContainer
-    Friend WithEvents ToolStripButton4 As ToolStripButton
     Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
@@ -1068,4 +1071,5 @@ Partial Class MainForm
     Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents ButtonItem4 As DevComponents.DotNetBar.ButtonItem
 End Class

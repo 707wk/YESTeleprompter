@@ -1,4 +1,5 @@
-﻿Imports Newtonsoft.Json
+﻿Imports System.IO
+Imports Newtonsoft.Json
 ''' <summary>
 ''' 全局配置辅助类
 ''' </summary>
@@ -95,6 +96,17 @@ Public Class AppSettingHelper
 
         End Try
 
+        Dim tmpDirectoryInfo As New DirectoryInfo("./Data")
+        If tmpDirectoryInfo.Exists Then
+            For Each item In tmpDirectoryInfo.GetFiles()
+                Dim tmpProgramInfo = JsonConvert.DeserializeObject(Of ProgramInfo)(
+                    System.IO.File.ReadAllText(item.FullName,
+                                               System.Text.Encoding.UTF8))
+                AppSettingHelper.Settings.ProgramItems.Add(tmpProgramInfo)
+            Next
+
+        End If
+
     End Sub
 #End Region
 
@@ -123,6 +135,19 @@ Public Class AppSettingHelper
             MsgBox(ex.ToString, MsgBoxStyle.Information, My.Application.Info.Title)
 
         End Try
+
+        System.IO.Directory.CreateDirectory("./Data")
+        For Each item In AppSettingHelper.Settings.ProgramItems
+
+            Using t As System.IO.StreamWriter = New System.IO.StreamWriter(
+            $"./Data/{item.ID}",
+            False,
+            System.Text.Encoding.UTF8)
+
+                t.Write(JsonConvert.SerializeObject(item))
+            End Using
+
+        Next
 
     End Sub
 #End Region

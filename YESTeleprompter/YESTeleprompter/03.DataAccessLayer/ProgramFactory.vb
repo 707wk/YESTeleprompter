@@ -40,7 +40,9 @@ Public NotInheritable Class ProgramFactory
 
 #Region "GetTxtInfo"
     Public Shared Function GetTxtInfo(filePath As String)
-        Dim tmpProgramInfo As New ProgramInfo
+        Dim tmpProgramInfo As New ProgramInfo With {
+            .Name = IO.Path.GetFileNameWithoutExtension(filePath)
+        }
 
         Dim tmpDetectionResult = UtfUnknown.CharsetDetector.DetectFromFile(filePath)
         If tmpDetectionResult.Detected.Encoding Is Nothing Then
@@ -68,7 +70,9 @@ Public NotInheritable Class ProgramFactory
 
 #Region "GetLrcInfo"
     Public Shared Function GetLrcInfo(filePath As String)
-        Dim tmpProgramInfo As New ProgramInfo
+        Dim tmpProgramInfo As New ProgramInfo With {
+            .Name = IO.Path.GetFileNameWithoutExtension(filePath)
+        }
 
         Dim tmpDetectionResult = UtfUnknown.CharsetDetector.DetectFromFile(filePath)
         If tmpDetectionResult.Detected.Encoding Is Nothing Then
@@ -105,7 +109,9 @@ Public NotInheritable Class ProgramFactory
 
 #Region "GetDocxInfo"
     Public Shared Function GetDocxInfo(filePath As String)
-        Dim tmpProgramInfo As New ProgramInfo
+        Dim tmpProgramInfo As New ProgramInfo With {
+            .Name = IO.Path.GetFileNameWithoutExtension(filePath)
+        }
 
         Using tmpFS = File.OpenRead(filePath)
             Dim docx As XWPFDocument = New XWPFDocument(tmpFS)

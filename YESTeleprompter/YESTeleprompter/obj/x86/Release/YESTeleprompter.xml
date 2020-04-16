@@ -241,11 +241,6 @@ YESTeleprompter
  素材信息
  </summary>
 </member>
-<member name="F:YESTeleprompter.ProgramInfo.ID">
- <summary>
- 识别标识
- </summary>
-</member>
 <member name="F:YESTeleprompter.ProgramInfo.Name">
  <summary>
  名称
@@ -271,7 +266,7 @@ YESTeleprompter
  显示背景色
  </summary>
 </member>
-<member name="F:YESTeleprompter.ProgramInfo.PrintDefaultIntervalSec">
+<member name="F:YESTeleprompter.ProgramInfo.PrintIntervalSec">
  <summary>
  默认显示时长
  </summary>
