@@ -37,8 +37,11 @@ T:\YESTeleprompter\YESTeleprompter\bin\NLog.xml
 T:\YESTeleprompter\YESTeleprompter\bin\UtfUnknown.xml
 T:\YESTeleprompter\YESTeleprompter\bin\Wangk.Resource.pdb
 T:\YESTeleprompter\YESTeleprompter\bin\Wangk.Resource.xml
+T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.HotKeysSettingForm.resources
 T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.PlayForm.resources
+T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.RecordShowForm.resources
 T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.MainForm.resources
+T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.StartForm.resources
 T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.Resources.resources
 T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.vbproj.GenerateResource.cache
 T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.vbproj.CoreCompileInputs.cache
@@ -46,6 +49,4 @@ T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.vbproj.CopyComp
 T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.exe
 T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.xml
 T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.pdb
-T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.HotKeysSettingForm.resources
-T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.RecordShowForm.resources
 T:\YESTeleprompter\YESTeleprompter\obj\x86\Debug\YESTeleprompter.vbprojAssemblyReference.cache

@@ -96,16 +96,19 @@ Public Class AppSettingHelper
 
         End Try
 
-        Dim tmpDirectoryInfo As New DirectoryInfo("./Data")
-        If tmpDirectoryInfo.Exists Then
-            For Each item In tmpDirectoryInfo.GetFiles()
-                Dim tmpProgramInfo = JsonConvert.DeserializeObject(Of ProgramInfo)(
-                    System.IO.File.ReadAllText(item.FullName,
-                                               System.Text.Encoding.UTF8))
-                AppSettingHelper.Settings.ProgramItems.Add(tmpProgramInfo)
-            Next
+        Try
+            Dim tmpDirectoryInfo As New DirectoryInfo("./Data")
+            If tmpDirectoryInfo.Exists Then
+                For Each item In tmpDirectoryInfo.GetFiles()
+                    Dim tmpProgramInfo = JsonConvert.DeserializeObject(Of ProgramInfo)(
+                        System.IO.File.ReadAllText(item.FullName,
+                                                   System.Text.Encoding.UTF8))
+                    AppSettingHelper.Settings.ProgramItems.Add(tmpProgramInfo)
+                Next
 
-        End If
+            End If
+        Catch ex As Exception
+        End Try
 
     End Sub
 #End Region
@@ -136,18 +139,24 @@ Public Class AppSettingHelper
 
         End Try
 
-        System.IO.Directory.CreateDirectory("./Data")
-        For Each item In AppSettingHelper.Settings.ProgramItems
+        Try
+            System.IO.Directory.CreateDirectory("./Data")
+            For Each item In AppSettingHelper.Settings.ProgramItems
 
-            Using t As System.IO.StreamWriter = New System.IO.StreamWriter(
-            $"./Data/{item.ID}",
-            False,
-            System.Text.Encoding.UTF8)
+                Using t As System.IO.StreamWriter = New System.IO.StreamWriter(
+                $"./Data/{item.ID}",
+                False,
+                System.Text.Encoding.UTF8)
 
-                t.Write(JsonConvert.SerializeObject(item))
-            End Using
+                    t.Write(JsonConvert.SerializeObject(item))
+                End Using
 
-        Next
+            Next
+
+        Catch ex As Exception
+            MsgBox(ex.ToString, MsgBoxStyle.Information, My.Application.Info.Title)
+        End Try
+
 
     End Sub
 #End Region

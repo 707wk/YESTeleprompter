@@ -107,6 +107,11 @@ YESTeleprompter
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
+<member name="P:YESTeleprompter.My.Resources.Resources.startBackground">
+<summary>
+  查找 System.Drawing.Bitmap 类型的本地化资源。
+</summary>
+</member>
 <member name="P:YESTeleprompter.My.Resources.Resources.stop_32px">
 <summary>
   查找 System.Drawing.Bitmap 类型的本地化资源。
@@ -126,6 +131,41 @@ YESTeleprompter
 <summary>
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
+</member>
+<member name="T:YESTeleprompter.WindowsHotKeyHelper">
+ <summary>
+ Windows热键处理辅助类
+ </summary>
+</member>
+<member name="M:YESTeleprompter.WindowsHotKeyHelper.RegisterHotKey(System.Int32,System.Int32,System.Int32,System.Int32)">
+ <summary>
+ 注册全局热键
+ </summary>
+</member>
+<member name="M:YESTeleprompter.WindowsHotKeyHelper.UnregisterHotKey(System.Int32,System.Int32)">
+ <summary>
+ 注销全局热键
+ </summary>
+</member>
+<member name="F:YESTeleprompter.WindowsHotKeyHelper.WM_HOTKEY">
+ <summary>
+ 热键消息ID
+ </summary>
+</member>
+<member name="F:YESTeleprompter.WindowsHotKeyHelper.MOD_ALT">
+ <summary>
+ ALT
+ </summary>
+</member>
+<member name="F:YESTeleprompter.WindowsHotKeyHelper.MOD_CONTROL">
+ <summary>
+ Ctrl
+ </summary>
+</member>
+<member name="F:YESTeleprompter.WindowsHotKeyHelper.MOD_SHIFT">
+ <summary>
+ Shift
+ </summary>
 </member>
 <member name="T:YESTeleprompter.AppSettingHelper">
  <summary>
@@ -184,6 +224,21 @@ YESTeleprompter
  主窗口位置
  </summary>
 </member>
+<member name="F:YESTeleprompter.AppSetting.HotKeyForPlay">
+ <summary>
+ 播放快捷键
+ </summary>
+</member>
+<member name="F:YESTeleprompter.AppSetting.HotKeyForStop">
+ <summary>
+ 停止播放快捷键
+ </summary>
+</member>
+<member name="F:YESTeleprompter.AppSetting.HotKeyForHideWindow">
+ <summary>
+ 隐藏播放窗口快捷键
+ </summary>
+</member>
 <member name="F:YESTeleprompter.AppSetting.ProgramItems">
  <summary>
  素材集合
@@ -234,6 +289,16 @@ YESTeleprompter
 <member name="F:YESTeleprompter.MainForm.ActiveProgram">
  <summary>
  当前编辑的素材
+ </summary>
+</member>
+<member name="M:YESTeleprompter.MainForm.RegisterHotKey">
+ <summary>
+ 注册全局快捷键
+ </summary>
+</member>
+<member name="M:YESTeleprompter.MainForm.UnregisterHotKey">
+ <summary>
+ 注销全局快捷键
  </summary>
 </member>
 <member name="T:YESTeleprompter.ProgramInfo">

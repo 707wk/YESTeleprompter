@@ -18,6 +18,19 @@ Public Class AppSetting
     'Public ActiveProgram As ProgramInfo
 
     ''' <summary>
+    ''' 播放快捷键
+    ''' </summary>
+    Public HotKeyForPlay As Keys = Keys.F5
+    ''' <summary>
+    ''' 停止播放快捷键
+    ''' </summary>
+    Public HotKeyForStop As Keys = Keys.F6
+    ''' <summary>
+    ''' 隐藏播放窗口快捷键
+    ''' </summary>
+    Public HotKeyForHideWindow As Keys = Keys.F8
+
+    ''' <summary>
     ''' 素材集合
     ''' </summary>
     <Newtonsoft.Json.JsonIgnore>

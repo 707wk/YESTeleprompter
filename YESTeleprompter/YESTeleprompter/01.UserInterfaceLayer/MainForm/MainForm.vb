@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports Newtonsoft.Json
 
 Public Class MainForm
 
@@ -115,9 +116,25 @@ Public Class MainForm
         Label6.DataBindings.Add(NameOf(Label6.ForeColor), Label13, NameOf(Label13.BackColor))
         Label6.DataBindings.Add(NameOf(Label6.BackColor), Label14, NameOf(Label14.BackColor))
 
+        '注册全局快捷键
+        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 1, 0, AppSettingHelper.Settings.HotKeyForPlay)
+        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 2, 0, AppSettingHelper.Settings.HotKeyForStop)
+        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 3, 0, AppSettingHelper.Settings.HotKeyForHideWindow)
+
+        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 4, 0, Keys.PageUp)
+        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 5, 0, Keys.PageDown)
+
     End Sub
 
     Private Sub MainForm_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        '注销全局快捷键
+        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, AppSettingHelper.Settings.HotKeyForPlay)
+        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, AppSettingHelper.Settings.HotKeyForStop)
+        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, AppSettingHelper.Settings.HotKeyForHideWindow)
+
+        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, Keys.PageUp)
+        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, Keys.PageDown)
+
         AppSettingHelper.Settings.WindowSize = Me.Size
         AppSettingHelper.Settings.WindowLocation = Me.Location
         AppSettingHelper.SaveToLocaltion()
@@ -157,6 +174,31 @@ Public Class MainForm
         Next
 
         CheckBoxDataGridView1.Sort(CheckBoxDataGridView1.Columns(1), ListSortDirection.Ascending)
+
+    End Sub
+
+    Private Sub ButtonItem10_Click(sender As Object, e As EventArgs) Handles ButtonItem10.Click
+        If ActiveProgram Is Nothing Then
+            Exit Sub
+        End If
+
+        Using tmpDialog As New SaveFileDialog With {
+            .FileName = ActiveProgram.Name,
+            .Filter = "素材文件|*.lrcy"
+        }
+            If tmpDialog.ShowDialog() <> DialogResult.OK Then
+                Exit Sub
+            End If
+
+            Using t As System.IO.StreamWriter = New System.IO.StreamWriter(
+                    tmpDialog.FileName,
+                    False,
+                    System.Text.Encoding.UTF8)
+
+                t.Write(JsonConvert.SerializeObject(ActiveProgram))
+            End Using
+
+        End Using
 
     End Sub
 
@@ -566,6 +608,67 @@ Public Class MainForm
                                   })
         e.Graphics.ResetTransform()
 
+    End Sub
+
+    Private Sub ButtonItem7_Click(sender As Object, e As EventArgs) Handles ButtonItem7.Click
+        Using tmpDialog As New HotKeysSettingForm With {
+            .UIForm = Me,
+            .Text = ButtonItem7.Text
+        }
+
+            tmpDialog.ShowDialog()
+
+        End Using
+
+    End Sub
+
+    ''' <summary>
+    ''' 注册全局快捷键
+    ''' </summary>
+    Public Sub RegisterHotKey()
+        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 1, 0, AppSettingHelper.Settings.HotKeyForPlay)
+        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 2, 0, AppSettingHelper.Settings.HotKeyForStop)
+        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 3, 0, AppSettingHelper.Settings.HotKeyForHideWindow)
+
+    End Sub
+
+    ''' <summary>
+    ''' 注销全局快捷键
+    ''' </summary>
+    Public Sub UnregisterHotKey()
+        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, AppSettingHelper.Settings.HotKeyForPlay)
+        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, AppSettingHelper.Settings.HotKeyForStop)
+        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, AppSettingHelper.Settings.HotKeyForHideWindow)
+
+    End Sub
+
+    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
+
+        If keyData = Keys.PageUp OrElse keyData = Keys.PageDown Then
+            Return True
+        End If
+
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
+
+    Protected Overrides Sub WndProc(ByRef m As Message)
+        If m.Msg = WindowsHotKeyHelper.WM_HOTKEY Then
+            Debug.WriteLine($"{Now} {m.WParam.ToInt32}")
+            Select Case m.WParam.ToInt32
+                Case 1
+
+                Case 2
+
+                Case 3
+
+                Case 4
+
+                Case 5
+
+            End Select
+        End If
+
+        MyBase.WndProc(m)
     End Sub
 
 End Class

@@ -27,9 +27,13 @@ Public NotInheritable Class ProgramFactory
                 Return GetDocxInfo(filePath)
 
             Case ".lrcy"
-                Return JsonConvert.DeserializeObject(Of ProgramInfo)(
+                Dim tmpValue = JsonConvert.DeserializeObject(Of ProgramInfo)(
                     System.IO.File.ReadAllText(filePath,
                                                System.Text.Encoding.UTF8))
+                tmpValue.ID = Guid.NewGuid
+                tmpValue.Name = IO.Path.GetFileNameWithoutExtension(filePath)
+
+                Return tmpValue
 
             Case Else
                 Throw New Exception($"不支持的文件类型: { filePath}")
