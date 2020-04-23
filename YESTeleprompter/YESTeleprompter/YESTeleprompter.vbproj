@@ -137,6 +137,7 @@
     <Compile Include="01.UserInterfaceLayer\StartForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="02.BusinessLogicLayer\ProgramPlayHelper.vb" />
     <Compile Include="02.BusinessLogicLayer\WindowsHotKeyHelper.vb" />
     <Compile Include="03.DataAccessLayer\AppSetting\AppSettingHelper.vb" />
     <Compile Include="03.DataAccessLayer\AppSetting\AppSetting.vb" />
@@ -210,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="res\goOn_32px.png" />
     <None Include="res\startBackground.png" />
     <None Include="res\new_32px.png" />
     <None Include="res\return_20px.png" />

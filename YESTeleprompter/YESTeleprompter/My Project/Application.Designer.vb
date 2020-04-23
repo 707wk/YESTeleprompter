@@ -34,10 +34,5 @@ Namespace My
         Protected Overrides Sub OnCreateMainForm()
             Me.MainForm = Global.YESTeleprompter.MainForm
         End Sub
-        
-        <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
-        Protected Overrides Sub OnCreateSplashScreen()
-            Me.SplashScreen = Global.YESTeleprompter.StartForm
-        End Sub
     End Class
 End Namespace

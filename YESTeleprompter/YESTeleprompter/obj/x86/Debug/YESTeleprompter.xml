@@ -42,6 +42,11 @@ YESTeleprompter
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
+<member name="P:YESTeleprompter.My.Resources.Resources.goOn_32px">
+<summary>
+  查找 System.Drawing.Bitmap 类型的本地化资源。
+</summary>
+</member>
 <member name="P:YESTeleprompter.My.Resources.Resources.hotkeys_32px">
 <summary>
   查找 System.Drawing.Bitmap 类型的本地化资源。
@@ -102,7 +107,7 @@ YESTeleprompter
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
-<member name="P:YESTeleprompter.My.Resources.Resources.return_20px">
+<member name="P:YESTeleprompter.My.Resources.Resources.reset_20px">
 <summary>
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
@@ -131,6 +136,146 @@ YESTeleprompter
 <summary>
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
+</member>
+<member name="M:YESTeleprompter.PlayForm.UpdateSizeAndLocation">
+ <summary>
+ 更新尺寸和位置
+ </summary>
+</member>
+<member name="M:YESTeleprompter.PlayForm.PaintParagraph">
+ <summary>
+ 更新画面
+ </summary>
+</member>
+<member name="T:YESTeleprompter.ProgramPlayHelper">
+ <summary>
+ 素材播放辅助模块
+ </summary>
+</member>
+<member name="T:YESTeleprompter.ProgramPlayHelper.OperationState">
+ <summary>
+ 操作状态类型
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramPlayHelper.OperationState.NoOperation">
+ <summary>
+ 无操作
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramPlayHelper.OperationState.Playing">
+ <summary>
+ 播放
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramPlayHelper.OperationState.Recording">
+ <summary>
+ 录制
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramPlayHelper.OperationState.StopPlaying">
+ <summary>
+ 停止播放
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramPlayHelper._RunningState">
+ <summary>
+ 运行状态
+ </summary>
+</member>
+<member name="P:YESTeleprompter.ProgramPlayHelper.RunningState">
+ <summary>
+ 运行状态
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramPlayHelper._IsPause">
+ <summary>
+ 是否暂停
+ </summary>
+</member>
+<member name="P:YESTeleprompter.ProgramPlayHelper.IsPause">
+ <summary>
+ 是否暂停
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramPlayHelper.UpdateTimer">
+ <summary>
+ 画面更新定时器
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramPlayHelper.UIPlayForm">
+ <summary>
+ 播放窗口
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramPlayHelper.NowPlayParagraphID">
+ <summary>
+ 当前播放的段落ID
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramPlayHelper.NowPlayParagraphRunTime">
+ <summary>
+ 当前段落已播放的时间
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramPlayHelper.NowPlayParagraphStartTime">
+ <summary>
+ 当前段落开始播放的时间
+ </summary>
+</member>
+<member name="M:YESTeleprompter.ProgramPlayHelper.Play">
+ <summary>
+ 播放
+ </summary>
+</member>
+<member name="M:YESTeleprompter.ProgramPlayHelper.Record">
+ <summary>
+ 录制
+ </summary>
+</member>
+<member name="M:YESTeleprompter.ProgramPlayHelper.UpdateChange">
+ <summary>
+ 更新修改
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ProgramPlayHelper.IsPaintEnd">
+ <summary>
+ 更新画面
+ </summary>
+</member>
+<member name="M:YESTeleprompter.ProgramPlayHelper.Paint(System.Object,System.Timers.ElapsedEventArgs)">
+ <summary>
+ 更新画面
+ </summary>
+</member>
+<member name="M:YESTeleprompter.ProgramPlayHelper.PageUp">
+ <summary>
+ 上一行
+ </summary>
+</member>
+<member name="M:YESTeleprompter.ProgramPlayHelper.PageDn">
+ <summary>
+ 下一行
+ </summary>
+</member>
+<member name="M:YESTeleprompter.ProgramPlayHelper.Pause">
+ <summary>
+ 暂停
+ </summary>
+</member>
+<member name="M:YESTeleprompter.ProgramPlayHelper.GoOn">
+ <summary>
+ 继续
+ </summary>
+</member>
+<member name="M:YESTeleprompter.ProgramPlayHelper.Reset">
+ <summary>
+ 重置
+ </summary>
+</member>
+<member name="M:YESTeleprompter.ProgramPlayHelper.StopPlay">
+ <summary>
+ 停止播放
+ </summary>
 </member>
 <member name="T:YESTeleprompter.WindowsHotKeyHelper">
  <summary>
@@ -224,9 +369,19 @@ YESTeleprompter
  主窗口位置
  </summary>
 </member>
+<member name="F:YESTeleprompter.AppSetting.ActiveProgram">
+ <summary>
+ 当前编辑的素材
+ </summary>
+</member>
 <member name="F:YESTeleprompter.AppSetting.HotKeyForPlay">
  <summary>
  播放快捷键
+ </summary>
+</member>
+<member name="F:YESTeleprompter.AppSetting.HotKeyForPause">
+ <summary>
+ 暂停播放快捷键
  </summary>
 </member>
 <member name="F:YESTeleprompter.AppSetting.HotKeyForStop">
@@ -266,14 +421,14 @@ YESTeleprompter
  内容
  </summary>
 </member>
-<member name="F:YESTeleprompter.ParagraphInfo.Timestamp">
+<member name="F:YESTeleprompter.ParagraphInfo.ShowTimestamp">
  <summary>
- 时间戳
+ 显示时长
  </summary>
 </member>
 <member name="F:YESTeleprompter.ParagraphInfo.HaveTimestamp">
  <summary>
- 是否有时间戳
+ 是否有显示时长
  </summary>
 </member>
 <member name="F:YESTeleprompter.ParagraphInfo.Checked">
@@ -286,9 +441,9 @@ YESTeleprompter
  播放窗口
  </summary>
 </member>
-<member name="F:YESTeleprompter.MainForm.ActiveProgram">
+<member name="F:YESTeleprompter.MainForm.RecordWindow">
  <summary>
- 当前编辑的素材
+ 录制工具栏
  </summary>
 </member>
 <member name="M:YESTeleprompter.MainForm.RegisterHotKey">
@@ -336,7 +491,7 @@ YESTeleprompter
  显示背景色
  </summary>
 </member>
-<member name="F:YESTeleprompter.ProgramInfo.PrintDefaultIntervalSec">
+<member name="F:YESTeleprompter.ProgramInfo.PrintDefaultShowTimestamp">
  <summary>
  默认显示时长
  </summary>

@@ -3,7 +3,7 @@
     Public UIForm As MainForm
 
     Private Sub HotKeysSettingForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        With ComboBox1
+        With PlayComboBox
             .DropDownStyle = ComboBoxStyle.DropDownList
             For i001 = 1 To 11
                 .Items.Add($"F{i001}")
@@ -12,7 +12,16 @@
             .Text = AppSettingHelper.Settings.HotKeyForPlay.ToString
         End With
 
-        With ComboBox2
+        With PauseComboBox
+            .DropDownStyle = ComboBoxStyle.DropDownList
+            For i001 = 1 To 11
+                .Items.Add($"F{i001}")
+            Next
+
+            .Text = AppSettingHelper.Settings.HotKeyForPause.ToString
+        End With
+
+        With StopComboBox
             .DropDownStyle = ComboBoxStyle.DropDownList
             For i001 = 1 To 11
                 .Items.Add($"F{i001}")
@@ -21,7 +30,7 @@
             .Text = AppSettingHelper.Settings.HotKeyForStop.ToString
         End With
 
-        With ComboBox3
+        With HideComboBox
             .DropDownStyle = ComboBoxStyle.DropDownList
             For i001 = 1 To 11
                 .Items.Add($"F{i001}")
@@ -30,44 +39,64 @@
             .Text = AppSettingHelper.Settings.HotKeyForHideWindow.ToString
         End With
 
+        AddOrSaveButton.Enabled = False
+
     End Sub
 
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+    Private Sub PlayComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles PlayComboBox.SelectedIndexChanged
         CheckHotKeyDuplicateValue()
 
     End Sub
 
-    Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
+    Private Sub PauseComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles PauseComboBox.SelectedIndexChanged
+        CheckHotKeyDuplicateValue()
+    End Sub
+
+    Private Sub StopComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles StopComboBox.SelectedIndexChanged
         CheckHotKeyDuplicateValue()
 
     End Sub
 
-    Private Sub ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox3.SelectedIndexChanged
+    Private Sub HideComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles HideComboBox.SelectedIndexChanged
         CheckHotKeyDuplicateValue()
 
     End Sub
 
     Public Sub CheckHotKeyDuplicateValue()
-        Label2.Image = If(ComboBox1.Text <> ComboBox2.Text AndAlso ComboBox1.Text <> ComboBox3.Text, My.Resources.yes_16px, My.Resources.no_16px)
-        Label5.Image = If(ComboBox1.Text <> ComboBox2.Text AndAlso ComboBox2.Text <> ComboBox3.Text, My.Resources.yes_16px, My.Resources.no_16px)
-        Label6.Image = If(ComboBox1.Text <> ComboBox3.Text AndAlso ComboBox2.Text <> ComboBox3.Text, My.Resources.yes_16px, My.Resources.no_16px)
+        Dim comboBoxArray() = {PlayComboBox, PauseComboBox, StopComboBox, HideComboBox}
+        Dim labelArray() = {PlayLabel, PauseLabel, StopLabel, HideLabel}
+
+        For i001 = 0 To comboBoxArray.Count - 1
+            labelArray(i001).Image = My.Resources.yes_16px
+        Next
+
+        Dim errorCount = 0
+
+        For i001 = 0 To comboBoxArray.Count - 1
+            For j001 = i001 + 1 To comboBoxArray.Count - 1
+
+                If comboBoxArray(i001).Text = comboBoxArray(j001).Text Then
+                    labelArray(i001).Image = My.Resources.no_16px
+                    labelArray(j001).Image = My.Resources.no_16px
+
+                    errorCount += 1
+                End If
+
+            Next
+        Next
+
+        AddOrSaveButton.Enabled = (errorCount = 0)
 
     End Sub
 
     Private Sub AddOrSaveButton_Click(sender As Object, e As EventArgs) Handles AddOrSaveButton.Click
-        If ComboBox1.Text = ComboBox2.Text OrElse
-            ComboBox1.Text = ComboBox3.Text OrElse
-            ComboBox2.Text = ComboBox3.Text Then
-
-            MsgBox("快捷键重复", MsgBoxStyle.Information, AddOrSaveButton.Text)
-            Exit Sub
-        End If
 
         UIForm.UnregisterHotKey()
 
-        AppSettingHelper.Settings.HotKeyForPlay = Keys.F1 + ComboBox1.SelectedIndex
-        AppSettingHelper.Settings.HotKeyForStop = Keys.F1 + ComboBox2.SelectedIndex
-        AppSettingHelper.Settings.HotKeyForHideWindow = Keys.F1 + ComboBox3.SelectedIndex
+        AppSettingHelper.Settings.HotKeyForPlay = Keys.F1 + PlayComboBox.SelectedIndex
+        AppSettingHelper.Settings.HotKeyForPause = Keys.F1 + PauseComboBox.SelectedIndex
+        AppSettingHelper.Settings.HotKeyForStop = Keys.F1 + StopComboBox.SelectedIndex
+        AppSettingHelper.Settings.HotKeyForHideWindow = Keys.F1 + HideComboBox.SelectedIndex
 
         UIForm.RegisterHotKey()
 
@@ -75,4 +104,5 @@
         Me.Close()
 
     End Sub
+
 End Class

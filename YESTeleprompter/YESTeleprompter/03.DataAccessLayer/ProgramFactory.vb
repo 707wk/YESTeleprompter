@@ -65,6 +65,10 @@ Public NotInheritable Class ProgramFactory
                                    .value = tmpStr
                                    })
 
+                If tmpProgramInfo.ParagraphItems.Count > 1000 Then
+                    Throw New Exception("最大支持播放1000行")
+                End If
+
             Loop
         End Using
 
@@ -83,6 +87,8 @@ Public NotInheritable Class ProgramFactory
             Throw New Exception("不支持的文本编码")
         End If
 
+        Dim lastShowTimestamp As TimeSpan
+
         Using reader As New IO.StreamReader(filePath, tmpDetectionResult.Detected.Encoding)
             Do
 
@@ -99,10 +105,22 @@ Public NotInheritable Class ProgramFactory
                     Continue Do
                 End Try
 
+                Dim tmpTimestamp = DateTime.ParseExact(timeStr, "mm:ss.ff", Nothing).TimeOfDay
+
                 tmpProgramInfo.ParagraphItems.Add(New ParagraphInfo With {
-                                   .Timestamp = DateTime.ParseExact(timeStr, "mm:ss.ff", Nothing).TimeOfDay,
-                                   .value = tmpStrArray(1)
-                                   })
+                                                  .HaveTimestamp = True,
+                                                  .value = tmpStrArray(1)
+                                                  })
+
+                If tmpProgramInfo.ParagraphItems.Count > 1 Then
+                    tmpProgramInfo.ParagraphItems(tmpProgramInfo.ParagraphItems.Count - 1 - 1).ShowTimestamp = tmpTimestamp - lastShowTimestamp
+                End If
+
+                lastShowTimestamp = tmpTimestamp
+
+                If tmpProgramInfo.ParagraphItems.Count > 1000 Then
+                    Throw New Exception("最大支持播放1000行")
+                End If
 
             Loop
         End Using
@@ -123,6 +141,11 @@ Public NotInheritable Class ProgramFactory
                 tmpProgramInfo.ParagraphItems.Add(New ParagraphInfo With {
                                    .value = paragraph.ParagraphText
                                    })
+
+                If tmpProgramInfo.ParagraphItems.Count > 1000 Then
+                    Throw New Exception("最大支持播放1000行")
+                End If
+
             Next
 
             docx.Close()

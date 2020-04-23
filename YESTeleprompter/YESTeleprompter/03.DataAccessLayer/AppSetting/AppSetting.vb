@@ -11,20 +11,24 @@ Public Class AppSetting
     ''' </summary>
     Public WindowLocation As Point
 
-    '''' <summary>
-    '''' 激活的素材
-    '''' </summary>
-    '<Newtonsoft.Json.JsonIgnore>
-    'Public ActiveProgram As ProgramInfo
+    ''' <summary>
+    ''' 当前编辑的素材
+    ''' </summary>
+    <Newtonsoft.Json.JsonIgnore>
+    Public ActiveProgram As ProgramInfo
 
     ''' <summary>
     ''' 播放快捷键
     ''' </summary>
     Public HotKeyForPlay As Keys = Keys.F5
     ''' <summary>
+    ''' 暂停播放快捷键
+    ''' </summary>
+    Public HotKeyForPause As Keys = Keys.F6
+    ''' <summary>
     ''' 停止播放快捷键
     ''' </summary>
-    Public HotKeyForStop As Keys = Keys.F6
+    Public HotKeyForStop As Keys = Keys.F7
     ''' <summary>
     ''' 隐藏播放窗口快捷键
     ''' </summary>

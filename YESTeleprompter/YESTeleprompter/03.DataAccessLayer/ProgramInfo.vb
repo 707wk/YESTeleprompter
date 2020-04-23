@@ -22,6 +22,11 @@ Public Class ProgramInfo
     ''' </summary>
     Public ParagraphItems As New List(Of ParagraphInfo)
 
+    '''' <summary>
+    '''' 是否有显示时长
+    '''' </summary>
+    'Public HaveTimestamp As Boolean
+
     ''' <summary>
     ''' 显示字体
     ''' </summary>
@@ -37,7 +42,7 @@ Public Class ProgramInfo
     ''' <summary>
     ''' 默认显示时长
     ''' </summary>
-    Public PrintDefaultIntervalSec As Double = 1
+    Public PrintDefaultShowTimestamp As TimeSpan = New TimeSpan(0, 0, 1)
     ''' <summary>
     ''' 镜像显示
     ''' </summary>

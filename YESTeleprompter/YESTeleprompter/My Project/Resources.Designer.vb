@@ -103,6 +103,16 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
+        Friend ReadOnly Property goOn_32px() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("goOn_32px", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
         Friend ReadOnly Property hotkeys_32px() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("hotkeys_32px", resourceCulture)
@@ -223,9 +233,9 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property return_20px() As System.Drawing.Bitmap
+        Friend ReadOnly Property reset_20px() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("return_20px", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("reset_20px", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

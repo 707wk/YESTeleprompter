@@ -8,12 +8,12 @@ Public Class ParagraphInfo
     Public value As String
 
     ''' <summary>
-    ''' 时间戳
+    ''' 显示时长
     ''' </summary>
-    Public Timestamp As TimeSpan
+    Public ShowTimestamp As TimeSpan
 
     ''' <summary>
-    ''' 是否有时间戳
+    ''' 是否有显示时长
     ''' </summary>
     Public HaveTimestamp As Boolean
 

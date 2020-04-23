@@ -89,6 +89,7 @@ Partial Class MainForm
         Me.ButtonItem8 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem9 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem11 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem5 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem6 = New DevComponents.DotNetBar.ButtonItem()
@@ -196,9 +197,9 @@ Partial Class MainForm
         Me.RibbonBar4.DragDropSupport = True
         Me.RibbonBar4.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem7, Me.ItemContainer1})
         Me.RibbonBar4.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar4.Location = New System.Drawing.Point(704, 0)
+        Me.RibbonBar4.Location = New System.Drawing.Point(764, 0)
         Me.RibbonBar4.Name = "RibbonBar4"
-        Me.RibbonBar4.Size = New System.Drawing.Size(302, 81)
+        Me.RibbonBar4.Size = New System.Drawing.Size(262, 81)
         Me.RibbonBar4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar4.TabIndex = 3
         Me.RibbonBar4.Text = "RibbonBar4"
@@ -254,9 +255,9 @@ Partial Class MainForm
         Me.RibbonBar3.DragDropSupport = True
         Me.RibbonBar3.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem8})
         Me.RibbonBar3.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar3.Location = New System.Drawing.Point(580, 0)
+        Me.RibbonBar3.Location = New System.Drawing.Point(632, 0)
         Me.RibbonBar3.Name = "RibbonBar3"
-        Me.RibbonBar3.Size = New System.Drawing.Size(124, 81)
+        Me.RibbonBar3.Size = New System.Drawing.Size(132, 81)
         Me.RibbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar3.TabIndex = 2
         Me.RibbonBar3.Text = "RibbonBar3"
@@ -284,11 +285,11 @@ Partial Class MainForm
         Me.RibbonBar2.ContainerControlProcessDialogKey = True
         Me.RibbonBar2.Dock = System.Windows.Forms.DockStyle.Left
         Me.RibbonBar2.DragDropSupport = True
-        Me.RibbonBar2.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem2, Me.ButtonItem3, Me.ButtonItem5, Me.ButtonItem6})
+        Me.RibbonBar2.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem2, Me.ButtonItem11, Me.ButtonItem3, Me.ButtonItem5, Me.ButtonItem6})
         Me.RibbonBar2.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-        Me.RibbonBar2.Location = New System.Drawing.Point(312, 0)
+        Me.RibbonBar2.Location = New System.Drawing.Point(256, 0)
         Me.RibbonBar2.Name = "RibbonBar2"
-        Me.RibbonBar2.Size = New System.Drawing.Size(268, 81)
+        Me.RibbonBar2.Size = New System.Drawing.Size(376, 81)
         Me.RibbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar2.TabIndex = 1
         Me.RibbonBar2.Text = "RibbonBar2"
@@ -320,7 +321,7 @@ Partial Class MainForm
         Me.RibbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar1.Location = New System.Drawing.Point(3, 0)
         Me.RibbonBar1.Name = "RibbonBar1"
-        Me.RibbonBar1.Size = New System.Drawing.Size(309, 81)
+        Me.RibbonBar1.Size = New System.Drawing.Size(253, 81)
         Me.RibbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.RibbonBar1.TabIndex = 0
         Me.RibbonBar1.Text = "RibbonBar1"
@@ -484,7 +485,7 @@ Partial Class MainForm
         Me.NumericUpDown4.Location = New System.Drawing.Point(107, 132)
         Me.NumericUpDown4.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.NumericUpDown4.Name = "NumericUpDown4"
-        Me.NumericUpDown4.Size = New System.Drawing.Size(75, 23)
+        Me.NumericUpDown4.Size = New System.Drawing.Size(100, 23)
         Me.NumericUpDown4.TabIndex = 1
         '
         'NumericUpDown3
@@ -492,7 +493,7 @@ Partial Class MainForm
         Me.NumericUpDown3.Location = New System.Drawing.Point(107, 99)
         Me.NumericUpDown3.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.NumericUpDown3.Name = "NumericUpDown3"
-        Me.NumericUpDown3.Size = New System.Drawing.Size(75, 23)
+        Me.NumericUpDown3.Size = New System.Drawing.Size(100, 23)
         Me.NumericUpDown3.TabIndex = 1
         '
         'NumericUpDown2
@@ -501,7 +502,7 @@ Partial Class MainForm
         Me.NumericUpDown2.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.NumericUpDown2.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.NumericUpDown2.Name = "NumericUpDown2"
-        Me.NumericUpDown2.Size = New System.Drawing.Size(75, 23)
+        Me.NumericUpDown2.Size = New System.Drawing.Size(100, 23)
         Me.NumericUpDown2.TabIndex = 1
         Me.NumericUpDown2.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
@@ -511,7 +512,7 @@ Partial Class MainForm
         Me.NumericUpDown5.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.NumericUpDown5.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.NumericUpDown5.Name = "NumericUpDown5"
-        Me.NumericUpDown5.Size = New System.Drawing.Size(75, 23)
+        Me.NumericUpDown5.Size = New System.Drawing.Size(100, 23)
         Me.NumericUpDown5.TabIndex = 1
         Me.NumericUpDown5.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
@@ -606,12 +607,13 @@ Partial Class MainForm
         'NumericUpDown1
         '
         Me.NumericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.NumericUpDown1.DecimalPlaces = 1
+        Me.NumericUpDown1.DecimalPlaces = 2
         Me.NumericUpDown1.Location = New System.Drawing.Point(107, 143)
         Me.NumericUpDown1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {5999, 0, 0, 131072})
+        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, 65536})
         Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(57, 23)
+        Me.NumericUpDown1.Size = New System.Drawing.Size(100, 23)
         Me.NumericUpDown1.TabIndex = 5
         Me.NumericUpDown1.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
@@ -627,7 +629,7 @@ Partial Class MainForm
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(170, 145)
+        Me.Label8.Location = New System.Drawing.Point(213, 145)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(14, 17)
         Me.Label8.TabIndex = 6
@@ -799,7 +801,7 @@ Partial Class MainForm
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.Column2.DefaultCellStyle = DataGridViewCellStyle4
         Me.Column2.Frozen = True
-        Me.Column2.HeaderText = "时间戳"
+        Me.Column2.HeaderText = "显示时长"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
         Me.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
@@ -903,7 +905,16 @@ Partial Class MainForm
         Me.ButtonItem2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.ButtonItem2.Name = "ButtonItem2"
         Me.ButtonItem2.SubItemsExpandWidth = 14
-        Me.ButtonItem2.Text = "播放素材"
+        Me.ButtonItem2.Text = "播放"
+        '
+        'ButtonItem11
+        '
+        Me.ButtonItem11.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem11.Image = Global.YESTeleprompter.My.Resources.Resources.pause_32px
+        Me.ButtonItem11.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem11.Name = "ButtonItem11"
+        Me.ButtonItem11.SubItemsExpandWidth = 14
+        Me.ButtonItem11.Text = "暂停"
         '
         'ButtonItem3
         '
@@ -912,7 +923,7 @@ Partial Class MainForm
         Me.ButtonItem3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.ButtonItem3.Name = "ButtonItem3"
         Me.ButtonItem3.SubItemsExpandWidth = 14
-        Me.ButtonItem3.Text = "停止播放"
+        Me.ButtonItem3.Text = "停止"
         '
         'ButtonItem5
         '
@@ -1069,8 +1080,9 @@ Partial Class MainForm
     Friend WithEvents Label15 As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents Label17 As Label
+    Friend WithEvents ButtonItem4 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem11 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents ButtonItem4 As DevComponents.DotNetBar.ButtonItem
 End Class
