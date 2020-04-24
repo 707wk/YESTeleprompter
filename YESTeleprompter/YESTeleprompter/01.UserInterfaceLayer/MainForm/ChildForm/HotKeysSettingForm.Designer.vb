@@ -129,7 +129,7 @@ Partial Class HotKeysSettingForm
         '
         Me.PlayComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.PlayComboBox.FormattingEnabled = True
-        Me.PlayComboBox.Location = New System.Drawing.Point(118, 5)
+        Me.PlayComboBox.Location = New System.Drawing.Point(118, 8)
         Me.PlayComboBox.Name = "PlayComboBox"
         Me.PlayComboBox.Size = New System.Drawing.Size(121, 25)
         Me.PlayComboBox.TabIndex = 44
@@ -147,7 +147,7 @@ Partial Class HotKeysSettingForm
         '
         Me.HideComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.HideComboBox.FormattingEnabled = True
-        Me.HideComboBox.Location = New System.Drawing.Point(118, 117)
+        Me.HideComboBox.Location = New System.Drawing.Point(118, 115)
         Me.HideComboBox.Name = "HideComboBox"
         Me.HideComboBox.Size = New System.Drawing.Size(121, 25)
         Me.HideComboBox.TabIndex = 44
@@ -156,7 +156,7 @@ Partial Class HotKeysSettingForm
         '
         Me.StopComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.StopComboBox.FormattingEnabled = True
-        Me.StopComboBox.Location = New System.Drawing.Point(118, 80)
+        Me.StopComboBox.Location = New System.Drawing.Point(118, 77)
         Me.StopComboBox.Name = "StopComboBox"
         Me.StopComboBox.Size = New System.Drawing.Size(121, 25)
         Me.StopComboBox.TabIndex = 44
@@ -192,7 +192,7 @@ Partial Class HotKeysSettingForm
         '
         Me.PauseComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.PauseComboBox.FormattingEnabled = True
-        Me.PauseComboBox.Location = New System.Drawing.Point(118, 44)
+        Me.PauseComboBox.Location = New System.Drawing.Point(118, 41)
         Me.PauseComboBox.Name = "PauseComboBox"
         Me.PauseComboBox.Size = New System.Drawing.Size(121, 25)
         Me.PauseComboBox.TabIndex = 44

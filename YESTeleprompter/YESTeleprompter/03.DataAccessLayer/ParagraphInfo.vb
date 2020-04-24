@@ -23,4 +23,10 @@ Public Class ParagraphInfo
     <Newtonsoft.Json.JsonIgnore>
     Public Checked As Boolean
 
+    ''' <summary>
+    ''' 录制的时长
+    ''' </summary>
+    <Newtonsoft.Json.JsonIgnore>
+    Public TranscribeTimestamp As TimeSpan
+
 End Class

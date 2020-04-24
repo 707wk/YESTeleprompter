@@ -126,6 +126,12 @@ Public Class ProgramPlayHelper
             Exit Sub
         End If
 
+        _RunningState = OperationState.Recording
+        _IsPause = False
+
+        NowPlayParagraphID = 0
+
+        IsPaintEnd = True
 
     End Sub
 #End Region
@@ -152,7 +158,8 @@ Public Class ProgramPlayHelper
     ''' <summary>
     ''' 更新画面
     ''' </summary>
-    Private Shared Sub Paint(sender As Object, e As ElapsedEventArgs)
+    Public Shared Sub Paint(Optional sender As Object = Nothing,
+                            Optional e As ElapsedEventArgs = Nothing)
 
         '暂停则不处理
         If _IsPause Then
@@ -213,7 +220,7 @@ Public Class ProgramPlayHelper
     End Sub
 #End Region
 
-#Region "下一行"
+#Region "下一行(播放)"
     ''' <summary>
     ''' 下一行
     ''' </summary>
@@ -227,6 +234,30 @@ Public Class ProgramPlayHelper
             NowPlayParagraphID += 1
             NowPlayParagraphRunTime = Now - Now
             NowPlayParagraphStartTime = Now
+            '更新画面
+            UIPlayForm.PaintParagraph()
+        End If
+
+    End Sub
+#End Region
+
+#Region "下一行(录制)"
+    ''' <summary>
+    ''' 下一行
+    ''' </summary>
+    Public Shared Sub PageDn(value As TimeSpan)
+        If RunningState = OperationState.NoOperation Then
+            Exit Sub
+        End If
+
+        If NowPlayParagraphID + 1 <= AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count Then
+            AppSettingHelper.Settings.ActiveProgram.ParagraphItems(NowPlayParagraphID).TranscribeTimestamp = value
+        End If
+
+        '录制
+        If NowPlayParagraphID + 1 < AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count Then
+            '切换到下一段
+            NowPlayParagraphID += 1
             '更新画面
             UIPlayForm.PaintParagraph()
         End If
@@ -296,7 +327,7 @@ Public Class ProgramPlayHelper
             Exit Sub
         End If
 
-        UpdateTimer.Stop()
+        UpdateTimer?.Stop()
         UpdateTimer = Nothing
 
         _RunningState = OperationState.NoOperation

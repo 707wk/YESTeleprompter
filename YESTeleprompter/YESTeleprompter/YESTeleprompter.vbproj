@@ -211,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="res\goOn_20px.png" />
     <None Include="res\goOn_32px.png" />
     <None Include="res\startBackground.png" />
     <None Include="res\new_32px.png" />

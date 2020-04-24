@@ -32,11 +32,22 @@ Partial Class MainForm
         Me.RibbonControl1 = New DevComponents.DotNetBar.RibbonControl()
         Me.RibbonPanel1 = New DevComponents.DotNetBar.RibbonPanel()
         Me.RibbonBar4 = New DevComponents.DotNetBar.RibbonBar()
+        Me.ButtonItem7 = New DevComponents.DotNetBar.ButtonItem()
         Me.ItemContainer1 = New DevComponents.DotNetBar.ItemContainer()
         Me.SwitchButtonItem1 = New DevComponents.DotNetBar.SwitchButtonItem()
         Me.RibbonBar3 = New DevComponents.DotNetBar.RibbonBar()
+        Me.ButtonItem8 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem9 = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar2 = New DevComponents.DotNetBar.RibbonBar()
+        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem11 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem5 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem6 = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar1 = New DevComponents.DotNetBar.RibbonBar()
+        Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem10 = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonTabItem1 = New DevComponents.DotNetBar.RibbonTabItem()
         Me.QatCustomizeItem1 = New DevComponents.DotNetBar.QatCustomizeItem()
         Me.StyleManager1 = New DevComponents.DotNetBar.StyleManager(Me.components)
@@ -46,6 +57,7 @@ Partial Class MainForm
         Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.NumericUpDown4 = New System.Windows.Forms.NumericUpDown()
@@ -80,22 +92,10 @@ Partial Class MainForm
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
-        Me.ButtonItem7 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem8 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem9 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem11 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem5 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem6 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem10 = New DevComponents.DotNetBar.ButtonItem()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.RibbonControl1.SuspendLayout()
         Me.RibbonPanel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -213,6 +213,15 @@ Partial Class MainForm
         Me.RibbonBar4.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonBar4.TitleVisible = False
         '
+        'ButtonItem7
+        '
+        Me.ButtonItem7.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem7.Image = Global.YESTeleprompter.My.Resources.Resources.hotkeys_32px
+        Me.ButtonItem7.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem7.Name = "ButtonItem7"
+        Me.ButtonItem7.SubItemsExpandWidth = 14
+        Me.ButtonItem7.Text = "快捷键设置"
+        '
         'ItemContainer1
         '
         '
@@ -271,6 +280,22 @@ Partial Class MainForm
         Me.RibbonBar3.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonBar3.TitleVisible = False
         '
+        'ButtonItem8
+        '
+        Me.ButtonItem8.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem8.Image = Global.YESTeleprompter.My.Resources.Resources.transcribe_32px
+        Me.ButtonItem8.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem8.Name = "ButtonItem8"
+        Me.ButtonItem8.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem9})
+        Me.ButtonItem8.SubItemsExpandWidth = 14
+        Me.ButtonItem8.Text = "录制播放演示"
+        '
+        'ButtonItem9
+        '
+        Me.ButtonItem9.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
+        Me.ButtonItem9.Name = "ButtonItem9"
+        Me.ButtonItem9.Text = "清除当前素材录制信息"
+        '
         'RibbonBar2
         '
         Me.RibbonBar2.AutoOverflowEnabled = True
@@ -303,6 +328,51 @@ Partial Class MainForm
         Me.RibbonBar2.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonBar2.TitleVisible = False
         '
+        'ButtonItem2
+        '
+        Me.ButtonItem2.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem2.Image = Global.YESTeleprompter.My.Resources.Resources.play_32px
+        Me.ButtonItem2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem2.Name = "ButtonItem2"
+        Me.ButtonItem2.SubItemsExpandWidth = 14
+        Me.ButtonItem2.Text = "播放"
+        '
+        'ButtonItem11
+        '
+        Me.ButtonItem11.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem11.Image = Global.YESTeleprompter.My.Resources.Resources.pause_32px
+        Me.ButtonItem11.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem11.Name = "ButtonItem11"
+        Me.ButtonItem11.SubItemsExpandWidth = 14
+        Me.ButtonItem11.Text = "暂停"
+        '
+        'ButtonItem3
+        '
+        Me.ButtonItem3.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem3.Image = Global.YESTeleprompter.My.Resources.Resources.stop_32px
+        Me.ButtonItem3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem3.Name = "ButtonItem3"
+        Me.ButtonItem3.SubItemsExpandWidth = 14
+        Me.ButtonItem3.Text = "停止"
+        '
+        'ButtonItem5
+        '
+        Me.ButtonItem5.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem5.Image = Global.YESTeleprompter.My.Resources.Resources.PageUP_32px
+        Me.ButtonItem5.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem5.Name = "ButtonItem5"
+        Me.ButtonItem5.SubItemsExpandWidth = 14
+        Me.ButtonItem5.Text = "上一行"
+        '
+        'ButtonItem6
+        '
+        Me.ButtonItem6.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem6.Image = Global.YESTeleprompter.My.Resources.Resources.PageDn_32px
+        Me.ButtonItem6.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem6.Name = "ButtonItem6"
+        Me.ButtonItem6.SubItemsExpandWidth = 14
+        Me.ButtonItem6.Text = "下一行"
+        '
         'RibbonBar1
         '
         Me.RibbonBar1.AutoOverflowEnabled = True
@@ -334,6 +404,33 @@ Partial Class MainForm
         '
         Me.RibbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonBar1.TitleVisible = False
+        '
+        'ButtonItem4
+        '
+        Me.ButtonItem4.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem4.Image = Global.YESTeleprompter.My.Resources.Resources.new_32px
+        Me.ButtonItem4.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem4.Name = "ButtonItem4"
+        Me.ButtonItem4.SubItemsExpandWidth = 14
+        Me.ButtonItem4.Text = "新建素材"
+        '
+        'ButtonItem1
+        '
+        Me.ButtonItem1.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem1.Image = Global.YESTeleprompter.My.Resources.Resources.import_32px
+        Me.ButtonItem1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem1.Name = "ButtonItem1"
+        Me.ButtonItem1.SubItemsExpandWidth = 14
+        Me.ButtonItem1.Text = "导入素材"
+        '
+        'ButtonItem10
+        '
+        Me.ButtonItem10.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ButtonItem10.Image = Global.YESTeleprompter.My.Resources.Resources.export_32px
+        Me.ButtonItem10.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonItem10.Name = "ButtonItem10"
+        Me.ButtonItem10.SubItemsExpandWidth = 14
+        Me.ButtonItem10.Text = "导出当前素材"
         '
         'RibbonTabItem1
         '
@@ -445,6 +542,16 @@ Partial Class MainForm
         Me.ToolStrip1.Size = New System.Drawing.Size(299, 27)
         Me.ToolStrip1.TabIndex = 0
         Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'ToolStripButton3
+        '
+        Me.ToolStripButton3.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
+        Me.ToolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton3.Name = "ToolStripButton3"
+        Me.ToolStripButton3.Size = New System.Drawing.Size(56, 24)
+        Me.ToolStripButton3.Text = "删除"
+        Me.ToolStripButton3.ToolTipText = "删除"
         '
         'GroupBox4
         '
@@ -826,32 +933,6 @@ Partial Class MainForm
         Me.ToolStrip2.TabIndex = 0
         Me.ToolStrip2.Text = "ToolStrip2"
         '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.BackColor = System.Drawing.SystemColors.Control
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 659)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1264, 22)
-        Me.StatusStrip1.TabIndex = 2
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(68, 17)
-        Me.ToolStripStatusLabel1.Text = "无操作信息"
-        '
-        'ToolStripButton3
-        '
-        Me.ToolStripButton3.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
-        Me.ToolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(56, 24)
-        Me.ToolStripButton3.Text = "删除"
-        Me.ToolStripButton3.ToolTipText = "删除"
-        '
         'ToolStripButton1
         '
         Me.ToolStripButton1.Image = Global.YESTeleprompter.My.Resources.Resources.insertUp_20px
@@ -873,102 +954,21 @@ Partial Class MainForm
         Me.ToolStripButton2.Text = "删除"
         Me.ToolStripButton2.ToolTipText = "删除"
         '
-        'ButtonItem7
+        'StatusStrip1
         '
-        Me.ButtonItem7.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem7.Image = Global.YESTeleprompter.My.Resources.Resources.hotkeys_32px
-        Me.ButtonItem7.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem7.Name = "ButtonItem7"
-        Me.ButtonItem7.SubItemsExpandWidth = 14
-        Me.ButtonItem7.Text = "快捷键设置"
+        Me.StatusStrip1.BackColor = System.Drawing.SystemColors.Control
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 659)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(1264, 22)
+        Me.StatusStrip1.TabIndex = 2
+        Me.StatusStrip1.Text = "StatusStrip1"
         '
-        'ButtonItem8
+        'ToolStripStatusLabel1
         '
-        Me.ButtonItem8.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem8.Image = Global.YESTeleprompter.My.Resources.Resources.transcribe_32px
-        Me.ButtonItem8.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem8.Name = "ButtonItem8"
-        Me.ButtonItem8.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem9})
-        Me.ButtonItem8.SubItemsExpandWidth = 14
-        Me.ButtonItem8.Text = "录制播放演示"
-        '
-        'ButtonItem9
-        '
-        Me.ButtonItem9.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
-        Me.ButtonItem9.Name = "ButtonItem9"
-        Me.ButtonItem9.Text = "清除当前素材录制信息"
-        '
-        'ButtonItem2
-        '
-        Me.ButtonItem2.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem2.Image = Global.YESTeleprompter.My.Resources.Resources.play_32px
-        Me.ButtonItem2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem2.Name = "ButtonItem2"
-        Me.ButtonItem2.SubItemsExpandWidth = 14
-        Me.ButtonItem2.Text = "播放"
-        '
-        'ButtonItem11
-        '
-        Me.ButtonItem11.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem11.Image = Global.YESTeleprompter.My.Resources.Resources.pause_32px
-        Me.ButtonItem11.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem11.Name = "ButtonItem11"
-        Me.ButtonItem11.SubItemsExpandWidth = 14
-        Me.ButtonItem11.Text = "暂停"
-        '
-        'ButtonItem3
-        '
-        Me.ButtonItem3.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem3.Image = Global.YESTeleprompter.My.Resources.Resources.stop_32px
-        Me.ButtonItem3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem3.Name = "ButtonItem3"
-        Me.ButtonItem3.SubItemsExpandWidth = 14
-        Me.ButtonItem3.Text = "停止"
-        '
-        'ButtonItem5
-        '
-        Me.ButtonItem5.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem5.Image = Global.YESTeleprompter.My.Resources.Resources.PageUP_32px
-        Me.ButtonItem5.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem5.Name = "ButtonItem5"
-        Me.ButtonItem5.SubItemsExpandWidth = 14
-        Me.ButtonItem5.Text = "上一行"
-        '
-        'ButtonItem6
-        '
-        Me.ButtonItem6.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem6.Image = Global.YESTeleprompter.My.Resources.Resources.PageDn_32px
-        Me.ButtonItem6.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem6.Name = "ButtonItem6"
-        Me.ButtonItem6.SubItemsExpandWidth = 14
-        Me.ButtonItem6.Text = "下一行"
-        '
-        'ButtonItem4
-        '
-        Me.ButtonItem4.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem4.Image = Global.YESTeleprompter.My.Resources.Resources.new_32px
-        Me.ButtonItem4.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem4.Name = "ButtonItem4"
-        Me.ButtonItem4.SubItemsExpandWidth = 14
-        Me.ButtonItem4.Text = "新建素材"
-        '
-        'ButtonItem1
-        '
-        Me.ButtonItem1.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem1.Image = Global.YESTeleprompter.My.Resources.Resources.import_32px
-        Me.ButtonItem1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem1.Name = "ButtonItem1"
-        Me.ButtonItem1.SubItemsExpandWidth = 14
-        Me.ButtonItem1.Text = "导入素材"
-        '
-        'ButtonItem10
-        '
-        Me.ButtonItem10.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem10.Image = Global.YESTeleprompter.My.Resources.Resources.export_32px
-        Me.ButtonItem10.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem10.Name = "ButtonItem10"
-        Me.ButtonItem10.SubItemsExpandWidth = 14
-        Me.ButtonItem10.Text = "导出当前素材"
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(68, 17)
+        Me.ToolStripStatusLabel1.Text = "无操作信息"
         '
         'MainForm
         '

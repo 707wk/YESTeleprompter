@@ -42,6 +42,11 @@ YESTeleprompter
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
+<member name="P:YESTeleprompter.My.Resources.Resources.goOn_20px">
+<summary>
+  查找 System.Drawing.Bitmap 类型的本地化资源。
+</summary>
+</member>
 <member name="P:YESTeleprompter.My.Resources.Resources.goOn_32px">
 <summary>
   查找 System.Drawing.Bitmap 类型的本地化资源。
@@ -145,6 +150,26 @@ YESTeleprompter
 <member name="M:YESTeleprompter.PlayForm.PaintParagraph">
  <summary>
  更新画面
+ </summary>
+</member>
+<member name="F:YESTeleprompter.RecordShowForm.NowPlayParagraphRunTime">
+ <summary>
+ 当前段落已播放的时间
+ </summary>
+</member>
+<member name="F:YESTeleprompter.RecordShowForm.NowPlayParagraphStartTime">
+ <summary>
+ 当前段落开始播放的时间
+ </summary>
+</member>
+<member name="F:YESTeleprompter.RecordShowForm.ProgramSumTime">
+ <summary>
+ 总播放时间
+ </summary>
+</member>
+<member name="F:YESTeleprompter.RecordShowForm.IsPause">
+ <summary>
+ 是否暂停
  </summary>
 </member>
 <member name="T:YESTeleprompter.ProgramPlayHelper">
@@ -253,6 +278,11 @@ YESTeleprompter
  </summary>
 </member>
 <member name="M:YESTeleprompter.ProgramPlayHelper.PageDn">
+ <summary>
+ 下一行
+ </summary>
+</member>
+<member name="M:YESTeleprompter.ProgramPlayHelper.PageDn(System.TimeSpan)">
  <summary>
  下一行
  </summary>
@@ -434,6 +464,11 @@ YESTeleprompter
 <member name="F:YESTeleprompter.ParagraphInfo.Checked">
  <summary>
  是否选中
+ </summary>
+</member>
+<member name="F:YESTeleprompter.ParagraphInfo.TranscribeTimestamp">
+ <summary>
+ 录制的时长
  </summary>
 </member>
 <member name="F:YESTeleprompter.MainForm.ChildPlayWindow">
