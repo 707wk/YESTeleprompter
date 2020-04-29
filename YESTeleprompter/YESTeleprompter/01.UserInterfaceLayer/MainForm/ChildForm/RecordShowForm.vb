@@ -3,6 +3,11 @@
 Public Class RecordShowForm
 
     ''' <summary>
+    ''' 主窗体
+    ''' </summary>
+    Public UIMainForm As MainForm
+
+    ''' <summary>
     ''' 当前段落已播放的时间
     ''' </summary>
     Private NowPlayParagraphRunTime As TimeSpan
@@ -45,9 +50,11 @@ Public Class RecordShowForm
 
         ProgramPlayHelper.UIPlayForm.Refresh()
 
+        UIMainForm.ControlEnabledToRecord()
+
     End Sub
 
-    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles PageDnButton.Click
 
         NowPlayParagraphRunTime += If((Now - NowPlayParagraphStartTime).TotalSeconds >= 3600,
             New TimeSpan(0, 59, 59),
@@ -68,24 +75,24 @@ Public Class RecordShowForm
 
     End Sub
 
-    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles PauseButton.Click
         If IsPause Then
             IsPause = False
             NowPlayParagraphStartTime = Now
 
-            ToolStripButton2.Image = My.Resources.pause_20px
-            ToolStripButton2.Text = "暂停"
+            PauseButton.Image = My.Resources.pause_20px
+            PauseButton.Text = "暂停"
         Else
             IsPause = True
             NowPlayParagraphRunTime += (Now - NowPlayParagraphStartTime)
 
-            ToolStripButton2.Image = My.Resources.goOn_20px
-            ToolStripButton2.Text = "继续"
+            PauseButton.Image = My.Resources.goOn_20px
+            PauseButton.Text = "继续"
         End If
 
     End Sub
 
-    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
+    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ResetButton.Click
         NowPlayParagraphRunTime -= NowPlayParagraphRunTime
         NowPlayParagraphStartTime = Now
 
@@ -99,10 +106,12 @@ Public Class RecordShowForm
         ProgramPlayHelper.StopPlay()
 
         If ProgramPlayHelper.NowPlayParagraphID < AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count - 1 Then
+            UIMainForm.ControlEnabledToStop()
             Exit Sub
         End If
 
         If MsgBox($"播放演示共需 {ProgramSumTime:hh\:mm\:ss\.ff} ,是否保留新的播放计时?", MsgBoxStyle.YesNo, Me.Text) <> MsgBoxResult.Yes Then
+            UIMainForm.ControlEnabledToStop()
             Exit Sub
         End If
 
@@ -110,6 +119,9 @@ Public Class RecordShowForm
             item.HaveTimestamp = True
             item.ShowTimestamp = item.TranscribeTimestamp
         Next
+
+        UIMainForm.ControlEnabledToStop()
+        UIMainForm.ParagraphList.Refresh()
 
     End Sub
 

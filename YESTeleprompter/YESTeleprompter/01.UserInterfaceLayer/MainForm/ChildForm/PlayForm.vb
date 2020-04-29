@@ -1,4 +1,11 @@
-﻿Public Class PlayForm
+﻿Imports System.ComponentModel
+
+Public Class PlayForm
+
+    ''' <summary>
+    ''' 是否需要关闭
+    ''' </summary>
+    Public NeedClose As Boolean
 
     Public Delegate Sub UpdateSizeAndLocationCallback()
     ''' <summary>
@@ -59,10 +66,10 @@
         Do
 
             e.Graphics.DrawString(program.ParagraphItems(ProgramPlayHelper.NowPlayParagraphID + rowID).value,
-                                 AppSettingHelper.Settings.ActiveProgram.PrintFont,
-                                 New SolidBrush(AppSettingHelper.Settings.ActiveProgram.PrintFontColor),
-                                 0,
-                                 rowID * fontHeight)
+                                  AppSettingHelper.Settings.ActiveProgram.PrintFont,
+                                  New SolidBrush(AppSettingHelper.Settings.ActiveProgram.PrintFontColor),
+                                  0,
+                                  rowID * fontHeight)
             rowID += 1
 
         Loop While (rowID * fontHeight < Me.Height AndAlso
@@ -74,4 +81,10 @@
         Me.DoubleBuffered = True
     End Sub
 
+    Private Sub PlayForm_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        If Not NeedClose Then
+            e.Cancel = True
+        End If
+
+    End Sub
 End Class

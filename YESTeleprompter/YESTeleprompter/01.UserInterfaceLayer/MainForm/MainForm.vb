@@ -27,7 +27,7 @@ Public Class MainForm
         End If
 
 #Region "素材列表"
-        With CheckBoxDataGridView1
+        With ProgramList
             .BackgroundColor = Color.FromArgb(71, 71, 71)
             .SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
@@ -54,13 +54,13 @@ Public Class MainForm
             .MultiSelect = False
         End With
 
-        For Each item As DataGridViewColumn In CheckBoxDataGridView1.Columns
+        For Each item As DataGridViewColumn In ProgramList.Columns
             item.SortMode = DataGridViewColumnSortMode.NotSortable
         Next
 #End Region
 
 #Region "素材内容列表"
-        With CheckBoxDataGridView2
+        With ParagraphList
             .BackgroundColor = Color.FromArgb(71, 71, 71)
             .SelectionMode = DataGridViewSelectionMode.CellSelect
 
@@ -94,34 +94,37 @@ Public Class MainForm
             .VirtualMode = True
         End With
 
-        For Each item As DataGridViewColumn In CheckBoxDataGridView2.Columns
+        For Each item As DataGridViewColumn In ParagraphList.Columns
             item.SortMode = DataGridViewColumnSortMode.NotSortable
             item.ReadOnly = True
         Next
-        CheckBoxDataGridView2.Columns(1).ReadOnly = False
-        CheckBoxDataGridView2.Columns(2).ReadOnly = False
+        ParagraphList.Columns(1).ReadOnly = False
+        ParagraphList.Columns(2).ReadOnly = False
 #End Region
 
         ChildPlayWindow.Show()
         ProgramPlayHelper.UIPlayForm = ChildPlayWindow
+        ProgramPlayHelper.UIMainForm = Me
 
         For Each item In AppSettingHelper.Settings.ProgramItems
-            Dim addRowID = CheckBoxDataGridView1.Rows.Add({False, item.Name})
-            CheckBoxDataGridView1.Rows(addRowID).Tag = item.ID
+            Dim addRowID = ProgramList.Rows.Add({False, item.Name})
+            ProgramList.Rows(addRowID).Tag = item.ID
         Next
 
-        CheckBoxDataGridView1.Sort(CheckBoxDataGridView1.Columns(1), ListSortDirection.Ascending)
-        If CheckBoxDataGridView1.Rows.Count > 0 Then
-            CheckBoxDataGridView1.CurrentCell = CheckBoxDataGridView1.Rows(0).Cells(1)
+        ProgramList.Sort(ProgramList.Columns(1), ListSortDirection.Ascending)
+        If ProgramList.Rows.Count > 0 Then
+            ProgramList.CurrentCell = ProgramList.Rows(0).Cells(1)
         End If
 
-        Label6.DataBindings.Add(NameOf(Label6.ForeColor), Label13, NameOf(Label13.BackColor))
-        Label6.DataBindings.Add(NameOf(Label6.BackColor), Label14, NameOf(Label14.BackColor))
+        PreviewLabel.DataBindings.Add(NameOf(PreviewLabel.ForeColor), PrintFontColor, NameOf(PrintFontColor.BackColor))
+        PreviewLabel.DataBindings.Add(NameOf(PreviewLabel.BackColor), PrintBackColor, NameOf(PrintBackColor.BackColor))
 
         '注册全局快捷键
         RegisterHotKey()
         WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 5, 0, Keys.PageUp)
         WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 6, 0, Keys.PageDown)
+
+        ControlEnabledToStop()
 
     End Sub
 #End Region
@@ -144,11 +147,13 @@ Public Class MainForm
         AppSettingHelper.Settings.WindowLocation = Me.Location
         AppSettingHelper.SaveToLocaltion()
 
+        ChildPlayWindow.NeedClose = True
+
     End Sub
 #End Region
 
 #Region "新建素材"
-    Private Sub ButtonItem4_Click(sender As Object, e As EventArgs) Handles ButtonItem4.Click
+    Private Sub ButtonItem4_Click(sender As Object, e As EventArgs) Handles NewProgramButton.Click
         Using tmpDialog As New Wangk.Resource.InputTextDialog With {.Text = "新建素材名"}
             If tmpDialog.ShowDialog("新建", "取消") <> DialogResult.OK Then
                 Exit Sub
@@ -158,26 +163,26 @@ Public Class MainForm
                 .Name = tmpDialog.Value
             }
 
-            Dim addRowID = CheckBoxDataGridView1.Rows.Add({False, tmpAddProgramInfo.Name})
-            CheckBoxDataGridView1.Rows(addRowID).Tag = tmpAddProgramInfo.ID
-            CheckBoxDataGridView1.CurrentCell = CheckBoxDataGridView1.Rows(addRowID).Cells(1)
+            Dim addRowID = ProgramList.Rows.Add({False, tmpAddProgramInfo.Name})
+            ProgramList.Rows(addRowID).Tag = tmpAddProgramInfo.ID
+            ProgramList.CurrentCell = ProgramList.Rows(addRowID).Cells(1)
 
             AppSettingHelper.Settings.ActiveProgram = Nothing
-            CheckBoxDataGridView2.Rows.Clear()
-            CheckBoxDataGridView2.RowCount = tmpAddProgramInfo.ParagraphItems.Count
+            ParagraphList.Rows.Clear()
+            ParagraphList.RowCount = tmpAddProgramInfo.ParagraphItems.Count
             AppSettingHelper.Settings.ActiveProgram = tmpAddProgramInfo
 
             AppSettingHelper.Settings.ProgramItems.Add(tmpAddProgramInfo)
 
         End Using
 
-        CheckBoxDataGridView1.Sort(CheckBoxDataGridView1.Columns(1), ListSortDirection.Ascending)
+        ProgramList.Sort(ProgramList.Columns(1), ListSortDirection.Ascending)
 
     End Sub
 #End Region
 
 #Region "导入素材"
-    Private Sub ButtonItem1_Click(sender As Object, e As EventArgs) Handles ButtonItem1.Click
+    Private Sub ButtonItem1_Click(sender As Object, e As EventArgs) Handles ImportProgramButton.Click
         Dim tmpDialog As New OpenFileDialog With {
                    .Filter = "素材文件|*.txt;*.lrc;*.docx;*.lrcy",
                    .Multiselect = True
@@ -193,30 +198,30 @@ Public Class MainForm
             Try
                 tmpAddProgramInfo = ProgramFactory.Create(filePath)
             Catch ex As Exception
-                MsgBox(ex.Message, MsgBoxStyle.Information, ButtonItem1.Text)
+                MsgBox(ex.Message, MsgBoxStyle.Information, ImportProgramButton.Text)
                 Exit Sub
             End Try
 
-            Dim addRowID = CheckBoxDataGridView1.Rows.Add({False, tmpAddProgramInfo.Name})
-            CheckBoxDataGridView1.Rows(addRowID).Tag = tmpAddProgramInfo.ID
-            CheckBoxDataGridView1.CurrentCell = CheckBoxDataGridView1.Rows(addRowID).Cells(1)
+            Dim addRowID = ProgramList.Rows.Add({False, tmpAddProgramInfo.Name})
+            ProgramList.Rows(addRowID).Tag = tmpAddProgramInfo.ID
+            ProgramList.CurrentCell = ProgramList.Rows(addRowID).Cells(1)
 
             AppSettingHelper.Settings.ActiveProgram = Nothing
-            CheckBoxDataGridView2.Rows.Clear()
-            CheckBoxDataGridView2.RowCount = tmpAddProgramInfo.ParagraphItems.Count
+            ParagraphList.Rows.Clear()
+            ParagraphList.RowCount = tmpAddProgramInfo.ParagraphItems.Count
             AppSettingHelper.Settings.ActiveProgram = tmpAddProgramInfo
 
             AppSettingHelper.Settings.ProgramItems.Add(tmpAddProgramInfo)
 
         Next
 
-        CheckBoxDataGridView1.Sort(CheckBoxDataGridView1.Columns(1), ListSortDirection.Ascending)
+        ProgramList.Sort(ProgramList.Columns(1), ListSortDirection.Ascending)
 
     End Sub
 #End Region
 
 #Region "导出素材"
-    Private Sub ButtonItem10_Click(sender As Object, e As EventArgs) Handles ButtonItem10.Click
+    Private Sub ButtonItem10_Click(sender As Object, e As EventArgs) Handles ExportProgramButton.Click
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
@@ -243,45 +248,57 @@ Public Class MainForm
 #End Region
 
 #Region "删除勾选素材"
-    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
+    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles DeleteProgramButton.Click
+        For rowID = ProgramList.Rows.Count - 1 To 0 Step -1
+            If ProgramList.Rows(rowID).Cells(0).EditedFormattedValue Then
+                If MsgBox("确定删除选中素材?",
+                                          MsgBoxStyle.YesNo,
+                                          DeleteProgramButton.Text) <> MsgBoxResult.Yes Then
+                    Exit Sub
+                Else
+                    Exit For
+                End If
+            End If
+        Next
+
         '删除
-        For rowID = CheckBoxDataGridView1.Rows.Count - 1 To 0 Step -1
-            If CheckBoxDataGridView1.Rows(rowID).Cells(0).EditedFormattedValue Then
+        For rowID = ProgramList.Rows.Count - 1 To 0 Step -1
+            If ProgramList.Rows(rowID).Cells(0).EditedFormattedValue Then
 
                 If AppSettingHelper.Settings.ProgramItems(rowID) Is AppSettingHelper.Settings.ActiveProgram Then
                     AppSettingHelper.Settings.ActiveProgram = Nothing
-                    CheckBoxDataGridView2.Rows.Clear()
+                    ParagraphList.Rows.Clear()
                 End If
 
-                Dim id As Guid = CheckBoxDataGridView1.Rows(rowID).Tag
+                Dim id As Guid = ProgramList.Rows(rowID).Tag
                 Dim findProgramInfo = AppSettingHelper.Settings.ProgramItems.Find(Function(value As ProgramInfo)
                                                                                       Return value.ID = id
                                                                                   End Function)
                 IO.File.Delete($"./Data/{id}")
                 AppSettingHelper.Settings.ProgramItems.Remove(findProgramInfo)
 
-                CheckBoxDataGridView1.Rows.RemoveAt(rowID)
+                ProgramList.Rows.RemoveAt(rowID)
             End If
 
         Next
 
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
-            CheckBoxDataGridView1.ClearSelection()
+            ProgramList.ClearSelection()
         End If
 
     End Sub
 #End Region
 
 #Region "显示素材内容及配置"
-    Private Sub CheckBoxDataGridView1_CurrentCellChanged(sender As Object, e As EventArgs) Handles CheckBoxDataGridView1.CurrentCellChanged
-        If CheckBoxDataGridView1.CurrentCell Is Nothing Then
+    Private Sub CheckBoxDataGridView1_CurrentCellChanged(sender As Object, e As EventArgs) Handles ProgramList.CurrentCellChanged
+        If ProgramList.CurrentCell Is Nothing Then
             Exit Sub
         End If
 
         AppSettingHelper.Settings.ActiveProgram = Nothing
-        CheckBoxDataGridView2.Rows.Clear()
+        ParagraphList.Rows.Clear()
 
-        Dim id As Guid = CheckBoxDataGridView1.Rows(CheckBoxDataGridView1.CurrentCell.RowIndex).Tag
+        Dim id As Guid = ProgramList.Rows(ProgramList.CurrentCell.RowIndex).Tag
 
         Dim findProgramInfo = AppSettingHelper.Settings.ProgramItems.Find(Function(value As ProgramInfo)
                                                                               Return value.ID = id
@@ -290,32 +307,32 @@ Public Class MainForm
             Exit Sub
         End If
 
-        CheckBoxDataGridView2.RowCount = findProgramInfo.ParagraphItems.Count
+        ParagraphList.RowCount = findProgramInfo.ParagraphItems.Count
         AppSettingHelper.Settings.ActiveProgram = findProgramInfo
 
         If AppSettingHelper.Settings.ActiveProgram.PrintFont Is Nothing Then
             AppSettingHelper.Settings.ActiveProgram.PrintFont = Me.Font
         End If
-        TextBox1.Text = $"{AppSettingHelper.Settings.ActiveProgram.PrintFont.Name}, {AppSettingHelper.Settings.ActiveProgram.PrintFont.Size}, {AppSettingHelper.Settings.ActiveProgram.PrintFont.Style}"
-        Label6.Font = AppSettingHelper.Settings.ActiveProgram.PrintFont
+        PrintFontText.Text = $"{AppSettingHelper.Settings.ActiveProgram.PrintFont.Name}, {AppSettingHelper.Settings.ActiveProgram.PrintFont.Size}, {AppSettingHelper.Settings.ActiveProgram.PrintFont.Style}"
+        PreviewLabel.Font = AppSettingHelper.Settings.ActiveProgram.PrintFont
 
-        Label13.BackColor = AppSettingHelper.Settings.ActiveProgram.PrintFontColor
-        Label14.BackColor = AppSettingHelper.Settings.ActiveProgram.PrintBackColor
+        PrintFontColor.BackColor = AppSettingHelper.Settings.ActiveProgram.PrintFontColor
+        PrintBackColor.BackColor = AppSettingHelper.Settings.ActiveProgram.PrintBackColor
 
-        Label6.ForeColor = Label13.BackColor
-        Label6.BackColor = Label14.BackColor
-        Label6.Refresh()
+        PreviewLabel.ForeColor = PrintFontColor.BackColor
+        PreviewLabel.BackColor = PrintBackColor.BackColor
+        PreviewLabel.Refresh()
 
-        NumericUpDown1.Value = AppSettingHelper.Settings.ActiveProgram.PrintDefaultShowTimestamp.ToString("ss\.ff")
-        CheckBox1.Checked = AppSettingHelper.Settings.ActiveProgram.PrintMirror
+        PrintDefaultShowTimestamp.Value = AppSettingHelper.Settings.ActiveProgram.PrintDefaultShowTimestamp.ToString("ss\.ff")
+        PrintMirror.Checked = AppSettingHelper.Settings.ActiveProgram.PrintMirror
 
-        NumericUpDown5.Value = AppSettingHelper.Settings.ActiveProgram.WindowSize.Width
-        NumericUpDown2.Value = AppSettingHelper.Settings.ActiveProgram.WindowSize.Height
+        WindowSizeWidth.Value = AppSettingHelper.Settings.ActiveProgram.WindowSize.Width
+        WindowSizeHeight.Value = AppSettingHelper.Settings.ActiveProgram.WindowSize.Height
 
-        NumericUpDown3.Value = AppSettingHelper.Settings.ActiveProgram.WindowLocation.X
-        NumericUpDown4.Value = AppSettingHelper.Settings.ActiveProgram.WindowLocation.Y
+        WindowLocationX.Value = AppSettingHelper.Settings.ActiveProgram.WindowLocation.X
+        WindowLocationY.Value = AppSettingHelper.Settings.ActiveProgram.WindowLocation.Y
 
-        CheckBox2.Checked = AppSettingHelper.Settings.ActiveProgram.IsFullScreen
+        IsFullScreen.Checked = AppSettingHelper.Settings.ActiveProgram.IsFullScreen
 
         ChildPlayWindow.UpdateSizeAndLocation()
         ChildPlayWindow.Refresh()
@@ -323,42 +340,75 @@ Public Class MainForm
     End Sub
 #End Region
 
+#Region "清除播放时长"
+    Private Sub ClearTranscribeButton_Click(sender As Object, e As EventArgs) Handles ClearTranscribeButton.Click
+        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+            Exit Sub
+        End If
+
+        If MsgBox("确定清除当前素材录制信息?",
+                  MsgBoxStyle.YesNo,
+                  ClearTranscribeButton.Text) <> MsgBoxResult.Yes Then
+            Exit Sub
+        End If
+
+        For Each item In AppSettingHelper.Settings.ActiveProgram.ParagraphItems
+            item.HaveTimestamp = False
+        Next
+
+        ParagraphList.Refresh()
+
+    End Sub
+#End Region
+
 #Region "素材内容编辑"
 
 #Region "插入新行"
-    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles InsertParagraphButton.Click
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
         If AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count > 0 Then
 
-            AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Insert(CheckBoxDataGridView2.CurrentCell.RowIndex,
+            AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Insert(ParagraphList.CurrentCell.RowIndex,
                                                 New ParagraphInfo With {
-                                                .ShowTimestamp = AppSettingHelper.Settings.ActiveProgram.ParagraphItems(CheckBoxDataGridView2.CurrentCell.RowIndex).ShowTimestamp
+                                                .ShowTimestamp = AppSettingHelper.Settings.ActiveProgram.ParagraphItems(ParagraphList.CurrentCell.RowIndex).ShowTimestamp
                                                 })
 
-            CheckBoxDataGridView2.Rows.Insert(CheckBoxDataGridView2.CurrentCell.RowIndex, 1)
+            ParagraphList.Rows.Insert(ParagraphList.CurrentCell.RowIndex, 1)
 
         Else
 
             AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Add(New ParagraphInfo)
-            CheckBoxDataGridView2.Rows.Add(1)
+            ParagraphList.Rows.Add(1)
         End If
 
     End Sub
 #End Region
 
 #Region "删除勾选行"
-    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles DeleteParagraphButton.Click
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
+        For rowID = AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count - 1 To 0 Step -1
+            If AppSettingHelper.Settings.ActiveProgram.ParagraphItems(rowID).Checked Then
+                If MsgBox("确定删除选中行?",
+                          MsgBoxStyle.YesNo,
+                          DeleteParagraphButton.Text) <> MsgBoxResult.Yes Then
+                    Exit Sub
+                Else
+                    Exit For
+                End If
+            End If
+        Next
+
         '删除
         For rowID = AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count - 1 To 0 Step -1
             If AppSettingHelper.Settings.ActiveProgram.ParagraphItems(rowID).Checked Then
-                CheckBoxDataGridView2.Rows.RemoveAt(rowID)
+                ParagraphList.Rows.RemoveAt(rowID)
             End If
         Next
 
@@ -368,19 +418,19 @@ Public Class MainForm
 #Region "虚拟表操作"
     Private Sub CheckBoxDataGridView2_NewRowNeeded(sender As Object,
                                                    e As DataGridViewRowEventArgs
-                                                   ) Handles CheckBoxDataGridView2.NewRowNeeded
+                                                   ) Handles ParagraphList.NewRowNeeded
 
     End Sub
 
     Private Sub CheckBoxDataGridView2_RowsAdded(sender As Object,
                                                 e As DataGridViewRowsAddedEventArgs
-                                                ) Handles CheckBoxDataGridView2.RowsAdded
+                                                ) Handles ParagraphList.RowsAdded
 
     End Sub
 
     Private Sub CheckBoxDataGridView2_CellValidating(sender As Object,
                                                      e As DataGridViewCellValidatingEventArgs
-                                                     ) Handles CheckBoxDataGridView2.CellValidating
+                                                     ) Handles ParagraphList.CellValidating
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
@@ -415,12 +465,12 @@ Public Class MainForm
                         Throw New Exception("秒取值范围为为 0.00 - 59.99")
                     End If
 
-                    CheckBoxDataGridView2.Rows(e.RowIndex).ErrorText = ""
+                    ParagraphList.Rows(e.RowIndex).ErrorText = ""
 
                 Catch ex As Exception
                     e.Cancel = True
 
-                    CheckBoxDataGridView2.Rows(e.RowIndex).ErrorText = ex.Message
+                    ParagraphList.Rows(e.RowIndex).ErrorText = ex.Message
                     MsgBox(ex.Message, MsgBoxStyle.Information, "输入校验")
                 End Try
 
@@ -432,7 +482,7 @@ Public Class MainForm
 
     Private Sub CheckBoxDataGridView2_CellValueNeeded(sender As Object,
                                                       e As DataGridViewCellValueEventArgs
-                                                      ) Handles CheckBoxDataGridView2.CellValueNeeded
+                                                      ) Handles ParagraphList.CellValueNeeded
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
@@ -457,7 +507,7 @@ Public Class MainForm
 
     Private Sub CheckBoxDataGridView2_CellValuePushed(sender As Object,
                                                       e As DataGridViewCellValueEventArgs
-                                                      ) Handles CheckBoxDataGridView2.CellValuePushed
+                                                      ) Handles ParagraphList.CellValuePushed
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
@@ -497,7 +547,7 @@ Public Class MainForm
 
     Private Sub CheckBoxDataGridView2_RowsRemoved(sender As Object,
                                                   e As DataGridViewRowsRemovedEventArgs
-                                                  ) Handles CheckBoxDataGridView2.RowsRemoved
+                                                  ) Handles ParagraphList.RowsRemoved
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
@@ -512,7 +562,7 @@ Public Class MainForm
 #Region "素材配置编辑"
 
 #Region "字体"
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles SelectPrintFontButton.Click
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
@@ -520,15 +570,16 @@ Public Class MainForm
         Using tmpDialog As New FontDialog With {
             .ShowEffects = False,
             .ShowColor = False,
-            .Font = AppSettingHelper.Settings.ActiveProgram.PrintFont
+            .Font = AppSettingHelper.Settings.ActiveProgram.PrintFont,
+            .AllowVerticalFonts = False
         }
 
             If tmpDialog.ShowDialog <> DialogResult.OK Then
                 Exit Sub
             End If
 
-            TextBox1.Text = $"{tmpDialog.Font.Name}, {tmpDialog.Font.Size}, {tmpDialog.Font.Style}"
-            Label6.Font = tmpDialog.Font
+            PrintFontText.Text = $"{tmpDialog.Font.Name}, {tmpDialog.Font.Size}, {tmpDialog.Font.Style}"
+            PreviewLabel.Font = tmpDialog.Font
             AppSettingHelper.Settings.ActiveProgram.PrintFont = tmpDialog.Font
 
         End Using
@@ -539,7 +590,7 @@ Public Class MainForm
 #End Region
 
 #Region "字体颜色"
-    Private Sub Label13_Click(sender As Object, e As EventArgs) Handles Label13.Click
+    Private Sub Label13_Click(sender As Object, e As EventArgs) Handles PrintFontColor.Click
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
@@ -552,7 +603,7 @@ Public Class MainForm
                 Exit Sub
             End If
 
-            Label13.BackColor = tmpDialog.Color
+            PrintFontColor.BackColor = tmpDialog.Color
             AppSettingHelper.Settings.ActiveProgram.PrintFontColor = tmpDialog.Color
 
         End Using
@@ -563,7 +614,7 @@ Public Class MainForm
 #End Region
 
 #Region "背景颜色"
-    Private Sub Label14_Click(sender As Object, e As EventArgs) Handles Label14.Click
+    Private Sub Label14_Click(sender As Object, e As EventArgs) Handles PrintBackColor.Click
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
@@ -576,7 +627,7 @@ Public Class MainForm
                 Exit Sub
             End If
 
-            Label14.BackColor = tmpDialog.Color
+            PrintBackColor.BackColor = tmpDialog.Color
             AppSettingHelper.Settings.ActiveProgram.PrintBackColor = tmpDialog.Color
 
         End Using
@@ -587,24 +638,24 @@ Public Class MainForm
 #End Region
 
 #Region "每行默认显示秒数"
-    Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown1.ValueChanged
+    Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs) Handles PrintDefaultShowTimestamp.ValueChanged
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.PrintDefaultShowTimestamp = DateTime.ParseExact($"{NumericUpDown1.Value:00.00}", "ss.ff", Nothing).TimeOfDay
+        AppSettingHelper.Settings.ActiveProgram.PrintDefaultShowTimestamp = DateTime.ParseExact($"{PrintDefaultShowTimestamp.Value:00.00}", "ss.ff", Nothing).TimeOfDay
 
     End Sub
 #End Region
 
 #Region "镜像显示"
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles PrintMirror.CheckedChanged
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.PrintMirror = CheckBox1.Checked
-        Label6.Refresh()
+        AppSettingHelper.Settings.ActiveProgram.PrintMirror = PrintMirror.Checked
+        PreviewLabel.Refresh()
 
         ChildPlayWindow.Refresh()
 
@@ -612,24 +663,24 @@ Public Class MainForm
 #End Region
 
 #Region "播放窗口尺寸"
-    Private Sub NumericUpDown5_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown5.ValueChanged
+    Private Sub NumericUpDown5_ValueChanged(sender As Object, e As EventArgs) Handles WindowSizeWidth.ValueChanged
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.WindowSize.Width = NumericUpDown5.Value
+        AppSettingHelper.Settings.ActiveProgram.WindowSize.Width = WindowSizeWidth.Value
 
         ChildPlayWindow.UpdateSizeAndLocation()
         Me.Activate()
 
     End Sub
 
-    Private Sub NumericUpDown2_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown2.ValueChanged
+    Private Sub NumericUpDown2_ValueChanged(sender As Object, e As EventArgs) Handles WindowSizeHeight.ValueChanged
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.WindowSize.Height = NumericUpDown2.Value
+        AppSettingHelper.Settings.ActiveProgram.WindowSize.Height = WindowSizeHeight.Value
 
         ChildPlayWindow.UpdateSizeAndLocation()
         Me.Activate()
@@ -638,24 +689,24 @@ Public Class MainForm
 #End Region
 
 #Region "播放窗口位置"
-    Private Sub NumericUpDown3_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown3.ValueChanged
+    Private Sub NumericUpDown3_ValueChanged(sender As Object, e As EventArgs) Handles WindowLocationX.ValueChanged
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.WindowLocation.X = NumericUpDown3.Value
+        AppSettingHelper.Settings.ActiveProgram.WindowLocation.X = WindowLocationX.Value
 
         ChildPlayWindow.UpdateSizeAndLocation()
         Me.Activate()
 
     End Sub
 
-    Private Sub NumericUpDown4_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown4.ValueChanged
+    Private Sub NumericUpDown4_ValueChanged(sender As Object, e As EventArgs) Handles WindowLocationY.ValueChanged
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.WindowLocation.Y = NumericUpDown4.Value
+        AppSettingHelper.Settings.ActiveProgram.WindowLocation.Y = WindowLocationY.Value
 
         ChildPlayWindow.UpdateSizeAndLocation()
         Me.Activate()
@@ -664,12 +715,12 @@ Public Class MainForm
 #End Region
 
 #Region "全屏显示"
-    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles IsFullScreen.CheckedChanged
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.IsFullScreen = CheckBox2.Checked
+        AppSettingHelper.Settings.ActiveProgram.IsFullScreen = IsFullScreen.Checked
 
         ChildPlayWindow.UpdateSizeAndLocation()
         Me.Activate()
@@ -678,13 +729,13 @@ Public Class MainForm
 #End Region
 
 #Region "播放效果预览"
-    Private Sub Label6_Paint(sender As Object, e As PaintEventArgs) Handles Label6.Paint
+    Private Sub Label6_Paint(sender As Object, e As PaintEventArgs) Handles PreviewLabel.Paint
         If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        e.Graphics.TranslateTransform(Label6.Width / 2,
-                                      (Label6.Height - e.Graphics.MeasureString("测试文字 Test string", AppSettingHelper.Settings.ActiveProgram.PrintFont).Height) / 2)
+        e.Graphics.TranslateTransform(PreviewLabel.Width / 2,
+                                      (PreviewLabel.Height - e.Graphics.MeasureString("测试文字 Test string", AppSettingHelper.Settings.ActiveProgram.PrintFont).Height) / 2)
 
         If AppSettingHelper.Settings.ActiveProgram.PrintMirror Then
             '镜像显示
@@ -707,10 +758,10 @@ Public Class MainForm
 #End Region
 
 #Region "快捷键设置"
-    Private Sub ButtonItem7_Click(sender As Object, e As EventArgs) Handles ButtonItem7.Click
+    Private Sub ButtonItem7_Click(sender As Object, e As EventArgs) Handles HotkeysButton.Click
         Using tmpDialog As New HotKeysSettingForm With {
             .UIForm = Me,
-            .Text = ButtonItem7.Text
+            .Text = HotkeysButton.Text
         }
 
             tmpDialog.ShowDialog()
@@ -759,16 +810,38 @@ Public Class MainForm
         If m.Msg = WindowsHotKeyHelper.WM_HOTKEY Then
             Select Case m.WParam.ToInt32
                 Case 1
+                    '播放
+                    If PlayButton.Enabled Then
+                        PlayButton_Click()
+                    End If
 
                 Case 2
+                    '暂停
+                    If PauseButton.Enabled Then
+                        PauseButton_Click()
+                    End If
 
                 Case 3
+                    '停止
+                    If StopButton.Enabled Then
+                        StopButton_Click()
+                    End If
 
                 Case 4
+                    '隐藏
+                    HidePlayWindowButton.Value = Not HidePlayWindowButton.Value
 
                 Case 5
+                    '上一行
+                    If PageUpButton.Enabled Then
+                        PageUpButton_Click()
+                    End If
 
                 Case 6
+                    '下一行
+                    If PageDnButton.Enabled Then
+                        PageDnButton_Click()
+                    End If
 
             End Select
         End If
@@ -777,50 +850,208 @@ Public Class MainForm
     End Sub
 #End Region
 
-    Private Sub ButtonItem8_Click(sender As Object, e As EventArgs) Handles ButtonItem8.Click
+    Private Sub TranscribeButton_Click(Optional sender As Object = Nothing,
+                                       Optional e As EventArgs = Nothing) Handles TranscribeButton.Click
+        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+            Exit Sub
+        End If
 
         RecordWindow?.Dispose()
         RecordWindow = Nothing
 
         RecordWindow = New RecordShowForm With {
-            .Text = ButtonItem8.Text
+            .Text = TranscribeButton.Text,
+            .UIMainForm = Me
         }
         RecordWindow.Show()
 
     End Sub
 
-    Private Sub ButtonItem2_Click(sender As Object, e As EventArgs) Handles ButtonItem2.Click
+    Private Sub PlayButton_Click(Optional sender As Object = Nothing,
+                                 Optional e As EventArgs = Nothing) Handles PlayButton.Click
+        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+            Exit Sub
+        End If
+
         ProgramPlayHelper.Play()
+
+        ControlEnabledToPlay()
+
     End Sub
 
-    Private Sub ButtonItem3_Click(sender As Object, e As EventArgs) Handles ButtonItem3.Click
+    Private Sub ManualPlayButton_Click(sender As Object, e As EventArgs) Handles ManualPlayButton.Click
+        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+            Exit Sub
+        End If
+
+        ProgramPlayHelper.ManualPlay()
+
+        ControlEnabledToManualPlay()
+
+    End Sub
+
+    Public Delegate Sub StopButton_ClickCallback(sender As Object, e As EventArgs)
+    ''' <summary>
+    ''' 更新画面
+    ''' </summary>
+    Friend Sub StopButton_Click(Optional sender As Object = Nothing,
+                                Optional e As EventArgs = Nothing) Handles StopButton.Click
+        If Me.InvokeRequired Then
+            Me.Invoke(New StopButton_ClickCallback(AddressOf StopButton_Click),
+                      New Object() {sender, e})
+            Exit Sub
+        End If
+
         ProgramPlayHelper.StopPlay()
+
+        ControlEnabledToStop()
+
+        ChildPlayWindow.Refresh()
+
     End Sub
 
-    Private Sub ButtonItem5_Click(sender As Object, e As EventArgs) Handles ButtonItem5.Click
+    Private Sub PageUpButton_Click(Optional sender As Object = Nothing,
+                                   Optional e As EventArgs = Nothing) Handles PageUpButton.Click
         ProgramPlayHelper.PageUp()
     End Sub
 
-    Private Sub ButtonItem6_Click(sender As Object, e As EventArgs) Handles ButtonItem6.Click
+    Private Sub PageDnButton_Click(Optional sender As Object = Nothing,
+                                   Optional e As EventArgs = Nothing) Handles PageDnButton.Click
         ProgramPlayHelper.PageDn()
     End Sub
 
-    Private Sub ButtonItem11_Click(sender As Object, e As EventArgs) Handles ButtonItem11.Click
+    Private Sub PauseButton_Click(Optional sender As Object = Nothing,
+                                  Optional e As EventArgs = Nothing) Handles PauseButton.Click
 
         If ProgramPlayHelper.IsPause Then
             ProgramPlayHelper.GoOn()
-            ButtonItem11.Image = My.Resources.pause_32px
-            ButtonItem11.Text = "暂停"
+            PauseButton.Image = My.Resources.pause_32px
+            PauseButton.Text = "暂停"
         Else
             ProgramPlayHelper.Pause()
-            ButtonItem11.Image = My.Resources.goOn_32px
-            ButtonItem11.Text = "继续"
+            PauseButton.Image = My.Resources.goOn_32px
+            PauseButton.Text = "继续"
         End If
 
     End Sub
 
-    Private Sub SwitchButtonItem1_ValueChanged(sender As Object, e As EventArgs) Handles SwitchButtonItem1.ValueChanged
-        ChildPlayWindow.Visible = Not SwitchButtonItem1.Value
+    Private Sub HidePlayWindowButton_ValueChanged(Optional sender As Object = Nothing,
+                                                  Optional e As EventArgs = Nothing) Handles HidePlayWindowButton.ValueChanged
+        ChildPlayWindow.Visible = Not HidePlayWindowButton.Value
     End Sub
+
+#Region "控件状态"
+    ''' <summary>
+    ''' 播放时控件状态
+    ''' </summary>
+    Public Sub ControlEnabledToPlay()
+        If ProgramPlayHelper.RunningState <> ProgramPlayHelper.OperationState.Playing Then
+            Exit Sub
+        End If
+
+        NewProgramButton.Enabled = False
+        ImportProgramButton.Enabled = False
+        ExportProgramButton.Enabled = False
+        PlayButton.Enabled = False
+
+        PauseButton.Enabled = True
+        StopButton.Enabled = True
+        PageUpButton.Enabled = True
+        PageDnButton.Enabled = True
+
+        TranscribeButton.Enabled = False
+        ClearTranscribeButton.Enabled = False
+        HotkeysButton.Enabled = False
+
+        ProgramList.Enabled = False
+        DeleteProgramButton.Enabled = False
+
+    End Sub
+
+    ''' <summary>
+    ''' 手动播放时控件状态
+    ''' </summary>
+    Public Sub ControlEnabledToManualPlay()
+        If ProgramPlayHelper.RunningState <> ProgramPlayHelper.OperationState.ManualPlaying Then
+            Exit Sub
+        End If
+
+        NewProgramButton.Enabled = False
+        ImportProgramButton.Enabled = False
+        ExportProgramButton.Enabled = False
+        PlayButton.Enabled = False
+
+        PauseButton.Enabled = False
+        StopButton.Enabled = True
+        PageUpButton.Enabled = True
+        PageDnButton.Enabled = True
+
+        TranscribeButton.Enabled = False
+        ClearTranscribeButton.Enabled = False
+        HotkeysButton.Enabled = False
+
+        ProgramList.Enabled = False
+        DeleteProgramButton.Enabled = False
+
+    End Sub
+
+    ''' <summary>
+    ''' 停止时控件状态
+    ''' </summary>
+    Public Sub ControlEnabledToStop()
+        If ProgramPlayHelper.RunningState <> ProgramPlayHelper.OperationState.NoOperation Then
+            Exit Sub
+        End If
+
+        NewProgramButton.Enabled = True
+        ImportProgramButton.Enabled = True
+        ExportProgramButton.Enabled = True
+        PlayButton.Enabled = True
+
+        PauseButton.Enabled = False
+        PauseButton.Image = My.Resources.pause_32px
+        PauseButton.Text = "暂停"
+
+        StopButton.Enabled = False
+        PageUpButton.Enabled = False
+        PageDnButton.Enabled = False
+
+        TranscribeButton.Enabled = True
+        ClearTranscribeButton.Enabled = True
+        HotkeysButton.Enabled = True
+
+        ProgramList.Enabled = True
+        DeleteProgramButton.Enabled = True
+
+    End Sub
+
+    ''' <summary>
+    ''' 录制时控件状态
+    ''' </summary>
+    Public Sub ControlEnabledToRecord()
+        If ProgramPlayHelper.RunningState <> ProgramPlayHelper.OperationState.Recording Then
+            Exit Sub
+        End If
+
+        NewProgramButton.Enabled = False
+        ImportProgramButton.Enabled = False
+        ExportProgramButton.Enabled = False
+        PlayButton.Enabled = False
+
+        PauseButton.Enabled = False
+        StopButton.Enabled = False
+        PageUpButton.Enabled = False
+        PageDnButton.Enabled = False
+
+        TranscribeButton.Enabled = False
+        ClearTranscribeButton.Enabled = False
+        HotkeysButton.Enabled = False
+
+        ProgramList.Enabled = False
+        DeleteProgramButton.Enabled = False
+
+    End Sub
+
+#End Region
 
 End Class

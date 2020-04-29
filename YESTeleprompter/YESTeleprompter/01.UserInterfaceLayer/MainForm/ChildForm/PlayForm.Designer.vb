@@ -30,6 +30,7 @@ Partial Class PlayForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(100, 100)
+        Me.ControlBox = False
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "PlayForm"
         Me.ShowIcon = False

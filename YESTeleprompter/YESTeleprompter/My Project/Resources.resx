@@ -124,8 +124,8 @@
   <data name="hotkeys_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\hotkeys_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="insertUp_20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\insertUp_20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="yes_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\res\yes_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="no_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\no_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,26 +136,23 @@
   <data name="window_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\window_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="goOn_20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\res\goOn_20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="add_20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\add_20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="reset_20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\reset_20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="goOn_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\goOn_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="pause_20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\pause_20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="new_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\new_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="startBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\startBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PageUP_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\PageUP_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="new_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\res\new_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="export_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\export_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,14 +163,17 @@
   <data name="pause_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\pause_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="goOn_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\res\goOn_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="insertDn_20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\insertDn_20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="play_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\play_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="yes_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\yes_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PageUP_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\res\PageUP_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="font_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\font_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,10 +184,13 @@
   <data name="close_20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\close_20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="insertUp_20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\res\insertUp_20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="PageDn_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\res\PageDn_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="goOn_20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\res\goOn_20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="manualPlay_20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\res\manualPlay_20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -16,18 +16,22 @@ Public Class ProgramPlayHelper
         ''' 无操作
         ''' </summary>
         NoOperation
+
         ''' <summary>
         ''' 播放
         ''' </summary>
         Playing
+
+        ''' <summary>
+        ''' 手动播放
+        ''' </summary>
+        ManualPlaying
+
         ''' <summary>
         ''' 录制
         ''' </summary>
         Recording
-        ''' <summary>
-        ''' 停止播放
-        ''' </summary>
-        StopPlaying
+
     End Enum
 #End Region
 
@@ -70,6 +74,10 @@ Public Class ProgramPlayHelper
     ''' 播放窗口
     ''' </summary>
     Public Shared UIPlayForm As PlayForm
+    ''' <summary>
+    ''' 主窗体
+    ''' </summary>
+    Public Shared UIMainForm As MainForm
 
     ''' <summary>
     ''' 当前播放的段落ID
@@ -111,6 +119,25 @@ Public Class ProgramPlayHelper
         AddHandler UpdateTimer.Elapsed, AddressOf Paint
         '开启定时器
         UpdateTimer.Start()
+
+        UIPlayForm.PaintParagraph()
+
+    End Sub
+#End Region
+
+#Region "手动播放"
+    ''' <summary>
+    ''' 手动播放
+    ''' </summary>
+    Public Shared Sub ManualPlay()
+        If RunningState <> OperationState.NoOperation Then
+            Exit Sub
+        End If
+
+        '开始播放
+        _RunningState = OperationState.ManualPlaying
+
+        NowPlayParagraphID = 0
 
         UIPlayForm.PaintParagraph()
 
@@ -208,7 +235,7 @@ Public Class ProgramPlayHelper
             Exit Sub
         End If
 
-        If NowPlayParagraphID - 1 > 0 Then
+        If NowPlayParagraphID - 1 >= 0 Then
             '切换到下一段
             NowPlayParagraphID -= 1
             NowPlayParagraphRunTime = Now - Now
@@ -305,19 +332,6 @@ Public Class ProgramPlayHelper
     End Sub
 #End Region
 
-#Region "重置"
-    ''' <summary>
-    ''' 重置
-    ''' </summary>
-    Public Shared Sub Reset()
-        If RunningState = OperationState.NoOperation Then
-            Exit Sub
-        End If
-
-
-    End Sub
-#End Region
-
 #Region "停止播放"
     ''' <summary>
     ''' 停止播放
@@ -331,6 +345,8 @@ Public Class ProgramPlayHelper
         UpdateTimer = Nothing
 
         _RunningState = OperationState.NoOperation
+
+        UIMainForm.StopButton_Click()
 
     End Sub
 #End Region

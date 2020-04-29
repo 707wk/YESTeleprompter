@@ -25,12 +25,12 @@ Partial Class RecordShowForm
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RecordShowForm))
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.PageDnButton = New System.Windows.Forms.ToolStripButton()
+        Me.PauseButton = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.ResetButton = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
@@ -40,30 +40,30 @@ Partial Class RecordShowForm
         'ToolStrip1
         '
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripSeparator3, Me.ToolStripLabel2, Me.ToolStripSeparator1, Me.ToolStripButton3, Me.ToolStripSeparator2, Me.ToolStripLabel1})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PageDnButton, Me.PauseButton, Me.ToolStripSeparator3, Me.ToolStripLabel2, Me.ToolStripSeparator1, Me.ResetButton, Me.ToolStripSeparator2, Me.ToolStripLabel1})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(405, 27)
         Me.ToolStrip1.TabIndex = 5
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'ToolStripButton1
+        'PageDnButton
         '
-        Me.ToolStripButton1.Image = Global.YESTeleprompter.My.Resources.Resources.next_20px
-        Me.ToolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(68, 24)
-        Me.ToolStripButton1.Text = "下一段"
+        Me.PageDnButton.Image = Global.YESTeleprompter.My.Resources.Resources.next_20px
+        Me.PageDnButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.PageDnButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.PageDnButton.Name = "PageDnButton"
+        Me.PageDnButton.Size = New System.Drawing.Size(68, 24)
+        Me.PageDnButton.Text = "下一段"
         '
-        'ToolStripButton2
+        'PauseButton
         '
-        Me.ToolStripButton2.Image = Global.YESTeleprompter.My.Resources.Resources.pause_20px
-        Me.ToolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(56, 24)
-        Me.ToolStripButton2.Text = "暂停"
+        Me.PauseButton.Image = Global.YESTeleprompter.My.Resources.Resources.pause_20px
+        Me.PauseButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.PauseButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.PauseButton.Name = "PauseButton"
+        Me.PauseButton.Size = New System.Drawing.Size(56, 24)
+        Me.PauseButton.Text = "暂停"
         '
         'ToolStripSeparator3
         '
@@ -81,14 +81,14 @@ Partial Class RecordShowForm
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
         '
-        'ToolStripButton3
+        'ResetButton
         '
-        Me.ToolStripButton3.Image = Global.YESTeleprompter.My.Resources.Resources.reset_20px
-        Me.ToolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(80, 24)
-        Me.ToolStripButton3.Text = "重新计时"
+        Me.ResetButton.Image = Global.YESTeleprompter.My.Resources.Resources.reset_20px
+        Me.ResetButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ResetButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ResetButton.Name = "ResetButton"
+        Me.ResetButton.Size = New System.Drawing.Size(80, 24)
+        Me.ResetButton.Text = "重新计时"
         '
         'ToolStripSeparator2
         '
@@ -129,10 +129,10 @@ Partial Class RecordShowForm
     End Sub
 
     Friend WithEvents ToolStrip1 As ToolStrip
-    Friend WithEvents ToolStripButton1 As ToolStripButton
-    Friend WithEvents ToolStripButton2 As ToolStripButton
+    Friend WithEvents PageDnButton As ToolStripButton
+    Friend WithEvents PauseButton As ToolStripButton
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
-    Friend WithEvents ToolStripButton3 As ToolStripButton
+    Friend WithEvents ResetButton As ToolStripButton
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents ToolStripLabel1 As ToolStripLabel
     Friend WithEvents ToolStripLabel2 As ToolStripLabel

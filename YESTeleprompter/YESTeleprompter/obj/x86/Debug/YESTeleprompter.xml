@@ -72,6 +72,11 @@ YESTeleprompter
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
+<member name="P:YESTeleprompter.My.Resources.Resources.manualPlay_20px">
+<summary>
+  查找 System.Drawing.Bitmap 类型的本地化资源。
+</summary>
+</member>
 <member name="P:YESTeleprompter.My.Resources.Resources.new_32px">
 <summary>
   查找 System.Drawing.Bitmap 类型的本地化资源。
@@ -142,6 +147,11 @@ YESTeleprompter
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
+<member name="F:YESTeleprompter.PlayForm.NeedClose">
+ <summary>
+ 是否需要关闭
+ </summary>
+</member>
 <member name="M:YESTeleprompter.PlayForm.UpdateSizeAndLocation">
  <summary>
  更新尺寸和位置
@@ -150,6 +160,11 @@ YESTeleprompter
 <member name="M:YESTeleprompter.PlayForm.PaintParagraph">
  <summary>
  更新画面
+ </summary>
+</member>
+<member name="F:YESTeleprompter.RecordShowForm.UIMainForm">
+ <summary>
+ 主窗体
  </summary>
 </member>
 <member name="F:YESTeleprompter.RecordShowForm.NowPlayParagraphRunTime">
@@ -192,14 +207,14 @@ YESTeleprompter
  播放
  </summary>
 </member>
+<member name="F:YESTeleprompter.ProgramPlayHelper.OperationState.ManualPlaying">
+ <summary>
+ 手动播放
+ </summary>
+</member>
 <member name="F:YESTeleprompter.ProgramPlayHelper.OperationState.Recording">
  <summary>
  录制
- </summary>
-</member>
-<member name="F:YESTeleprompter.ProgramPlayHelper.OperationState.StopPlaying">
- <summary>
- 停止播放
  </summary>
 </member>
 <member name="F:YESTeleprompter.ProgramPlayHelper._RunningState">
@@ -232,6 +247,11 @@ YESTeleprompter
  播放窗口
  </summary>
 </member>
+<member name="F:YESTeleprompter.ProgramPlayHelper.UIMainForm">
+ <summary>
+ 主窗体
+ </summary>
+</member>
 <member name="F:YESTeleprompter.ProgramPlayHelper.NowPlayParagraphID">
  <summary>
  当前播放的段落ID
@@ -250,6 +270,11 @@ YESTeleprompter
 <member name="M:YESTeleprompter.ProgramPlayHelper.Play">
  <summary>
  播放
+ </summary>
+</member>
+<member name="M:YESTeleprompter.ProgramPlayHelper.ManualPlay">
+ <summary>
+ 手动播放
  </summary>
 </member>
 <member name="M:YESTeleprompter.ProgramPlayHelper.Record">
@@ -295,11 +320,6 @@ YESTeleprompter
 <member name="M:YESTeleprompter.ProgramPlayHelper.GoOn">
  <summary>
  继续
- </summary>
-</member>
-<member name="M:YESTeleprompter.ProgramPlayHelper.Reset">
- <summary>
- 重置
  </summary>
 </member>
 <member name="M:YESTeleprompter.ProgramPlayHelper.StopPlay">
@@ -489,6 +509,31 @@ YESTeleprompter
 <member name="M:YESTeleprompter.MainForm.UnregisterHotKey">
  <summary>
  注销全局快捷键
+ </summary>
+</member>
+<member name="M:YESTeleprompter.MainForm.StopButton_Click(System.Object,System.EventArgs)">
+ <summary>
+ 更新画面
+ </summary>
+</member>
+<member name="M:YESTeleprompter.MainForm.ControlEnabledToPlay">
+ <summary>
+ 播放时控件状态
+ </summary>
+</member>
+<member name="M:YESTeleprompter.MainForm.ControlEnabledToManualPlay">
+ <summary>
+ 手动播放时控件状态
+ </summary>
+</member>
+<member name="M:YESTeleprompter.MainForm.ControlEnabledToStop">
+ <summary>
+ 停止时控件状态
+ </summary>
+</member>
+<member name="M:YESTeleprompter.MainForm.ControlEnabledToRecord">
+ <summary>
+ 录制时控件状态
  </summary>
 </member>
 <member name="T:YESTeleprompter.ProgramInfo">

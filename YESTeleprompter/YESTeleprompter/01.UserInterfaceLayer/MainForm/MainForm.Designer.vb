@@ -32,38 +32,26 @@ Partial Class MainForm
         Me.RibbonControl1 = New DevComponents.DotNetBar.RibbonControl()
         Me.RibbonPanel1 = New DevComponents.DotNetBar.RibbonPanel()
         Me.RibbonBar4 = New DevComponents.DotNetBar.RibbonBar()
-        Me.ButtonItem7 = New DevComponents.DotNetBar.ButtonItem()
         Me.ItemContainer1 = New DevComponents.DotNetBar.ItemContainer()
-        Me.SwitchButtonItem1 = New DevComponents.DotNetBar.SwitchButtonItem()
+        Me.HidePlayWindowButton = New DevComponents.DotNetBar.SwitchButtonItem()
         Me.RibbonBar3 = New DevComponents.DotNetBar.RibbonBar()
-        Me.ButtonItem8 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem9 = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar2 = New DevComponents.DotNetBar.RibbonBar()
-        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem11 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem5 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem6 = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar1 = New DevComponents.DotNetBar.RibbonBar()
-        Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem10 = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonTabItem1 = New DevComponents.DotNetBar.RibbonTabItem()
         Me.QatCustomizeItem1 = New DevComponents.DotNetBar.QatCustomizeItem()
         Me.StyleManager1 = New DevComponents.DotNetBar.StyleManager(Me.components)
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.CheckBoxDataGridView1 = New Wangk.Resource.CheckBoxDataGridView()
+        Me.ProgramList = New Wangk.Resource.CheckBoxDataGridView()
         Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.NumericUpDown4 = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDown3 = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDown5 = New System.Windows.Forms.NumericUpDown()
+        Me.IsFullScreen = New System.Windows.Forms.CheckBox()
+        Me.WindowLocationY = New System.Windows.Forms.NumericUpDown()
+        Me.WindowLocationX = New System.Windows.Forms.NumericUpDown()
+        Me.WindowSizeHeight = New System.Windows.Forms.NumericUpDown()
+        Me.WindowSizeWidth = New System.Windows.Forms.NumericUpDown()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -72,30 +60,43 @@ Partial Class MainForm
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.PrintDefaultShowTimestamp = New System.Windows.Forms.NumericUpDown()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.PrintMirror = New System.Windows.Forms.CheckBox()
+        Me.SelectPrintFontButton = New System.Windows.Forms.Button()
+        Me.PrintFontText = New System.Windows.Forms.TextBox()
+        Me.PrintBackColor = New System.Windows.Forms.Label()
+        Me.PrintFontColor = New System.Windows.Forms.Label()
+        Me.PreviewLabel = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.CheckBoxDataGridView2 = New Wangk.Resource.CheckBoxDataGridView()
+        Me.ParagraphList = New Wangk.Resource.CheckBoxDataGridView()
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.OperationInfo = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.DeleteProgramButton = New System.Windows.Forms.ToolStripButton()
+        Me.InsertParagraphButton = New System.Windows.Forms.ToolStripButton()
+        Me.DeleteParagraphButton = New System.Windows.Forms.ToolStripButton()
+        Me.HotkeysButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.TranscribeButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.ClearTranscribeButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.PlayButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.ManualPlayButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.PauseButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.StopButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.PageUpButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.PageDnButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.NewProgramButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.ImportProgramButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.ExportProgramButton = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonControl1.SuspendLayout()
         Me.RibbonPanel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,17 +104,17 @@ Partial Class MainForm
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.CheckBoxDataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ProgramList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
-        CType(Me.NumericUpDown4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WindowLocationY, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WindowLocationX, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WindowSizeHeight, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WindowSizeWidth, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PrintDefaultShowTimestamp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.CheckBoxDataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ParagraphList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip2.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -195,7 +196,7 @@ Partial Class MainForm
         Me.RibbonBar4.ContainerControlProcessDialogKey = True
         Me.RibbonBar4.Dock = System.Windows.Forms.DockStyle.Left
         Me.RibbonBar4.DragDropSupport = True
-        Me.RibbonBar4.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem7, Me.ItemContainer1})
+        Me.RibbonBar4.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.HotkeysButton, Me.ItemContainer1})
         Me.RibbonBar4.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar4.Location = New System.Drawing.Point(764, 0)
         Me.RibbonBar4.Name = "RibbonBar4"
@@ -213,15 +214,6 @@ Partial Class MainForm
         Me.RibbonBar4.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonBar4.TitleVisible = False
         '
-        'ButtonItem7
-        '
-        Me.ButtonItem7.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem7.Image = Global.YESTeleprompter.My.Resources.Resources.hotkeys_32px
-        Me.ButtonItem7.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem7.Name = "ButtonItem7"
-        Me.ButtonItem7.SubItemsExpandWidth = 14
-        Me.ButtonItem7.Text = "快捷键设置"
-        '
         'ItemContainer1
         '
         '
@@ -230,7 +222,7 @@ Partial Class MainForm
         Me.ItemContainer1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ItemContainer1.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
         Me.ItemContainer1.Name = "ItemContainer1"
-        Me.ItemContainer1.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SwitchButtonItem1})
+        Me.ItemContainer1.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.HidePlayWindowButton})
         '
         '
         '
@@ -240,13 +232,13 @@ Partial Class MainForm
         '
         Me.ItemContainer1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         '
-        'SwitchButtonItem1
+        'HidePlayWindowButton
         '
-        Me.SwitchButtonItem1.Name = "SwitchButtonItem1"
-        Me.SwitchButtonItem1.OffBackColor = System.Drawing.Color.LimeGreen
-        Me.SwitchButtonItem1.OffText = "显示"
-        Me.SwitchButtonItem1.OnText = "隐藏"
-        Me.SwitchButtonItem1.Text = "播放窗口"
+        Me.HidePlayWindowButton.Name = "HidePlayWindowButton"
+        Me.HidePlayWindowButton.OffBackColor = System.Drawing.Color.LimeGreen
+        Me.HidePlayWindowButton.OffText = "显示"
+        Me.HidePlayWindowButton.OnText = "隐藏"
+        Me.HidePlayWindowButton.Text = "播放窗口"
         '
         'RibbonBar3
         '
@@ -262,7 +254,7 @@ Partial Class MainForm
         Me.RibbonBar3.ContainerControlProcessDialogKey = True
         Me.RibbonBar3.Dock = System.Windows.Forms.DockStyle.Left
         Me.RibbonBar3.DragDropSupport = True
-        Me.RibbonBar3.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem8})
+        Me.RibbonBar3.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.TranscribeButton})
         Me.RibbonBar3.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar3.Location = New System.Drawing.Point(632, 0)
         Me.RibbonBar3.Name = "RibbonBar3"
@@ -280,22 +272,6 @@ Partial Class MainForm
         Me.RibbonBar3.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonBar3.TitleVisible = False
         '
-        'ButtonItem8
-        '
-        Me.ButtonItem8.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem8.Image = Global.YESTeleprompter.My.Resources.Resources.transcribe_32px
-        Me.ButtonItem8.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem8.Name = "ButtonItem8"
-        Me.ButtonItem8.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem9})
-        Me.ButtonItem8.SubItemsExpandWidth = 14
-        Me.ButtonItem8.Text = "录制播放演示"
-        '
-        'ButtonItem9
-        '
-        Me.ButtonItem9.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
-        Me.ButtonItem9.Name = "ButtonItem9"
-        Me.ButtonItem9.Text = "清除当前素材录制信息"
-        '
         'RibbonBar2
         '
         Me.RibbonBar2.AutoOverflowEnabled = True
@@ -310,7 +286,7 @@ Partial Class MainForm
         Me.RibbonBar2.ContainerControlProcessDialogKey = True
         Me.RibbonBar2.Dock = System.Windows.Forms.DockStyle.Left
         Me.RibbonBar2.DragDropSupport = True
-        Me.RibbonBar2.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem2, Me.ButtonItem11, Me.ButtonItem3, Me.ButtonItem5, Me.ButtonItem6})
+        Me.RibbonBar2.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.PlayButton, Me.PauseButton, Me.StopButton, Me.PageUpButton, Me.PageDnButton})
         Me.RibbonBar2.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar2.Location = New System.Drawing.Point(256, 0)
         Me.RibbonBar2.Name = "RibbonBar2"
@@ -328,51 +304,6 @@ Partial Class MainForm
         Me.RibbonBar2.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonBar2.TitleVisible = False
         '
-        'ButtonItem2
-        '
-        Me.ButtonItem2.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem2.Image = Global.YESTeleprompter.My.Resources.Resources.play_32px
-        Me.ButtonItem2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem2.Name = "ButtonItem2"
-        Me.ButtonItem2.SubItemsExpandWidth = 14
-        Me.ButtonItem2.Text = "播放"
-        '
-        'ButtonItem11
-        '
-        Me.ButtonItem11.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem11.Image = Global.YESTeleprompter.My.Resources.Resources.pause_32px
-        Me.ButtonItem11.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem11.Name = "ButtonItem11"
-        Me.ButtonItem11.SubItemsExpandWidth = 14
-        Me.ButtonItem11.Text = "暂停"
-        '
-        'ButtonItem3
-        '
-        Me.ButtonItem3.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem3.Image = Global.YESTeleprompter.My.Resources.Resources.stop_32px
-        Me.ButtonItem3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem3.Name = "ButtonItem3"
-        Me.ButtonItem3.SubItemsExpandWidth = 14
-        Me.ButtonItem3.Text = "停止"
-        '
-        'ButtonItem5
-        '
-        Me.ButtonItem5.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem5.Image = Global.YESTeleprompter.My.Resources.Resources.PageUP_32px
-        Me.ButtonItem5.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem5.Name = "ButtonItem5"
-        Me.ButtonItem5.SubItemsExpandWidth = 14
-        Me.ButtonItem5.Text = "上一行"
-        '
-        'ButtonItem6
-        '
-        Me.ButtonItem6.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem6.Image = Global.YESTeleprompter.My.Resources.Resources.PageDn_32px
-        Me.ButtonItem6.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem6.Name = "ButtonItem6"
-        Me.ButtonItem6.SubItemsExpandWidth = 14
-        Me.ButtonItem6.Text = "下一行"
-        '
         'RibbonBar1
         '
         Me.RibbonBar1.AutoOverflowEnabled = True
@@ -387,7 +318,7 @@ Partial Class MainForm
         Me.RibbonBar1.ContainerControlProcessDialogKey = True
         Me.RibbonBar1.Dock = System.Windows.Forms.DockStyle.Left
         Me.RibbonBar1.DragDropSupport = True
-        Me.RibbonBar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem4, Me.ButtonItem1, Me.ButtonItem10})
+        Me.RibbonBar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.NewProgramButton, Me.ImportProgramButton, Me.ExportProgramButton})
         Me.RibbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
         Me.RibbonBar1.Location = New System.Drawing.Point(3, 0)
         Me.RibbonBar1.Name = "RibbonBar1"
@@ -404,33 +335,6 @@ Partial Class MainForm
         '
         Me.RibbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonBar1.TitleVisible = False
-        '
-        'ButtonItem4
-        '
-        Me.ButtonItem4.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem4.Image = Global.YESTeleprompter.My.Resources.Resources.new_32px
-        Me.ButtonItem4.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem4.Name = "ButtonItem4"
-        Me.ButtonItem4.SubItemsExpandWidth = 14
-        Me.ButtonItem4.Text = "新建素材"
-        '
-        'ButtonItem1
-        '
-        Me.ButtonItem1.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem1.Image = Global.YESTeleprompter.My.Resources.Resources.import_32px
-        Me.ButtonItem1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem1.Name = "ButtonItem1"
-        Me.ButtonItem1.SubItemsExpandWidth = 14
-        Me.ButtonItem1.Text = "导入素材"
-        '
-        'ButtonItem10
-        '
-        Me.ButtonItem10.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ButtonItem10.Image = Global.YESTeleprompter.My.Resources.Resources.export_32px
-        Me.ButtonItem10.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonItem10.Name = "ButtonItem10"
-        Me.ButtonItem10.SubItemsExpandWidth = 14
-        Me.ButtonItem10.Text = "导出当前素材"
         '
         'RibbonTabItem1
         '
@@ -473,7 +377,7 @@ Partial Class MainForm
         Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox1.Controls.Add(Me.CheckBoxDataGridView1)
+        Me.GroupBox1.Controls.Add(Me.ProgramList)
         Me.GroupBox1.Controls.Add(Me.ToolStrip1)
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
         Me.GroupBox1.Location = New System.Drawing.Point(3, 6)
@@ -483,13 +387,13 @@ Partial Class MainForm
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "素材列表"
         '
-        'CheckBoxDataGridView1
+        'ProgramList
         '
-        Me.CheckBoxDataGridView1.AllowUserToAddRows = False
-        Me.CheckBoxDataGridView1.AllowUserToDeleteRows = False
-        Me.CheckBoxDataGridView1.AllowUserToOrderColumns = True
-        Me.CheckBoxDataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer))
-        Me.CheckBoxDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.ProgramList.AllowUserToAddRows = False
+        Me.ProgramList.AllowUserToDeleteRows = False
+        Me.ProgramList.AllowUserToOrderColumns = True
+        Me.ProgramList.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer))
+        Me.ProgramList.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -497,13 +401,13 @@ Partial Class MainForm
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.CheckBoxDataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.CheckBoxDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.CheckBoxDataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewCheckBoxColumn2, Me.Column1})
-        Me.CheckBoxDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CheckBoxDataGridView1.Location = New System.Drawing.Point(3, 46)
-        Me.CheckBoxDataGridView1.Name = "CheckBoxDataGridView1"
-        Me.CheckBoxDataGridView1.ReadOnly = True
+        Me.ProgramList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.ProgramList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ProgramList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewCheckBoxColumn2, Me.Column1})
+        Me.ProgramList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ProgramList.Location = New System.Drawing.Point(3, 46)
+        Me.ProgramList.Name = "ProgramList"
+        Me.ProgramList.ReadOnly = True
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle2.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -511,10 +415,10 @@ Partial Class MainForm
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.CheckBoxDataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.CheckBoxDataGridView1.RowTemplate.Height = 23
-        Me.CheckBoxDataGridView1.Size = New System.Drawing.Size(299, 491)
-        Me.CheckBoxDataGridView1.TabIndex = 1
+        Me.ProgramList.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.ProgramList.RowTemplate.Height = 23
+        Me.ProgramList.Size = New System.Drawing.Size(299, 491)
+        Me.ProgramList.TabIndex = 1
         '
         'DataGridViewCheckBoxColumn2
         '
@@ -536,32 +440,22 @@ Partial Class MainForm
         '
         Me.ToolStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer))
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton3})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteProgramButton})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 19)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(299, 27)
         Me.ToolStrip1.TabIndex = 0
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'ToolStripButton3
-        '
-        Me.ToolStripButton3.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
-        Me.ToolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(56, 24)
-        Me.ToolStripButton3.Text = "删除"
-        Me.ToolStripButton3.ToolTipText = "删除"
-        '
         'GroupBox4
         '
         Me.GroupBox4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox4.Controls.Add(Me.CheckBox2)
-        Me.GroupBox4.Controls.Add(Me.NumericUpDown4)
-        Me.GroupBox4.Controls.Add(Me.NumericUpDown3)
-        Me.GroupBox4.Controls.Add(Me.NumericUpDown2)
-        Me.GroupBox4.Controls.Add(Me.NumericUpDown5)
+        Me.GroupBox4.Controls.Add(Me.IsFullScreen)
+        Me.GroupBox4.Controls.Add(Me.WindowLocationY)
+        Me.GroupBox4.Controls.Add(Me.WindowLocationX)
+        Me.GroupBox4.Controls.Add(Me.WindowSizeHeight)
+        Me.GroupBox4.Controls.Add(Me.WindowSizeWidth)
         Me.GroupBox4.Controls.Add(Me.Label12)
         Me.GroupBox4.Controls.Add(Me.Label11)
         Me.GroupBox4.Controls.Add(Me.Label9)
@@ -577,51 +471,51 @@ Partial Class MainForm
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "播放窗口设置"
         '
-        'CheckBox2
+        'IsFullScreen
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(107, 169)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(51, 21)
-        Me.CheckBox2.TabIndex = 2
-        Me.CheckBox2.Text = "启用"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.IsFullScreen.AutoSize = True
+        Me.IsFullScreen.Location = New System.Drawing.Point(107, 169)
+        Me.IsFullScreen.Name = "IsFullScreen"
+        Me.IsFullScreen.Size = New System.Drawing.Size(51, 21)
+        Me.IsFullScreen.TabIndex = 2
+        Me.IsFullScreen.Text = "启用"
+        Me.IsFullScreen.UseVisualStyleBackColor = True
         '
-        'NumericUpDown4
+        'WindowLocationY
         '
-        Me.NumericUpDown4.Location = New System.Drawing.Point(107, 132)
-        Me.NumericUpDown4.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.NumericUpDown4.Name = "NumericUpDown4"
-        Me.NumericUpDown4.Size = New System.Drawing.Size(100, 23)
-        Me.NumericUpDown4.TabIndex = 1
+        Me.WindowLocationY.Location = New System.Drawing.Point(107, 132)
+        Me.WindowLocationY.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.WindowLocationY.Name = "WindowLocationY"
+        Me.WindowLocationY.Size = New System.Drawing.Size(100, 23)
+        Me.WindowLocationY.TabIndex = 1
         '
-        'NumericUpDown3
+        'WindowLocationX
         '
-        Me.NumericUpDown3.Location = New System.Drawing.Point(107, 99)
-        Me.NumericUpDown3.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.NumericUpDown3.Name = "NumericUpDown3"
-        Me.NumericUpDown3.Size = New System.Drawing.Size(100, 23)
-        Me.NumericUpDown3.TabIndex = 1
+        Me.WindowLocationX.Location = New System.Drawing.Point(107, 99)
+        Me.WindowLocationX.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.WindowLocationX.Name = "WindowLocationX"
+        Me.WindowLocationX.Size = New System.Drawing.Size(100, 23)
+        Me.WindowLocationX.TabIndex = 1
         '
-        'NumericUpDown2
+        'WindowSizeHeight
         '
-        Me.NumericUpDown2.Location = New System.Drawing.Point(107, 53)
-        Me.NumericUpDown2.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.NumericUpDown2.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.NumericUpDown2.Name = "NumericUpDown2"
-        Me.NumericUpDown2.Size = New System.Drawing.Size(100, 23)
-        Me.NumericUpDown2.TabIndex = 1
-        Me.NumericUpDown2.Value = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.WindowSizeHeight.Location = New System.Drawing.Point(107, 53)
+        Me.WindowSizeHeight.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.WindowSizeHeight.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.WindowSizeHeight.Name = "WindowSizeHeight"
+        Me.WindowSizeHeight.Size = New System.Drawing.Size(100, 23)
+        Me.WindowSizeHeight.TabIndex = 1
+        Me.WindowSizeHeight.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
-        'NumericUpDown5
+        'WindowSizeWidth
         '
-        Me.NumericUpDown5.Location = New System.Drawing.Point(107, 22)
-        Me.NumericUpDown5.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.NumericUpDown5.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.NumericUpDown5.Name = "NumericUpDown5"
-        Me.NumericUpDown5.Size = New System.Drawing.Size(100, 23)
-        Me.NumericUpDown5.TabIndex = 1
-        Me.NumericUpDown5.Value = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.WindowSizeWidth.Location = New System.Drawing.Point(107, 22)
+        Me.WindowSizeWidth.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.WindowSizeWidth.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.WindowSizeWidth.Name = "WindowSizeWidth"
+        Me.WindowSizeWidth.Size = New System.Drawing.Size(100, 23)
+        Me.WindowSizeWidth.TabIndex = 1
+        Me.WindowSizeWidth.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
         'Label12
         '
@@ -689,15 +583,15 @@ Partial Class MainForm
         'GroupBox3
         '
         Me.GroupBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox3.Controls.Add(Me.NumericUpDown1)
+        Me.GroupBox3.Controls.Add(Me.PrintDefaultShowTimestamp)
         Me.GroupBox3.Controls.Add(Me.Label7)
         Me.GroupBox3.Controls.Add(Me.Label8)
-        Me.GroupBox3.Controls.Add(Me.CheckBox1)
-        Me.GroupBox3.Controls.Add(Me.Button1)
-        Me.GroupBox3.Controls.Add(Me.TextBox1)
-        Me.GroupBox3.Controls.Add(Me.Label14)
-        Me.GroupBox3.Controls.Add(Me.Label13)
-        Me.GroupBox3.Controls.Add(Me.Label6)
+        Me.GroupBox3.Controls.Add(Me.PrintMirror)
+        Me.GroupBox3.Controls.Add(Me.SelectPrintFontButton)
+        Me.GroupBox3.Controls.Add(Me.PrintFontText)
+        Me.GroupBox3.Controls.Add(Me.PrintBackColor)
+        Me.GroupBox3.Controls.Add(Me.PrintFontColor)
+        Me.GroupBox3.Controls.Add(Me.PreviewLabel)
         Me.GroupBox3.Controls.Add(Me.Label5)
         Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Controls.Add(Me.Label3)
@@ -711,18 +605,18 @@ Partial Class MainForm
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "播放效果设置"
         '
-        'NumericUpDown1
+        'PrintDefaultShowTimestamp
         '
-        Me.NumericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.NumericUpDown1.DecimalPlaces = 2
-        Me.NumericUpDown1.Location = New System.Drawing.Point(107, 143)
-        Me.NumericUpDown1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {5999, 0, 0, 131072})
-        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, 65536})
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(100, 23)
-        Me.NumericUpDown1.TabIndex = 5
-        Me.NumericUpDown1.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.PrintDefaultShowTimestamp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PrintDefaultShowTimestamp.DecimalPlaces = 2
+        Me.PrintDefaultShowTimestamp.Location = New System.Drawing.Point(107, 143)
+        Me.PrintDefaultShowTimestamp.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.PrintDefaultShowTimestamp.Maximum = New Decimal(New Integer() {5999, 0, 0, 131072})
+        Me.PrintDefaultShowTimestamp.Minimum = New Decimal(New Integer() {1, 0, 0, 65536})
+        Me.PrintDefaultShowTimestamp.Name = "PrintDefaultShowTimestamp"
+        Me.PrintDefaultShowTimestamp.Size = New System.Drawing.Size(100, 23)
+        Me.PrintDefaultShowTimestamp.TabIndex = 5
+        Me.PrintDefaultShowTimestamp.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Label7
         '
@@ -742,65 +636,65 @@ Partial Class MainForm
         Me.Label8.TabIndex = 6
         Me.Label8.Text = "s"
         '
-        'CheckBox1
+        'PrintMirror
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(107, 182)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(51, 21)
-        Me.CheckBox1.TabIndex = 3
-        Me.CheckBox1.Text = "启用"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.PrintMirror.AutoSize = True
+        Me.PrintMirror.Location = New System.Drawing.Point(107, 182)
+        Me.PrintMirror.Name = "PrintMirror"
+        Me.PrintMirror.Size = New System.Drawing.Size(51, 21)
+        Me.PrintMirror.TabIndex = 3
+        Me.PrintMirror.Text = "启用"
+        Me.PrintMirror.UseVisualStyleBackColor = True
         '
-        'Button1
+        'SelectPrintFontButton
         '
-        Me.Button1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Button1.Location = New System.Drawing.Point(213, 27)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 25)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "选择 ..."
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.SelectPrintFontButton.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.SelectPrintFontButton.Location = New System.Drawing.Point(213, 27)
+        Me.SelectPrintFontButton.Name = "SelectPrintFontButton"
+        Me.SelectPrintFontButton.Size = New System.Drawing.Size(75, 25)
+        Me.SelectPrintFontButton.TabIndex = 2
+        Me.SelectPrintFontButton.Text = "选择 ..."
+        Me.SelectPrintFontButton.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'PrintFontText
         '
-        Me.TextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(56, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(60, Byte), Integer))
-        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox1.ForeColor = System.Drawing.Color.White
-        Me.TextBox1.Location = New System.Drawing.Point(107, 29)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(100, 23)
-        Me.TextBox1.TabIndex = 1
+        Me.PrintFontText.BackColor = System.Drawing.Color.FromArgb(CType(CType(56, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(60, Byte), Integer))
+        Me.PrintFontText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PrintFontText.ForeColor = System.Drawing.Color.White
+        Me.PrintFontText.Location = New System.Drawing.Point(107, 29)
+        Me.PrintFontText.Name = "PrintFontText"
+        Me.PrintFontText.ReadOnly = True
+        Me.PrintFontText.Size = New System.Drawing.Size(100, 23)
+        Me.PrintFontText.TabIndex = 1
         '
-        'Label14
+        'PrintBackColor
         '
-        Me.Label14.BackColor = System.Drawing.Color.FromArgb(CType(CType(56, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(60, Byte), Integer))
-        Me.Label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label14.Location = New System.Drawing.Point(107, 104)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(100, 23)
-        Me.Label14.TabIndex = 0
-        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.PrintBackColor.BackColor = System.Drawing.Color.FromArgb(CType(CType(56, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(60, Byte), Integer))
+        Me.PrintBackColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PrintBackColor.Location = New System.Drawing.Point(107, 104)
+        Me.PrintBackColor.Name = "PrintBackColor"
+        Me.PrintBackColor.Size = New System.Drawing.Size(100, 23)
+        Me.PrintBackColor.TabIndex = 0
+        Me.PrintBackColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label13
+        'PrintFontColor
         '
-        Me.Label13.BackColor = System.Drawing.Color.FromArgb(CType(CType(56, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(60, Byte), Integer))
-        Me.Label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label13.Location = New System.Drawing.Point(107, 66)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(100, 23)
-        Me.Label13.TabIndex = 0
-        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.PrintFontColor.BackColor = System.Drawing.Color.FromArgb(CType(CType(56, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(60, Byte), Integer))
+        Me.PrintFontColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PrintFontColor.Location = New System.Drawing.Point(107, 66)
+        Me.PrintFontColor.Name = "PrintFontColor"
+        Me.PrintFontColor.Size = New System.Drawing.Size(100, 23)
+        Me.PrintFontColor.TabIndex = 0
+        Me.PrintFontColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label6
+        'PreviewLabel
         '
-        Me.Label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label6.Location = New System.Drawing.Point(107, 221)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(131, 47)
-        Me.Label6.TabIndex = 0
-        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.PreviewLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PreviewLabel.Location = New System.Drawing.Point(107, 221)
+        Me.PreviewLabel.Name = "PreviewLabel"
+        Me.PreviewLabel.Size = New System.Drawing.Size(131, 47)
+        Me.PreviewLabel.TabIndex = 0
+        Me.PreviewLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label5
         '
@@ -852,7 +746,7 @@ Partial Class MainForm
         Me.GroupBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox2.Controls.Add(Me.CheckBoxDataGridView2)
+        Me.GroupBox2.Controls.Add(Me.ParagraphList)
         Me.GroupBox2.Controls.Add(Me.ToolStrip2)
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
         Me.GroupBox2.Location = New System.Drawing.Point(3, 6)
@@ -862,12 +756,12 @@ Partial Class MainForm
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "素材内容"
         '
-        'CheckBoxDataGridView2
+        'ParagraphList
         '
-        Me.CheckBoxDataGridView2.AllowUserToAddRows = False
-        Me.CheckBoxDataGridView2.AllowUserToDeleteRows = False
-        Me.CheckBoxDataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer))
-        Me.CheckBoxDataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.ParagraphList.AllowUserToAddRows = False
+        Me.ParagraphList.AllowUserToDeleteRows = False
+        Me.ParagraphList.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer))
+        Me.ParagraphList.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle3.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -875,13 +769,13 @@ Partial Class MainForm
         DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.CheckBoxDataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
-        Me.CheckBoxDataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.CheckBoxDataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewCheckBoxColumn1, Me.Column2, Me.Column3})
-        Me.CheckBoxDataGridView2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CheckBoxDataGridView2.Location = New System.Drawing.Point(3, 46)
-        Me.CheckBoxDataGridView2.Name = "CheckBoxDataGridView2"
-        Me.CheckBoxDataGridView2.ReadOnly = True
+        Me.ParagraphList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.ParagraphList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ParagraphList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewCheckBoxColumn1, Me.Column2, Me.Column3})
+        Me.ParagraphList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ParagraphList.Location = New System.Drawing.Point(3, 46)
+        Me.ParagraphList.Name = "ParagraphList"
+        Me.ParagraphList.ReadOnly = True
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle5.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -889,10 +783,10 @@ Partial Class MainForm
         DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.CheckBoxDataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
-        Me.CheckBoxDataGridView2.RowTemplate.Height = 23
-        Me.CheckBoxDataGridView2.Size = New System.Drawing.Size(623, 491)
-        Me.CheckBoxDataGridView2.TabIndex = 1
+        Me.ParagraphList.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
+        Me.ParagraphList.RowTemplate.Height = 23
+        Me.ParagraphList.Size = New System.Drawing.Size(623, 491)
+        Me.ParagraphList.TabIndex = 1
         '
         'DataGridViewCheckBoxColumn1
         '
@@ -926,49 +820,166 @@ Partial Class MainForm
         '
         Me.ToolStrip2.BackColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(71, Byte), Integer))
         Me.ToolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2})
+        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InsertParagraphButton, Me.DeleteParagraphButton})
         Me.ToolStrip2.Location = New System.Drawing.Point(3, 19)
         Me.ToolStrip2.Name = "ToolStrip2"
         Me.ToolStrip2.Size = New System.Drawing.Size(623, 27)
         Me.ToolStrip2.TabIndex = 0
         Me.ToolStrip2.Text = "ToolStrip2"
         '
-        'ToolStripButton1
-        '
-        Me.ToolStripButton1.Image = Global.YESTeleprompter.My.Resources.Resources.insertUp_20px
-        Me.ToolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(56, 24)
-        Me.ToolStripButton1.Text = "插入"
-        Me.ToolStripButton1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
-        Me.ToolStripButton1.ToolTipText = "插入"
-        '
-        'ToolStripButton2
-        '
-        Me.ToolStripButton2.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
-        Me.ToolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(56, 24)
-        Me.ToolStripButton2.Text = "删除"
-        Me.ToolStripButton2.ToolTipText = "删除"
-        '
         'StatusStrip1
         '
         Me.StatusStrip1.BackColor = System.Drawing.SystemColors.Control
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OperationInfo})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 659)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(1264, 22)
         Me.StatusStrip1.TabIndex = 2
         Me.StatusStrip1.Text = "StatusStrip1"
         '
-        'ToolStripStatusLabel1
+        'OperationInfo
         '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(68, 17)
-        Me.ToolStripStatusLabel1.Text = "无操作信息"
+        Me.OperationInfo.Name = "OperationInfo"
+        Me.OperationInfo.Size = New System.Drawing.Size(68, 17)
+        Me.OperationInfo.Text = "无操作信息"
+        '
+        'DeleteProgramButton
+        '
+        Me.DeleteProgramButton.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
+        Me.DeleteProgramButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.DeleteProgramButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.DeleteProgramButton.Name = "DeleteProgramButton"
+        Me.DeleteProgramButton.Size = New System.Drawing.Size(56, 24)
+        Me.DeleteProgramButton.Text = "删除"
+        Me.DeleteProgramButton.ToolTipText = "删除"
+        '
+        'InsertParagraphButton
+        '
+        Me.InsertParagraphButton.Image = Global.YESTeleprompter.My.Resources.Resources.insertUp_20px
+        Me.InsertParagraphButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.InsertParagraphButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.InsertParagraphButton.Name = "InsertParagraphButton"
+        Me.InsertParagraphButton.Size = New System.Drawing.Size(56, 24)
+        Me.InsertParagraphButton.Text = "插入"
+        Me.InsertParagraphButton.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
+        Me.InsertParagraphButton.ToolTipText = "插入"
+        '
+        'DeleteParagraphButton
+        '
+        Me.DeleteParagraphButton.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
+        Me.DeleteParagraphButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.DeleteParagraphButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.DeleteParagraphButton.Name = "DeleteParagraphButton"
+        Me.DeleteParagraphButton.Size = New System.Drawing.Size(56, 24)
+        Me.DeleteParagraphButton.Text = "删除"
+        Me.DeleteParagraphButton.ToolTipText = "删除"
+        '
+        'HotkeysButton
+        '
+        Me.HotkeysButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.HotkeysButton.Image = Global.YESTeleprompter.My.Resources.Resources.hotkeys_32px
+        Me.HotkeysButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.HotkeysButton.Name = "HotkeysButton"
+        Me.HotkeysButton.SubItemsExpandWidth = 14
+        Me.HotkeysButton.Text = "快捷键设置"
+        '
+        'TranscribeButton
+        '
+        Me.TranscribeButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.TranscribeButton.Image = Global.YESTeleprompter.My.Resources.Resources.transcribe_32px
+        Me.TranscribeButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.TranscribeButton.Name = "TranscribeButton"
+        Me.TranscribeButton.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ClearTranscribeButton})
+        Me.TranscribeButton.SubItemsExpandWidth = 14
+        Me.TranscribeButton.Text = "录制播放演示"
+        '
+        'ClearTranscribeButton
+        '
+        Me.ClearTranscribeButton.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
+        Me.ClearTranscribeButton.Name = "ClearTranscribeButton"
+        Me.ClearTranscribeButton.Text = "清除当前素材录制信息"
+        '
+        'PlayButton
+        '
+        Me.PlayButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.PlayButton.Image = Global.YESTeleprompter.My.Resources.Resources.play_32px
+        Me.PlayButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.PlayButton.Name = "PlayButton"
+        Me.PlayButton.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ManualPlayButton})
+        Me.PlayButton.SubItemsExpandWidth = 14
+        Me.PlayButton.Text = "播放"
+        '
+        'ManualPlayButton
+        '
+        Me.ManualPlayButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ManualPlayButton.Image = Global.YESTeleprompter.My.Resources.Resources.manualPlay_20px
+        Me.ManualPlayButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ManualPlayButton.Name = "ManualPlayButton"
+        Me.ManualPlayButton.SubItemsExpandWidth = 14
+        Me.ManualPlayButton.Text = "手动控制播放"
+        '
+        'PauseButton
+        '
+        Me.PauseButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.PauseButton.Image = Global.YESTeleprompter.My.Resources.Resources.pause_32px
+        Me.PauseButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.PauseButton.Name = "PauseButton"
+        Me.PauseButton.SubItemsExpandWidth = 14
+        Me.PauseButton.Text = "暂停"
+        '
+        'StopButton
+        '
+        Me.StopButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.StopButton.Image = Global.YESTeleprompter.My.Resources.Resources.stop_32px
+        Me.StopButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.StopButton.Name = "StopButton"
+        Me.StopButton.SubItemsExpandWidth = 14
+        Me.StopButton.Text = "停止"
+        '
+        'PageUpButton
+        '
+        Me.PageUpButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.PageUpButton.Image = Global.YESTeleprompter.My.Resources.Resources.PageUP_32px
+        Me.PageUpButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.PageUpButton.Name = "PageUpButton"
+        Me.PageUpButton.SubItemsExpandWidth = 14
+        Me.PageUpButton.Text = "上一行"
+        '
+        'PageDnButton
+        '
+        Me.PageDnButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.PageDnButton.Image = Global.YESTeleprompter.My.Resources.Resources.PageDn_32px
+        Me.PageDnButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.PageDnButton.Name = "PageDnButton"
+        Me.PageDnButton.SubItemsExpandWidth = 14
+        Me.PageDnButton.Text = "下一行"
+        '
+        'NewProgramButton
+        '
+        Me.NewProgramButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.NewProgramButton.Image = Global.YESTeleprompter.My.Resources.Resources.new_32px
+        Me.NewProgramButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.NewProgramButton.Name = "NewProgramButton"
+        Me.NewProgramButton.SubItemsExpandWidth = 14
+        Me.NewProgramButton.Text = "新建素材"
+        '
+        'ImportProgramButton
+        '
+        Me.ImportProgramButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ImportProgramButton.Image = Global.YESTeleprompter.My.Resources.Resources.import_32px
+        Me.ImportProgramButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ImportProgramButton.Name = "ImportProgramButton"
+        Me.ImportProgramButton.SubItemsExpandWidth = 14
+        Me.ImportProgramButton.Text = "导入素材"
+        '
+        'ExportProgramButton
+        '
+        Me.ExportProgramButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ExportProgramButton.Image = Global.YESTeleprompter.My.Resources.Resources.export_32px
+        Me.ExportProgramButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ExportProgramButton.Name = "ExportProgramButton"
+        Me.ExportProgramButton.SubItemsExpandWidth = 14
+        Me.ExportProgramButton.Text = "导出当前素材"
         '
         'MainForm
         '
@@ -994,21 +1005,21 @@ Partial Class MainForm
         Me.SplitContainer1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.CheckBoxDataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ProgramList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
-        CType(Me.NumericUpDown4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WindowLocationY, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WindowLocationX, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WindowSizeHeight, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WindowSizeWidth, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PrintDefaultShowTimestamp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.CheckBoxDataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ParagraphList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip2.ResumeLayout(False)
         Me.ToolStrip2.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
@@ -1021,10 +1032,10 @@ Partial Class MainForm
     Friend WithEvents RibbonControl1 As DevComponents.DotNetBar.RibbonControl
     Friend WithEvents RibbonPanel1 As DevComponents.DotNetBar.RibbonPanel
     Friend WithEvents RibbonBar2 As DevComponents.DotNetBar.RibbonBar
-    Friend WithEvents ButtonItem2 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem3 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents PlayButton As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents StopButton As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents RibbonBar1 As DevComponents.DotNetBar.RibbonBar
-    Friend WithEvents ButtonItem1 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ImportProgramButton As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents RibbonTabItem1 As DevComponents.DotNetBar.RibbonTabItem
     Friend WithEvents QatCustomizeItem1 As DevComponents.DotNetBar.QatCustomizeItem
     Friend WithEvents StyleManager1 As DevComponents.DotNetBar.StyleManager
@@ -1032,47 +1043,47 @@ Partial Class MainForm
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents ToolStrip1 As ToolStrip
-    Friend WithEvents ToolStripButton3 As ToolStripButton
+    Friend WithEvents DeleteProgramButton As ToolStripButton
     Friend WithEvents ToolStrip2 As ToolStrip
-    Friend WithEvents ToolStripButton1 As ToolStripButton
-    Friend WithEvents ToolStripButton2 As ToolStripButton
-    Friend WithEvents CheckBoxDataGridView1 As Wangk.Resource.CheckBoxDataGridView
+    Friend WithEvents InsertParagraphButton As ToolStripButton
+    Friend WithEvents DeleteParagraphButton As ToolStripButton
+    Friend WithEvents ProgramList As Wangk.Resource.CheckBoxDataGridView
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewCheckBoxColumn2 As DataGridViewCheckBoxColumn
-    Friend WithEvents CheckBoxDataGridView2 As Wangk.Resource.CheckBoxDataGridView
+    Friend WithEvents ParagraphList As Wangk.Resource.CheckBoxDataGridView
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents StatusStrip1 As StatusStrip
-    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
-    Friend WithEvents ButtonItem5 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem6 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents Button1 As Button
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents OperationInfo As ToolStripStatusLabel
+    Friend WithEvents PageUpButton As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents PageDnButton As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents SelectPrintFontButton As Button
+    Friend WithEvents PrintFontText As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents Label6 As Label
+    Friend WithEvents PrintMirror As CheckBox
+    Friend WithEvents PreviewLabel As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents RibbonBar4 As DevComponents.DotNetBar.RibbonBar
-    Friend WithEvents ButtonItem7 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents HotkeysButton As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents RibbonBar3 As DevComponents.DotNetBar.RibbonBar
-    Friend WithEvents ButtonItem8 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents Label14 As Label
-    Friend WithEvents Label13 As Label
-    Friend WithEvents ButtonItem9 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem10 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents SwitchButtonItem1 As DevComponents.DotNetBar.SwitchButtonItem
+    Friend WithEvents TranscribeButton As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents PrintBackColor As Label
+    Friend WithEvents PrintFontColor As Label
+    Friend WithEvents ClearTranscribeButton As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ExportProgramButton As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents HidePlayWindowButton As DevComponents.DotNetBar.SwitchButtonItem
     Friend WithEvents ItemContainer1 As DevComponents.DotNetBar.ItemContainer
-    Friend WithEvents NumericUpDown1 As NumericUpDown
+    Friend WithEvents PrintDefaultShowTimestamp As NumericUpDown
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents GroupBox4 As GroupBox
-    Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents NumericUpDown4 As NumericUpDown
-    Friend WithEvents NumericUpDown3 As NumericUpDown
-    Friend WithEvents NumericUpDown2 As NumericUpDown
-    Friend WithEvents NumericUpDown5 As NumericUpDown
+    Friend WithEvents IsFullScreen As CheckBox
+    Friend WithEvents WindowLocationY As NumericUpDown
+    Friend WithEvents WindowLocationX As NumericUpDown
+    Friend WithEvents WindowSizeHeight As NumericUpDown
+    Friend WithEvents WindowSizeWidth As NumericUpDown
     Friend WithEvents Label12 As Label
     Friend WithEvents Label11 As Label
     Friend WithEvents Label9 As Label
@@ -1080,9 +1091,10 @@ Partial Class MainForm
     Friend WithEvents Label15 As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents Label17 As Label
-    Friend WithEvents ButtonItem4 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ButtonItem11 As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents NewProgramButton As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents PauseButton As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents ManualPlayButton As DevComponents.DotNetBar.ButtonItem
 End Class
