@@ -163,19 +163,19 @@ Public Class ProgramPlayHelper
     End Sub
 #End Region
 
-#Region "更新修改"
-    ''' <summary>
-    ''' 更新修改
-    ''' </summary>
-    Public Shared Sub UpdateChange()
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
-            Exit Sub
-        End If
+    '#Region "更新修改"
+    '    ''' <summary>
+    '    ''' 更新修改
+    '    ''' </summary>
+    '    Public Shared Sub UpdateChange()
+    '        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+    '            Exit Sub
+    '        End If
 
-        UIPlayForm.UpdateSizeAndLocation()
+    '        UIPlayForm.UpdateSizeAndLocation()
 
-    End Sub
-#End Region
+    '    End Sub
+    '#End Region
 
 #Region "更新画面"
     ''' <summary>
@@ -193,6 +193,8 @@ Public Class ProgramPlayHelper
             Exit Sub
         End If
 
+
+
         '上一次更新没完成则不处理
         If Not IsPaintEnd Then
             Exit Sub
@@ -202,24 +204,35 @@ Public Class ProgramPlayHelper
         '计算时间间隔
         Dim runTime = NowPlayParagraphRunTime + (Now - NowPlayParagraphStartTime)
 
-        Dim tmpShowTimestamp = If(AppSettingHelper.Settings.ActiveProgram.ParagraphItems(NowPlayParagraphID).HaveTimestamp,
-            AppSettingHelper.Settings.ActiveProgram.ParagraphItems(NowPlayParagraphID).ShowTimestamp,
-            AppSettingHelper.Settings.ActiveProgram.PrintDefaultShowTimestamp)
-        If runTime >= tmpShowTimestamp Then
+        UIMainForm.Info($"播放 第 {NowPlayParagraphID + 1} 段: {runTime:mm\:ss\.ff}")
 
-            If NowPlayParagraphID = AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count - 1 Then
-                StopPlay()
-                Exit Sub
+        Try
+
+            Dim tmpShowTimestamp = If(AppSettingHelper.Settings.ActiveProgram.ParagraphItems(NowPlayParagraphID).HaveTimestamp,
+                        AppSettingHelper.Settings.ActiveProgram.ParagraphItems(NowPlayParagraphID).ShowTimestamp,
+                        AppSettingHelper.Settings.ActiveProgram.PrintDefaultShowTimestamp)
+            If runTime >= tmpShowTimestamp Then
+
+                If NowPlayParagraphID = AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count - 1 Then
+                    'StopPlay()
+                    'UIMainForm.Info($"播放完毕")
+                    Throw New Exception("播放完毕")
+                End If
+
+                '切换到下一段
+                NowPlayParagraphID += 1
+                NowPlayParagraphRunTime = Now - Now
+                NowPlayParagraphStartTime = Now
+                '更新画面
+                UIPlayForm.PaintParagraph()
+
             End If
 
-            '切换到下一段
-            NowPlayParagraphID += 1
-            NowPlayParagraphRunTime = Now - Now
-            NowPlayParagraphStartTime = Now
-            '更新画面
-            UIPlayForm.PaintParagraph()
+        Catch ex As Exception
 
-        End If
+            StopPlay()
+            UIMainForm.Info($"播放完毕")
+        End Try
 
         IsPaintEnd = True
 
@@ -236,6 +249,11 @@ Public Class ProgramPlayHelper
         End If
 
         If NowPlayParagraphID - 1 >= 0 Then
+
+            If NowPlayParagraphID + 1 > AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count Then
+                NowPlayParagraphID = AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count - 1
+            End If
+
             '切换到下一段
             NowPlayParagraphID -= 1
             NowPlayParagraphRunTime = Now - Now
@@ -261,9 +279,14 @@ Public Class ProgramPlayHelper
             NowPlayParagraphID += 1
             NowPlayParagraphRunTime = Now - Now
             NowPlayParagraphStartTime = Now
-            '更新画面
-            UIPlayForm.PaintParagraph()
+
+        Else
+            NowPlayParagraphID = AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count - 1
+
         End If
+
+        '更新画面
+        UIPlayForm.PaintParagraph()
 
     End Sub
 #End Region

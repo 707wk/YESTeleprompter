@@ -28,6 +28,7 @@ Partial Class HotKeysSettingForm
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.PlayComboBox = New System.Windows.Forms.ComboBox()
         Me.PlayLabel = New System.Windows.Forms.Label()
         Me.HideComboBox = New System.Windows.Forms.ComboBox()
@@ -37,6 +38,9 @@ Partial Class HotKeysSettingForm
         Me.PauseLabel = New System.Windows.Forms.Label()
         Me.PauseComboBox = New System.Windows.Forms.ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -46,7 +50,7 @@ Partial Class HotKeysSettingForm
         Me.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.CancelButton.Image = Global.YESTeleprompter.My.Resources.Resources.no_16px
         Me.CancelButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CancelButton.Location = New System.Drawing.Point(269, 179)
+        Me.CancelButton.Location = New System.Drawing.Point(283, 237)
         Me.CancelButton.Name = "CancelButton"
         Me.CancelButton.Size = New System.Drawing.Size(96, 25)
         Me.CancelButton.TabIndex = 42
@@ -59,7 +63,7 @@ Partial Class HotKeysSettingForm
         Me.AddOrSaveButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.AddOrSaveButton.Image = Global.YESTeleprompter.My.Resources.Resources.yes_16px
         Me.AddOrSaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.AddOrSaveButton.Location = New System.Drawing.Point(167, 179)
+        Me.AddOrSaveButton.Location = New System.Drawing.Point(181, 237)
         Me.AddOrSaveButton.Name = "AddOrSaveButton"
         Me.AddOrSaveButton.Size = New System.Drawing.Size(96, 25)
         Me.AddOrSaveButton.TabIndex = 41
@@ -71,7 +75,7 @@ Partial Class HotKeysSettingForm
         '
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(3, 9)
+        Me.Label1.Location = New System.Drawing.Point(3, 8)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(32, 17)
         Me.Label1.TabIndex = 43
@@ -81,7 +85,7 @@ Partial Class HotKeysSettingForm
         '
         Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 81)
+        Me.Label3.Location = New System.Drawing.Point(3, 76)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(32, 17)
         Me.Label3.TabIndex = 43
@@ -91,7 +95,7 @@ Partial Class HotKeysSettingForm
         '
         Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(3, 119)
+        Me.Label4.Location = New System.Drawing.Point(3, 110)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(109, 17)
         Me.Label4.TabIndex = 43
@@ -103,6 +107,7 @@ Partial Class HotKeysSettingForm
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32.0!))
+        Me.TableLayoutPanel1.Controls.Add(Me.Label6, 1, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.PlayComboBox, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.PlayLabel, 2, 0)
@@ -115,21 +120,36 @@ Partial Class HotKeysSettingForm
         Me.TableLayoutPanel1.Controls.Add(Me.PauseLabel, 2, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.PauseComboBox, 1, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Label8, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.Label2, 0, 4)
+        Me.TableLayoutPanel1.Controls.Add(Me.Label5, 0, 5)
+        Me.TableLayoutPanel1.Controls.Add(Me.Label7, 1, 5)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(51, 12)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 4
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(287, 147)
+        Me.TableLayoutPanel1.RowCount = 6
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(287, 207)
         Me.TableLayoutPanel1.TabIndex = 45
+        '
+        'Label6
+        '
+        Me.Label6.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(118, 144)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(54, 17)
+        Me.Label6.TabIndex = 46
+        Me.Label6.Text = "PageUp"
         '
         'PlayComboBox
         '
         Me.PlayComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.PlayComboBox.FormattingEnabled = True
-        Me.PlayComboBox.Location = New System.Drawing.Point(118, 8)
+        Me.PlayComboBox.Location = New System.Drawing.Point(118, 7)
         Me.PlayComboBox.Name = "PlayComboBox"
         Me.PlayComboBox.Size = New System.Drawing.Size(121, 25)
         Me.PlayComboBox.TabIndex = 44
@@ -138,7 +158,7 @@ Partial Class HotKeysSettingForm
         '
         Me.PlayLabel.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.PlayLabel.Image = Global.YESTeleprompter.My.Resources.Resources.yes_16px
-        Me.PlayLabel.Location = New System.Drawing.Point(258, 6)
+        Me.PlayLabel.Location = New System.Drawing.Point(258, 5)
         Me.PlayLabel.Name = "PlayLabel"
         Me.PlayLabel.Size = New System.Drawing.Size(24, 24)
         Me.PlayLabel.TabIndex = 45
@@ -147,7 +167,7 @@ Partial Class HotKeysSettingForm
         '
         Me.HideComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.HideComboBox.FormattingEnabled = True
-        Me.HideComboBox.Location = New System.Drawing.Point(118, 115)
+        Me.HideComboBox.Location = New System.Drawing.Point(118, 106)
         Me.HideComboBox.Name = "HideComboBox"
         Me.HideComboBox.Size = New System.Drawing.Size(121, 25)
         Me.HideComboBox.TabIndex = 44
@@ -156,7 +176,7 @@ Partial Class HotKeysSettingForm
         '
         Me.StopComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.StopComboBox.FormattingEnabled = True
-        Me.StopComboBox.Location = New System.Drawing.Point(118, 77)
+        Me.StopComboBox.Location = New System.Drawing.Point(118, 75)
         Me.StopComboBox.Name = "StopComboBox"
         Me.StopComboBox.Size = New System.Drawing.Size(121, 25)
         Me.StopComboBox.TabIndex = 44
@@ -165,7 +185,7 @@ Partial Class HotKeysSettingForm
         '
         Me.HideLabel.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.HideLabel.Image = Global.YESTeleprompter.My.Resources.Resources.yes_16px
-        Me.HideLabel.Location = New System.Drawing.Point(258, 115)
+        Me.HideLabel.Location = New System.Drawing.Point(258, 107)
         Me.HideLabel.Name = "HideLabel"
         Me.HideLabel.Size = New System.Drawing.Size(24, 24)
         Me.HideLabel.TabIndex = 45
@@ -174,7 +194,7 @@ Partial Class HotKeysSettingForm
         '
         Me.StopLabel.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.StopLabel.Image = Global.YESTeleprompter.My.Resources.Resources.yes_16px
-        Me.StopLabel.Location = New System.Drawing.Point(258, 78)
+        Me.StopLabel.Location = New System.Drawing.Point(258, 73)
         Me.StopLabel.Name = "StopLabel"
         Me.StopLabel.Size = New System.Drawing.Size(24, 24)
         Me.StopLabel.TabIndex = 45
@@ -183,7 +203,7 @@ Partial Class HotKeysSettingForm
         '
         Me.PauseLabel.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.PauseLabel.Image = Global.YESTeleprompter.My.Resources.Resources.yes_16px
-        Me.PauseLabel.Location = New System.Drawing.Point(258, 42)
+        Me.PauseLabel.Location = New System.Drawing.Point(258, 39)
         Me.PauseLabel.Name = "PauseLabel"
         Me.PauseLabel.Size = New System.Drawing.Size(24, 24)
         Me.PauseLabel.TabIndex = 45
@@ -201,17 +221,47 @@ Partial Class HotKeysSettingForm
         '
         Me.Label8.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(3, 45)
+        Me.Label8.Location = New System.Drawing.Point(3, 42)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(32, 17)
         Me.Label8.TabIndex = 43
         Me.Label8.Text = "暂停"
         '
+        'Label2
+        '
+        Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(3, 144)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(44, 17)
+        Me.Label2.TabIndex = 43
+        Me.Label2.Text = "上一段"
+        '
+        'Label5
+        '
+        Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(3, 180)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(44, 17)
+        Me.Label5.TabIndex = 43
+        Me.Label5.Text = "下一段"
+        '
+        'Label7
+        '
+        Me.Label7.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(118, 180)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(70, 17)
+        Me.Label7.TabIndex = 46
+        Me.Label7.Text = "PageDown"
+        '
         'HotKeysSettingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(377, 216)
+        Me.ClientSize = New System.Drawing.Size(391, 274)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.CancelButton)
         Me.Controls.Add(Me.AddOrSaveButton)
@@ -245,4 +295,8 @@ Partial Class HotKeysSettingForm
     Friend WithEvents PauseLabel As Label
     Friend WithEvents PauseComboBox As ComboBox
     Friend WithEvents Label8 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label7 As Label
 End Class

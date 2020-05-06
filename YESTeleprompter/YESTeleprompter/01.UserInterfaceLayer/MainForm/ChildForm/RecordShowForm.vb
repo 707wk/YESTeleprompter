@@ -52,6 +52,8 @@ Public Class RecordShowForm
 
         UIMainForm.ControlEnabledToRecord()
 
+        ToolStripLabel3.Text = $"第 {ProgramPlayHelper.NowPlayParagraphID + 1 } 段"
+
     End Sub
 
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles PageDnButton.Click
@@ -72,6 +74,8 @@ Public Class RecordShowForm
 
         NowPlayParagraphRunTime -= NowPlayParagraphRunTime
         NowPlayParagraphStartTime = Now
+
+        ToolStripLabel3.Text = $"第 {ProgramPlayHelper.NowPlayParagraphID + 1 } 段"
 
     End Sub
 

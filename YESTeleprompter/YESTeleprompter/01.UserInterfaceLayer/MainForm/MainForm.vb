@@ -145,7 +145,7 @@ Public Class MainForm
         '存储设置
         AppSettingHelper.Settings.WindowSize = Me.Size
         AppSettingHelper.Settings.WindowLocation = Me.Location
-        AppSettingHelper.SaveToLocaltion()
+        'AppSettingHelper.SaveToLocaltion()
 
         ChildPlayWindow.NeedClose = True
 
@@ -335,6 +335,7 @@ Public Class MainForm
         IsFullScreen.Checked = AppSettingHelper.Settings.ActiveProgram.IsFullScreen
 
         ChildPlayWindow.UpdateSizeAndLocation()
+        ChildPlayWindow.PreviewStr = Nothing
         ChildPlayWindow.Refresh()
 
     End Sub
@@ -555,6 +556,14 @@ Public Class MainForm
         AppSettingHelper.Settings.ActiveProgram.ParagraphItems.RemoveAt(e.RowIndex)
 
     End Sub
+
+    Private Sub ParagraphList_RowEnter(sender As Object, e As DataGridViewCellEventArgs) Handles ParagraphList.RowEnter
+        If AppSettingHelper.Settings.ActiveProgram IsNot Nothing Then
+            ChildPlayWindow.PreviewStr = AppSettingHelper.Settings.ActiveProgram.ParagraphItems(e.RowIndex).value
+            ChildPlayWindow.Refresh()
+        End If
+    End Sub
+
 #End Region
 
 #End Region
@@ -852,7 +861,8 @@ Public Class MainForm
 
     Private Sub TranscribeButton_Click(Optional sender As Object = Nothing,
                                        Optional e As EventArgs = Nothing) Handles TranscribeButton.Click
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.Settings.ActiveProgram Is Nothing OrElse
+            AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count < 1 Then
             Exit Sub
         End If
 
@@ -869,9 +879,12 @@ Public Class MainForm
 
     Private Sub PlayButton_Click(Optional sender As Object = Nothing,
                                  Optional e As EventArgs = Nothing) Handles PlayButton.Click
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.Settings.ActiveProgram Is Nothing OrElse
+            AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count < 1 Then
             Exit Sub
         End If
+
+        'Throw New Exception("测试异常")
 
         ProgramPlayHelper.Play()
 
@@ -880,7 +893,8 @@ Public Class MainForm
     End Sub
 
     Private Sub ManualPlayButton_Click(sender As Object, e As EventArgs) Handles ManualPlayButton.Click
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.Settings.ActiveProgram Is Nothing OrElse
+            AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count < 1 Then
             Exit Sub
         End If
 
@@ -1053,5 +1067,20 @@ Public Class MainForm
     End Sub
 
 #End Region
+
+    Public Delegate Sub InfoCallback(value As String)
+    ''' <summary>
+    ''' 提示信息
+    ''' </summary>
+    Friend Sub Info(value As String)
+        If Me.InvokeRequired Then
+            Me.Invoke(New InfoCallback(AddressOf Info),
+                      value)
+            Exit Sub
+        End If
+
+        InfoLabel.Text = value
+
+    End Sub
 
 End Class

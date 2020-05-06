@@ -34,16 +34,18 @@ Partial Class RecordShowForm
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.ToolStripLabel3 = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStrip1
         '
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PageDnButton, Me.PauseButton, Me.ToolStripSeparator3, Me.ToolStripLabel2, Me.ToolStripSeparator1, Me.ResetButton, Me.ToolStripSeparator2, Me.ToolStripLabel1})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel3, Me.ToolStripSeparator4, Me.PageDnButton, Me.PauseButton, Me.ToolStripSeparator3, Me.ToolStripLabel2, Me.ToolStripSeparator1, Me.ResetButton, Me.ToolStripSeparator2, Me.ToolStripLabel1})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(405, 27)
+        Me.ToolStrip1.Size = New System.Drawing.Size(477, 27)
         Me.ToolStrip1.TabIndex = 5
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -104,11 +106,22 @@ Partial Class RecordShowForm
         'Timer1
         '
         '
+        'ToolStripLabel3
+        '
+        Me.ToolStripLabel3.Name = "ToolStripLabel3"
+        Me.ToolStripLabel3.Size = New System.Drawing.Size(68, 24)
+        Me.ToolStripLabel3.Text = "第 1000 段"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 27)
+        '
         'RecordShowForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(405, 29)
+        Me.ClientSize = New System.Drawing.Size(477, 29)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -138,4 +151,6 @@ Partial Class RecordShowForm
     Friend WithEvents ToolStripLabel2 As ToolStripLabel
     Friend WithEvents Timer1 As Timer
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents ToolStripLabel3 As ToolStripLabel
+    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
 End Class

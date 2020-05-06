@@ -7,6 +7,11 @@ Public Class PlayForm
     ''' </summary>
     Public NeedClose As Boolean
 
+    ''' <summary>
+    ''' 预览字符
+    ''' </summary>
+    Public PreviewStr As String
+
     Public Delegate Sub UpdateSizeAndLocationCallback()
     ''' <summary>
     ''' 更新尺寸和位置
@@ -45,12 +50,32 @@ Public Class PlayForm
             Exit Sub
         End If
 
+        Dim program = AppSettingHelper.Settings.ActiveProgram
+
         If ProgramPlayHelper.RunningState = ProgramPlayHelper.OperationState.NoOperation Then
-            e.Graphics.Clear(Color.Black)
+            If String.IsNullOrWhiteSpace(PreviewStr) Then
+                '清屏
+                e.Graphics.Clear(Color.Black)
+
+            Else
+                '显示预览字符
+                e.Graphics.Clear(program.PrintBackColor)
+                If AppSettingHelper.Settings.ActiveProgram.PrintMirror Then
+                    '平移原点坐标
+                    e.Graphics.TranslateTransform(Me.Width, 0)
+                    '镜像显示
+                    e.Graphics.ScaleTransform(-1, 1)
+                End If
+                e.Graphics.DrawString(PreviewStr,
+                                      AppSettingHelper.Settings.ActiveProgram.PrintFont,
+                                      New SolidBrush(AppSettingHelper.Settings.ActiveProgram.PrintFontColor),
+                                      0,
+                                      0)
+
+            End If
+
             Exit Sub
         End If
-
-        Dim program = AppSettingHelper.Settings.ActiveProgram
 
         e.Graphics.Clear(program.PrintBackColor)
         Dim fontHeight = e.Graphics.MeasureString("测", AppSettingHelper.Settings.ActiveProgram.PrintFont).Height
@@ -62,18 +87,24 @@ Public Class PlayForm
             e.Graphics.ScaleTransform(-1, 1)
         End If
 
-        Dim rowID = 0
-        Do
+        Try
 
-            e.Graphics.DrawString(program.ParagraphItems(ProgramPlayHelper.NowPlayParagraphID + rowID).value,
-                                  AppSettingHelper.Settings.ActiveProgram.PrintFont,
-                                  New SolidBrush(AppSettingHelper.Settings.ActiveProgram.PrintFontColor),
-                                  0,
-                                  rowID * fontHeight)
-            rowID += 1
+            Dim rowID = 0
+            Do
 
-        Loop While (rowID * fontHeight < Me.Height AndAlso
-            (ProgramPlayHelper.NowPlayParagraphID + rowID) < AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count)
+                e.Graphics.DrawString(program.ParagraphItems(ProgramPlayHelper.NowPlayParagraphID + rowID).value,
+                                      AppSettingHelper.Settings.ActiveProgram.PrintFont,
+                                      New SolidBrush(AppSettingHelper.Settings.ActiveProgram.PrintFontColor),
+                                      0,
+                                      rowID * fontHeight)
+                rowID += 1
+
+            Loop While rowID * fontHeight < Me.Height AndAlso
+                (ProgramPlayHelper.NowPlayParagraphID + rowID) < AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count
+
+        Catch ex As Exception
+
+        End Try
 
     End Sub
 

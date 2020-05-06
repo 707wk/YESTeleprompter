@@ -152,6 +152,11 @@ YESTeleprompter
  是否需要关闭
  </summary>
 </member>
+<member name="F:YESTeleprompter.PlayForm.PreviewStr">
+ <summary>
+ 预览字符
+ </summary>
+</member>
 <member name="M:YESTeleprompter.PlayForm.UpdateSizeAndLocation">
  <summary>
  更新尺寸和位置
@@ -280,11 +285,6 @@ YESTeleprompter
 <member name="M:YESTeleprompter.ProgramPlayHelper.Record">
  <summary>
  录制
- </summary>
-</member>
-<member name="M:YESTeleprompter.ProgramPlayHelper.UpdateChange">
- <summary>
- 更新修改
  </summary>
 </member>
 <member name="F:YESTeleprompter.ProgramPlayHelper.IsPaintEnd">
@@ -534,6 +534,11 @@ YESTeleprompter
 <member name="M:YESTeleprompter.MainForm.ControlEnabledToRecord">
  <summary>
  录制时控件状态
+ </summary>
+</member>
+<member name="M:YESTeleprompter.MainForm.Info(System.String)">
+ <summary>
+ 提示信息
  </summary>
 </member>
 <member name="T:YESTeleprompter.ProgramInfo">

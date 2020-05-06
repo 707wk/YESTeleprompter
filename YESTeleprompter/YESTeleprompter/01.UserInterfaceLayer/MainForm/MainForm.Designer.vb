@@ -32,11 +32,23 @@ Partial Class MainForm
         Me.RibbonControl1 = New DevComponents.DotNetBar.RibbonControl()
         Me.RibbonPanel1 = New DevComponents.DotNetBar.RibbonPanel()
         Me.RibbonBar4 = New DevComponents.DotNetBar.RibbonBar()
+        Me.HotkeysButton = New DevComponents.DotNetBar.ButtonItem()
         Me.ItemContainer1 = New DevComponents.DotNetBar.ItemContainer()
         Me.HidePlayWindowButton = New DevComponents.DotNetBar.SwitchButtonItem()
         Me.RibbonBar3 = New DevComponents.DotNetBar.RibbonBar()
+        Me.TranscribeButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.ClearTranscribeButton = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar2 = New DevComponents.DotNetBar.RibbonBar()
+        Me.PlayButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.ManualPlayButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.PauseButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.StopButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.PageUpButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.PageDnButton = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonBar1 = New DevComponents.DotNetBar.RibbonBar()
+        Me.NewProgramButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.ImportProgramButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.ExportProgramButton = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonTabItem1 = New DevComponents.DotNetBar.RibbonTabItem()
         Me.QatCustomizeItem1 = New DevComponents.DotNetBar.QatCustomizeItem()
         Me.StyleManager1 = New DevComponents.DotNetBar.StyleManager(Me.components)
@@ -46,6 +58,7 @@ Partial Class MainForm
         Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.DeleteProgramButton = New System.Windows.Forms.ToolStripButton()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.IsFullScreen = New System.Windows.Forms.CheckBox()
         Me.WindowLocationY = New System.Windows.Forms.NumericUpDown()
@@ -80,23 +93,10 @@ Partial Class MainForm
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.OperationInfo = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.DeleteProgramButton = New System.Windows.Forms.ToolStripButton()
         Me.InsertParagraphButton = New System.Windows.Forms.ToolStripButton()
         Me.DeleteParagraphButton = New System.Windows.Forms.ToolStripButton()
-        Me.HotkeysButton = New DevComponents.DotNetBar.ButtonItem()
-        Me.TranscribeButton = New DevComponents.DotNetBar.ButtonItem()
-        Me.ClearTranscribeButton = New DevComponents.DotNetBar.ButtonItem()
-        Me.PlayButton = New DevComponents.DotNetBar.ButtonItem()
-        Me.ManualPlayButton = New DevComponents.DotNetBar.ButtonItem()
-        Me.PauseButton = New DevComponents.DotNetBar.ButtonItem()
-        Me.StopButton = New DevComponents.DotNetBar.ButtonItem()
-        Me.PageUpButton = New DevComponents.DotNetBar.ButtonItem()
-        Me.PageDnButton = New DevComponents.DotNetBar.ButtonItem()
-        Me.NewProgramButton = New DevComponents.DotNetBar.ButtonItem()
-        Me.ImportProgramButton = New DevComponents.DotNetBar.ButtonItem()
-        Me.ExportProgramButton = New DevComponents.DotNetBar.ButtonItem()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.InfoLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.RibbonControl1.SuspendLayout()
         Me.RibbonPanel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -214,6 +214,15 @@ Partial Class MainForm
         Me.RibbonBar4.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonBar4.TitleVisible = False
         '
+        'HotkeysButton
+        '
+        Me.HotkeysButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.HotkeysButton.Image = Global.YESTeleprompter.My.Resources.Resources.hotkeys_32px
+        Me.HotkeysButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.HotkeysButton.Name = "HotkeysButton"
+        Me.HotkeysButton.SubItemsExpandWidth = 14
+        Me.HotkeysButton.Text = "快捷键设置"
+        '
         'ItemContainer1
         '
         '
@@ -272,6 +281,22 @@ Partial Class MainForm
         Me.RibbonBar3.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonBar3.TitleVisible = False
         '
+        'TranscribeButton
+        '
+        Me.TranscribeButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.TranscribeButton.Image = Global.YESTeleprompter.My.Resources.Resources.transcribe_32px
+        Me.TranscribeButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.TranscribeButton.Name = "TranscribeButton"
+        Me.TranscribeButton.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ClearTranscribeButton})
+        Me.TranscribeButton.SubItemsExpandWidth = 14
+        Me.TranscribeButton.Text = "录制播放演示"
+        '
+        'ClearTranscribeButton
+        '
+        Me.ClearTranscribeButton.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
+        Me.ClearTranscribeButton.Name = "ClearTranscribeButton"
+        Me.ClearTranscribeButton.Text = "清除当前素材录制信息"
+        '
         'RibbonBar2
         '
         Me.RibbonBar2.AutoOverflowEnabled = True
@@ -304,6 +329,61 @@ Partial Class MainForm
         Me.RibbonBar2.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonBar2.TitleVisible = False
         '
+        'PlayButton
+        '
+        Me.PlayButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.PlayButton.Image = Global.YESTeleprompter.My.Resources.Resources.play_32px
+        Me.PlayButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.PlayButton.Name = "PlayButton"
+        Me.PlayButton.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ManualPlayButton})
+        Me.PlayButton.SubItemsExpandWidth = 14
+        Me.PlayButton.Text = "播放"
+        '
+        'ManualPlayButton
+        '
+        Me.ManualPlayButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ManualPlayButton.Image = Global.YESTeleprompter.My.Resources.Resources.manualPlay_20px
+        Me.ManualPlayButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ManualPlayButton.Name = "ManualPlayButton"
+        Me.ManualPlayButton.SubItemsExpandWidth = 14
+        Me.ManualPlayButton.Text = "手动控制播放"
+        '
+        'PauseButton
+        '
+        Me.PauseButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.PauseButton.Image = Global.YESTeleprompter.My.Resources.Resources.pause_32px
+        Me.PauseButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.PauseButton.Name = "PauseButton"
+        Me.PauseButton.SubItemsExpandWidth = 14
+        Me.PauseButton.Text = "暂停"
+        '
+        'StopButton
+        '
+        Me.StopButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.StopButton.Image = Global.YESTeleprompter.My.Resources.Resources.stop_32px
+        Me.StopButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.StopButton.Name = "StopButton"
+        Me.StopButton.SubItemsExpandWidth = 14
+        Me.StopButton.Text = "停止"
+        '
+        'PageUpButton
+        '
+        Me.PageUpButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.PageUpButton.Image = Global.YESTeleprompter.My.Resources.Resources.PageUP_32px
+        Me.PageUpButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.PageUpButton.Name = "PageUpButton"
+        Me.PageUpButton.SubItemsExpandWidth = 14
+        Me.PageUpButton.Text = "上一行"
+        '
+        'PageDnButton
+        '
+        Me.PageDnButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.PageDnButton.Image = Global.YESTeleprompter.My.Resources.Resources.PageDn_32px
+        Me.PageDnButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.PageDnButton.Name = "PageDnButton"
+        Me.PageDnButton.SubItemsExpandWidth = 14
+        Me.PageDnButton.Text = "下一行"
+        '
         'RibbonBar1
         '
         Me.RibbonBar1.AutoOverflowEnabled = True
@@ -335,6 +415,33 @@ Partial Class MainForm
         '
         Me.RibbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonBar1.TitleVisible = False
+        '
+        'NewProgramButton
+        '
+        Me.NewProgramButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.NewProgramButton.Image = Global.YESTeleprompter.My.Resources.Resources.new_32px
+        Me.NewProgramButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.NewProgramButton.Name = "NewProgramButton"
+        Me.NewProgramButton.SubItemsExpandWidth = 14
+        Me.NewProgramButton.Text = "新建素材"
+        '
+        'ImportProgramButton
+        '
+        Me.ImportProgramButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ImportProgramButton.Image = Global.YESTeleprompter.My.Resources.Resources.import_32px
+        Me.ImportProgramButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ImportProgramButton.Name = "ImportProgramButton"
+        Me.ImportProgramButton.SubItemsExpandWidth = 14
+        Me.ImportProgramButton.Text = "导入素材"
+        '
+        'ExportProgramButton
+        '
+        Me.ExportProgramButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.ExportProgramButton.Image = Global.YESTeleprompter.My.Resources.Resources.export_32px
+        Me.ExportProgramButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ExportProgramButton.Name = "ExportProgramButton"
+        Me.ExportProgramButton.SubItemsExpandWidth = 14
+        Me.ExportProgramButton.Text = "导出当前素材"
         '
         'RibbonTabItem1
         '
@@ -446,6 +553,16 @@ Partial Class MainForm
         Me.ToolStrip1.Size = New System.Drawing.Size(299, 27)
         Me.ToolStrip1.TabIndex = 0
         Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'DeleteProgramButton
+        '
+        Me.DeleteProgramButton.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
+        Me.DeleteProgramButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.DeleteProgramButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.DeleteProgramButton.Name = "DeleteProgramButton"
+        Me.DeleteProgramButton.Size = New System.Drawing.Size(56, 24)
+        Me.DeleteProgramButton.Text = "删除"
+        Me.DeleteProgramButton.ToolTipText = "删除"
         '
         'GroupBox4
         '
@@ -827,32 +944,6 @@ Partial Class MainForm
         Me.ToolStrip2.TabIndex = 0
         Me.ToolStrip2.Text = "ToolStrip2"
         '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.BackColor = System.Drawing.SystemColors.Control
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OperationInfo})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 659)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1264, 22)
-        Me.StatusStrip1.TabIndex = 2
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'OperationInfo
-        '
-        Me.OperationInfo.Name = "OperationInfo"
-        Me.OperationInfo.Size = New System.Drawing.Size(68, 17)
-        Me.OperationInfo.Text = "无操作信息"
-        '
-        'DeleteProgramButton
-        '
-        Me.DeleteProgramButton.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
-        Me.DeleteProgramButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.DeleteProgramButton.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.DeleteProgramButton.Name = "DeleteProgramButton"
-        Me.DeleteProgramButton.Size = New System.Drawing.Size(56, 24)
-        Me.DeleteProgramButton.Text = "删除"
-        Me.DeleteProgramButton.ToolTipText = "删除"
-        '
         'InsertParagraphButton
         '
         Me.InsertParagraphButton.Image = Global.YESTeleprompter.My.Resources.Resources.insertUp_20px
@@ -874,112 +965,21 @@ Partial Class MainForm
         Me.DeleteParagraphButton.Text = "删除"
         Me.DeleteParagraphButton.ToolTipText = "删除"
         '
-        'HotkeysButton
+        'StatusStrip1
         '
-        Me.HotkeysButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.HotkeysButton.Image = Global.YESTeleprompter.My.Resources.Resources.hotkeys_32px
-        Me.HotkeysButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.HotkeysButton.Name = "HotkeysButton"
-        Me.HotkeysButton.SubItemsExpandWidth = 14
-        Me.HotkeysButton.Text = "快捷键设置"
+        Me.StatusStrip1.BackColor = System.Drawing.SystemColors.Control
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InfoLabel})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 659)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(1264, 22)
+        Me.StatusStrip1.TabIndex = 2
+        Me.StatusStrip1.Text = "StatusStrip1"
         '
-        'TranscribeButton
+        'InfoLabel
         '
-        Me.TranscribeButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.TranscribeButton.Image = Global.YESTeleprompter.My.Resources.Resources.transcribe_32px
-        Me.TranscribeButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.TranscribeButton.Name = "TranscribeButton"
-        Me.TranscribeButton.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ClearTranscribeButton})
-        Me.TranscribeButton.SubItemsExpandWidth = 14
-        Me.TranscribeButton.Text = "录制播放演示"
-        '
-        'ClearTranscribeButton
-        '
-        Me.ClearTranscribeButton.Image = Global.YESTeleprompter.My.Resources.Resources.close_20px
-        Me.ClearTranscribeButton.Name = "ClearTranscribeButton"
-        Me.ClearTranscribeButton.Text = "清除当前素材录制信息"
-        '
-        'PlayButton
-        '
-        Me.PlayButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.PlayButton.Image = Global.YESTeleprompter.My.Resources.Resources.play_32px
-        Me.PlayButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.PlayButton.Name = "PlayButton"
-        Me.PlayButton.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ManualPlayButton})
-        Me.PlayButton.SubItemsExpandWidth = 14
-        Me.PlayButton.Text = "播放"
-        '
-        'ManualPlayButton
-        '
-        Me.ManualPlayButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ManualPlayButton.Image = Global.YESTeleprompter.My.Resources.Resources.manualPlay_20px
-        Me.ManualPlayButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ManualPlayButton.Name = "ManualPlayButton"
-        Me.ManualPlayButton.SubItemsExpandWidth = 14
-        Me.ManualPlayButton.Text = "手动控制播放"
-        '
-        'PauseButton
-        '
-        Me.PauseButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.PauseButton.Image = Global.YESTeleprompter.My.Resources.Resources.pause_32px
-        Me.PauseButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.PauseButton.Name = "PauseButton"
-        Me.PauseButton.SubItemsExpandWidth = 14
-        Me.PauseButton.Text = "暂停"
-        '
-        'StopButton
-        '
-        Me.StopButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.StopButton.Image = Global.YESTeleprompter.My.Resources.Resources.stop_32px
-        Me.StopButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.StopButton.Name = "StopButton"
-        Me.StopButton.SubItemsExpandWidth = 14
-        Me.StopButton.Text = "停止"
-        '
-        'PageUpButton
-        '
-        Me.PageUpButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.PageUpButton.Image = Global.YESTeleprompter.My.Resources.Resources.PageUP_32px
-        Me.PageUpButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.PageUpButton.Name = "PageUpButton"
-        Me.PageUpButton.SubItemsExpandWidth = 14
-        Me.PageUpButton.Text = "上一行"
-        '
-        'PageDnButton
-        '
-        Me.PageDnButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.PageDnButton.Image = Global.YESTeleprompter.My.Resources.Resources.PageDn_32px
-        Me.PageDnButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.PageDnButton.Name = "PageDnButton"
-        Me.PageDnButton.SubItemsExpandWidth = 14
-        Me.PageDnButton.Text = "下一行"
-        '
-        'NewProgramButton
-        '
-        Me.NewProgramButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.NewProgramButton.Image = Global.YESTeleprompter.My.Resources.Resources.new_32px
-        Me.NewProgramButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.NewProgramButton.Name = "NewProgramButton"
-        Me.NewProgramButton.SubItemsExpandWidth = 14
-        Me.NewProgramButton.Text = "新建素材"
-        '
-        'ImportProgramButton
-        '
-        Me.ImportProgramButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ImportProgramButton.Image = Global.YESTeleprompter.My.Resources.Resources.import_32px
-        Me.ImportProgramButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ImportProgramButton.Name = "ImportProgramButton"
-        Me.ImportProgramButton.SubItemsExpandWidth = 14
-        Me.ImportProgramButton.Text = "导入素材"
-        '
-        'ExportProgramButton
-        '
-        Me.ExportProgramButton.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.ExportProgramButton.Image = Global.YESTeleprompter.My.Resources.Resources.export_32px
-        Me.ExportProgramButton.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ExportProgramButton.Name = "ExportProgramButton"
-        Me.ExportProgramButton.SubItemsExpandWidth = 14
-        Me.ExportProgramButton.Text = "导出当前素材"
+        Me.InfoLabel.Name = "InfoLabel"
+        Me.InfoLabel.Size = New System.Drawing.Size(68, 17)
+        Me.InfoLabel.Text = "无操作信息"
         '
         'MainForm
         '
@@ -1053,7 +1053,7 @@ Partial Class MainForm
     Friend WithEvents ParagraphList As Wangk.Resource.CheckBoxDataGridView
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents StatusStrip1 As StatusStrip
-    Friend WithEvents OperationInfo As ToolStripStatusLabel
+    Friend WithEvents InfoLabel As ToolStripStatusLabel
     Friend WithEvents PageUpButton As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents PageDnButton As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents SelectPrintFontButton As Button
