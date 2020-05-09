@@ -139,8 +139,7 @@
     </Compile>
     <Compile Include="02.BusinessLogicLayer\ProgramPlayHelper.vb" />
     <Compile Include="02.BusinessLogicLayer\WindowsHotKeyHelper.vb" />
-    <Compile Include="03.DataAccessLayer\AppSetting\AppSettingHelper.vb" />
-    <Compile Include="03.DataAccessLayer\AppSetting\AppSetting.vb" />
+    <Compile Include="03.DataAccessLayer\AppSettingHelper.vb" />
     <Compile Include="03.DataAccessLayer\ProgramFactory.vb" />
     <Compile Include="03.DataAccessLayer\ParagraphInfo.vb" />
     <Compile Include="01.UserInterfaceLayer\MainForm\MainForm.Designer.vb">
@@ -192,7 +191,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

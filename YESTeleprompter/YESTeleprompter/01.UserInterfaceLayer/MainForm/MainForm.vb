@@ -15,15 +15,15 @@ Public Class MainForm
 
 #Region "窗口显示"
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AppSettingHelper.Logger.Info("程序启动")
+        AppSettingHelper.GetInstance.Logger.Info("程序启动")
 
-        Me.Text = $"{My.Application.Info.Title} V{AppSettingHelper.ProductVersion}"
+        Me.Text = $"{My.Application.Info.Title} V{AppSettingHelper.GetInstance.ProductVersion}"
 
-        If AppSettingHelper.Settings.WindowSize.Width <> 0 AndAlso
-            AppSettingHelper.Settings.WindowSize.Height <> 0 Then
+        If AppSettingHelper.GetInstance.WindowSize.Width <> 0 AndAlso
+            AppSettingHelper.GetInstance.WindowSize.Height <> 0 Then
 
-            'Me.Size = AppSettingHelper.Settings.WindowSize
-            Me.Location = AppSettingHelper.Settings.WindowLocation
+            'Me.Size = AppSettingHelper.GetInstance.WindowSize
+            Me.Location = AppSettingHelper.GetInstance.WindowLocation
         End If
 
 #Region "素材列表"
@@ -106,7 +106,7 @@ Public Class MainForm
         ProgramPlayHelper.UIPlayForm = ChildPlayWindow
         ProgramPlayHelper.UIMainForm = Me
 
-        For Each item In AppSettingHelper.Settings.ProgramItems
+        For Each item In AppSettingHelper.GetInstance.ProgramItems
             Dim addRowID = ProgramList.Rows.Add({False, item.Name})
             ProgramList.Rows(addRowID).Tag = item.ID
         Next
@@ -143,9 +143,8 @@ Public Class MainForm
         WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, Keys.PageDown)
 
         '存储设置
-        AppSettingHelper.Settings.WindowSize = Me.Size
-        AppSettingHelper.Settings.WindowLocation = Me.Location
-        'AppSettingHelper.SaveToLocaltion()
+        AppSettingHelper.GetInstance.WindowSize = Me.Size
+        AppSettingHelper.GetInstance.WindowLocation = Me.Location
 
         ChildPlayWindow.NeedClose = True
 
@@ -167,12 +166,12 @@ Public Class MainForm
             ProgramList.Rows(addRowID).Tag = tmpAddProgramInfo.ID
             ProgramList.CurrentCell = ProgramList.Rows(addRowID).Cells(1)
 
-            AppSettingHelper.Settings.ActiveProgram = Nothing
+            AppSettingHelper.GetInstance.ActiveProgram = Nothing
             ParagraphList.Rows.Clear()
             ParagraphList.RowCount = tmpAddProgramInfo.ParagraphItems.Count
-            AppSettingHelper.Settings.ActiveProgram = tmpAddProgramInfo
+            AppSettingHelper.GetInstance.ActiveProgram = tmpAddProgramInfo
 
-            AppSettingHelper.Settings.ProgramItems.Add(tmpAddProgramInfo)
+            AppSettingHelper.GetInstance.ProgramItems.Add(tmpAddProgramInfo)
 
         End Using
 
@@ -206,12 +205,12 @@ Public Class MainForm
             ProgramList.Rows(addRowID).Tag = tmpAddProgramInfo.ID
             ProgramList.CurrentCell = ProgramList.Rows(addRowID).Cells(1)
 
-            AppSettingHelper.Settings.ActiveProgram = Nothing
+            AppSettingHelper.GetInstance.ActiveProgram = Nothing
             ParagraphList.Rows.Clear()
             ParagraphList.RowCount = tmpAddProgramInfo.ParagraphItems.Count
-            AppSettingHelper.Settings.ActiveProgram = tmpAddProgramInfo
+            AppSettingHelper.GetInstance.ActiveProgram = tmpAddProgramInfo
 
-            AppSettingHelper.Settings.ProgramItems.Add(tmpAddProgramInfo)
+            AppSettingHelper.GetInstance.ProgramItems.Add(tmpAddProgramInfo)
 
         Next
 
@@ -222,12 +221,12 @@ Public Class MainForm
 
 #Region "导出素材"
     Private Sub ButtonItem10_Click(sender As Object, e As EventArgs) Handles ExportProgramButton.Click
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
         Using tmpDialog As New SaveFileDialog With {
-            .FileName = AppSettingHelper.Settings.ActiveProgram.Name,
+            .FileName = AppSettingHelper.GetInstance.ActiveProgram.Name,
             .Filter = "素材文件|*.lrcy"
         }
             If tmpDialog.ShowDialog() <> DialogResult.OK Then
@@ -239,7 +238,7 @@ Public Class MainForm
                     False,
                     System.Text.Encoding.UTF8)
 
-                t.Write(JsonConvert.SerializeObject(AppSettingHelper.Settings.ActiveProgram))
+                t.Write(JsonConvert.SerializeObject(AppSettingHelper.GetInstance.ActiveProgram))
             End Using
 
         End Using
@@ -265,24 +264,24 @@ Public Class MainForm
         For rowID = ProgramList.Rows.Count - 1 To 0 Step -1
             If ProgramList.Rows(rowID).Cells(0).EditedFormattedValue Then
 
-                If AppSettingHelper.Settings.ProgramItems(rowID) Is AppSettingHelper.Settings.ActiveProgram Then
-                    AppSettingHelper.Settings.ActiveProgram = Nothing
+                If AppSettingHelper.GetInstance.ProgramItems(rowID) Is AppSettingHelper.GetInstance.ActiveProgram Then
+                    AppSettingHelper.GetInstance.ActiveProgram = Nothing
                     ParagraphList.Rows.Clear()
                 End If
 
                 Dim id As Guid = ProgramList.Rows(rowID).Tag
-                Dim findProgramInfo = AppSettingHelper.Settings.ProgramItems.Find(Function(value As ProgramInfo)
-                                                                                      Return value.ID = id
-                                                                                  End Function)
+                Dim findProgramInfo = AppSettingHelper.GetInstance.ProgramItems.Find(Function(value As ProgramInfo)
+                                                                                         Return value.ID = id
+                                                                                     End Function)
                 IO.File.Delete($"./Data/{id}")
-                AppSettingHelper.Settings.ProgramItems.Remove(findProgramInfo)
+                AppSettingHelper.GetInstance.ProgramItems.Remove(findProgramInfo)
 
                 ProgramList.Rows.RemoveAt(rowID)
             End If
 
         Next
 
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             ProgramList.ClearSelection()
         End If
 
@@ -295,44 +294,44 @@ Public Class MainForm
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram = Nothing
+        AppSettingHelper.GetInstance.ActiveProgram = Nothing
         ParagraphList.Rows.Clear()
 
         Dim id As Guid = ProgramList.Rows(ProgramList.CurrentCell.RowIndex).Tag
 
-        Dim findProgramInfo = AppSettingHelper.Settings.ProgramItems.Find(Function(value As ProgramInfo)
-                                                                              Return value.ID = id
-                                                                          End Function)
+        Dim findProgramInfo = AppSettingHelper.GetInstance.ProgramItems.Find(Function(value As ProgramInfo)
+                                                                                 Return value.ID = id
+                                                                             End Function)
         If findProgramInfo Is Nothing Then
             Exit Sub
         End If
 
         ParagraphList.RowCount = findProgramInfo.ParagraphItems.Count
-        AppSettingHelper.Settings.ActiveProgram = findProgramInfo
+        AppSettingHelper.GetInstance.ActiveProgram = findProgramInfo
 
-        If AppSettingHelper.Settings.ActiveProgram.PrintFont Is Nothing Then
-            AppSettingHelper.Settings.ActiveProgram.PrintFont = Me.Font
+        If AppSettingHelper.GetInstance.ActiveProgram.PrintFont Is Nothing Then
+            AppSettingHelper.GetInstance.ActiveProgram.PrintFont = Me.Font
         End If
-        PrintFontText.Text = $"{AppSettingHelper.Settings.ActiveProgram.PrintFont.Name}, {AppSettingHelper.Settings.ActiveProgram.PrintFont.Size}, {AppSettingHelper.Settings.ActiveProgram.PrintFont.Style}"
-        PreviewLabel.Font = AppSettingHelper.Settings.ActiveProgram.PrintFont
+        PrintFontText.Text = $"{AppSettingHelper.GetInstance.ActiveProgram.PrintFont.Name}, {AppSettingHelper.GetInstance.ActiveProgram.PrintFont.Size}, {AppSettingHelper.GetInstance.ActiveProgram.PrintFont.Style}"
+        PreviewLabel.Font = AppSettingHelper.GetInstance.ActiveProgram.PrintFont
 
-        PrintFontColor.BackColor = AppSettingHelper.Settings.ActiveProgram.PrintFontColor
-        PrintBackColor.BackColor = AppSettingHelper.Settings.ActiveProgram.PrintBackColor
+        PrintFontColor.BackColor = AppSettingHelper.GetInstance.ActiveProgram.PrintFontColor
+        PrintBackColor.BackColor = AppSettingHelper.GetInstance.ActiveProgram.PrintBackColor
 
         PreviewLabel.ForeColor = PrintFontColor.BackColor
         PreviewLabel.BackColor = PrintBackColor.BackColor
         PreviewLabel.Refresh()
 
-        PrintDefaultShowTimestamp.Value = AppSettingHelper.Settings.ActiveProgram.PrintDefaultShowTimestamp.ToString("ss\.ff")
-        PrintMirror.Checked = AppSettingHelper.Settings.ActiveProgram.PrintMirror
+        PrintDefaultShowTimestamp.Value = AppSettingHelper.GetInstance.ActiveProgram.PrintDefaultShowTimestamp.ToString("ss\.ff")
+        PrintMirror.Checked = AppSettingHelper.GetInstance.ActiveProgram.PrintMirror
 
-        WindowSizeWidth.Value = AppSettingHelper.Settings.ActiveProgram.WindowSize.Width
-        WindowSizeHeight.Value = AppSettingHelper.Settings.ActiveProgram.WindowSize.Height
+        WindowSizeWidth.Value = AppSettingHelper.GetInstance.ActiveProgram.WindowSize.Width
+        WindowSizeHeight.Value = AppSettingHelper.GetInstance.ActiveProgram.WindowSize.Height
 
-        WindowLocationX.Value = AppSettingHelper.Settings.ActiveProgram.WindowLocation.X
-        WindowLocationY.Value = AppSettingHelper.Settings.ActiveProgram.WindowLocation.Y
+        WindowLocationX.Value = AppSettingHelper.GetInstance.ActiveProgram.WindowLocation.X
+        WindowLocationY.Value = AppSettingHelper.GetInstance.ActiveProgram.WindowLocation.Y
 
-        IsFullScreen.Checked = AppSettingHelper.Settings.ActiveProgram.IsFullScreen
+        IsFullScreen.Checked = AppSettingHelper.GetInstance.ActiveProgram.IsFullScreen
 
         ChildPlayWindow.UpdateSizeAndLocation()
         ChildPlayWindow.PreviewStr = Nothing
@@ -343,7 +342,7 @@ Public Class MainForm
 
 #Region "清除播放时长"
     Private Sub ClearTranscribeButton_Click(sender As Object, e As EventArgs) Handles ClearTranscribeButton.Click
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
@@ -353,7 +352,7 @@ Public Class MainForm
             Exit Sub
         End If
 
-        For Each item In AppSettingHelper.Settings.ActiveProgram.ParagraphItems
+        For Each item In AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems
             item.HaveTimestamp = False
         Next
 
@@ -366,22 +365,22 @@ Public Class MainForm
 
 #Region "插入新行"
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles InsertParagraphButton.Click
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        If AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count > 0 Then
+        If AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count > 0 Then
 
-            AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Insert(ParagraphList.CurrentCell.RowIndex,
+            AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Insert(ParagraphList.CurrentCell.RowIndex,
                                                 New ParagraphInfo With {
-                                                .ShowTimestamp = AppSettingHelper.Settings.ActiveProgram.ParagraphItems(ParagraphList.CurrentCell.RowIndex).ShowTimestamp
+                                                .ShowTimestamp = AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(ParagraphList.CurrentCell.RowIndex).ShowTimestamp
                                                 })
 
             ParagraphList.Rows.Insert(ParagraphList.CurrentCell.RowIndex, 1)
 
         Else
 
-            AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Add(New ParagraphInfo)
+            AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Add(New ParagraphInfo)
             ParagraphList.Rows.Add(1)
         End If
 
@@ -390,12 +389,12 @@ Public Class MainForm
 
 #Region "删除勾选行"
     Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles DeleteParagraphButton.Click
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        For rowID = AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count - 1 To 0 Step -1
-            If AppSettingHelper.Settings.ActiveProgram.ParagraphItems(rowID).Checked Then
+        For rowID = AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count - 1 To 0 Step -1
+            If AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(rowID).Checked Then
                 If MsgBox("确定删除选中行?",
                           MsgBoxStyle.YesNo,
                           DeleteParagraphButton.Text) <> MsgBoxResult.Yes Then
@@ -407,8 +406,8 @@ Public Class MainForm
         Next
 
         '删除
-        For rowID = AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count - 1 To 0 Step -1
-            If AppSettingHelper.Settings.ActiveProgram.ParagraphItems(rowID).Checked Then
+        For rowID = AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count - 1 To 0 Step -1
+            If AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(rowID).Checked Then
                 ParagraphList.Rows.RemoveAt(rowID)
             End If
         Next
@@ -432,7 +431,7 @@ Public Class MainForm
     Private Sub CheckBoxDataGridView2_CellValidating(sender As Object,
                                                      e As DataGridViewCellValidatingEventArgs
                                                      ) Handles ParagraphList.CellValidating
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
@@ -484,23 +483,23 @@ Public Class MainForm
     Private Sub CheckBoxDataGridView2_CellValueNeeded(sender As Object,
                                                       e As DataGridViewCellValueEventArgs
                                                       ) Handles ParagraphList.CellValueNeeded
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
         Select Case e.ColumnIndex
             Case 0
-                e.Value = AppSettingHelper.Settings.ActiveProgram.ParagraphItems(e.RowIndex).Checked
+                e.Value = AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(e.RowIndex).Checked
 
             Case 1
-                If AppSettingHelper.Settings.ActiveProgram.ParagraphItems(e.RowIndex).HaveTimestamp Then
-                    e.Value = AppSettingHelper.Settings.ActiveProgram.ParagraphItems(e.RowIndex).ShowTimestamp.ToString("mm\:ss\.ff")
+                If AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(e.RowIndex).HaveTimestamp Then
+                    e.Value = AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(e.RowIndex).ShowTimestamp.ToString("mm\:ss\.ff")
                 Else
                     e.Value = "-"
                 End If
 
             Case 2
-                e.Value = AppSettingHelper.Settings.ActiveProgram.ParagraphItems(e.RowIndex).value
+                e.Value = AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(e.RowIndex).value
 
         End Select
 
@@ -509,23 +508,23 @@ Public Class MainForm
     Private Sub CheckBoxDataGridView2_CellValuePushed(sender As Object,
                                                       e As DataGridViewCellValueEventArgs
                                                       ) Handles ParagraphList.CellValuePushed
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
         Select Case e.ColumnIndex
             Case 0
-                AppSettingHelper.Settings.ActiveProgram.ParagraphItems(e.RowIndex).Checked = e.Value
+                AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(e.RowIndex).Checked = e.Value
 
             Case 1
                 Dim tmpValueStr = $"{e.Value}"
 
                 If tmpValueStr = "" OrElse
                     tmpValueStr = "-" Then
-                    AppSettingHelper.Settings.ActiveProgram.ParagraphItems(e.RowIndex).HaveTimestamp = False
+                    AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(e.RowIndex).HaveTimestamp = False
                     Exit Sub
                 Else
-                    AppSettingHelper.Settings.ActiveProgram.ParagraphItems(e.RowIndex).HaveTimestamp = True
+                    AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(e.RowIndex).HaveTimestamp = True
                 End If
 
                 Dim mID = tmpValueStr.IndexOf(":")
@@ -536,11 +535,11 @@ Public Class MainForm
                 Dim sStr = tmpValueStr.Substring(mID + 1)
                 Dim sValue As Double = CDbl(sStr)
 
-                AppSettingHelper.Settings.ActiveProgram.ParagraphItems(e.RowIndex).ShowTimestamp =
+                AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(e.RowIndex).ShowTimestamp =
                 DateTime.ParseExact($"{mValue:00}:{sValue:00.00}", "mm:ss.ff", Nothing).TimeOfDay
 
             Case 2
-                AppSettingHelper.Settings.ActiveProgram.ParagraphItems(e.RowIndex).value = e.Value
+                AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(e.RowIndex).value = e.Value
 
         End Select
 
@@ -549,17 +548,17 @@ Public Class MainForm
     Private Sub CheckBoxDataGridView2_RowsRemoved(sender As Object,
                                                   e As DataGridViewRowsRemovedEventArgs
                                                   ) Handles ParagraphList.RowsRemoved
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.ParagraphItems.RemoveAt(e.RowIndex)
+        AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.RemoveAt(e.RowIndex)
 
     End Sub
 
     Private Sub ParagraphList_RowEnter(sender As Object, e As DataGridViewCellEventArgs) Handles ParagraphList.RowEnter
-        If AppSettingHelper.Settings.ActiveProgram IsNot Nothing Then
-            ChildPlayWindow.PreviewStr = AppSettingHelper.Settings.ActiveProgram.ParagraphItems(e.RowIndex).value
+        If AppSettingHelper.GetInstance.ActiveProgram IsNot Nothing Then
+            ChildPlayWindow.PreviewStr = AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(e.RowIndex).value
             ChildPlayWindow.Refresh()
         End If
     End Sub
@@ -572,14 +571,14 @@ Public Class MainForm
 
 #Region "字体"
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles SelectPrintFontButton.Click
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
         Using tmpDialog As New FontDialog With {
             .ShowEffects = False,
             .ShowColor = False,
-            .Font = AppSettingHelper.Settings.ActiveProgram.PrintFont,
+            .Font = AppSettingHelper.GetInstance.ActiveProgram.PrintFont,
             .AllowVerticalFonts = False
         }
 
@@ -589,7 +588,7 @@ Public Class MainForm
 
             PrintFontText.Text = $"{tmpDialog.Font.Name}, {tmpDialog.Font.Size}, {tmpDialog.Font.Style}"
             PreviewLabel.Font = tmpDialog.Font
-            AppSettingHelper.Settings.ActiveProgram.PrintFont = tmpDialog.Font
+            AppSettingHelper.GetInstance.ActiveProgram.PrintFont = tmpDialog.Font
 
         End Using
 
@@ -600,12 +599,12 @@ Public Class MainForm
 
 #Region "字体颜色"
     Private Sub Label13_Click(sender As Object, e As EventArgs) Handles PrintFontColor.Click
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
         Using tmpDialog As New ColorDialog With {
-            .Color = AppSettingHelper.Settings.ActiveProgram.PrintFontColor
+            .Color = AppSettingHelper.GetInstance.ActiveProgram.PrintFontColor
         }
 
             If tmpDialog.ShowDialog <> DialogResult.OK Then
@@ -613,7 +612,7 @@ Public Class MainForm
             End If
 
             PrintFontColor.BackColor = tmpDialog.Color
-            AppSettingHelper.Settings.ActiveProgram.PrintFontColor = tmpDialog.Color
+            AppSettingHelper.GetInstance.ActiveProgram.PrintFontColor = tmpDialog.Color
 
         End Using
 
@@ -624,12 +623,12 @@ Public Class MainForm
 
 #Region "背景颜色"
     Private Sub Label14_Click(sender As Object, e As EventArgs) Handles PrintBackColor.Click
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
         Using tmpDialog As New ColorDialog With {
-            .Color = AppSettingHelper.Settings.ActiveProgram.PrintBackColor
+            .Color = AppSettingHelper.GetInstance.ActiveProgram.PrintBackColor
         }
 
             If tmpDialog.ShowDialog <> DialogResult.OK Then
@@ -637,7 +636,7 @@ Public Class MainForm
             End If
 
             PrintBackColor.BackColor = tmpDialog.Color
-            AppSettingHelper.Settings.ActiveProgram.PrintBackColor = tmpDialog.Color
+            AppSettingHelper.GetInstance.ActiveProgram.PrintBackColor = tmpDialog.Color
 
         End Using
 
@@ -648,22 +647,22 @@ Public Class MainForm
 
 #Region "每行默认显示秒数"
     Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs) Handles PrintDefaultShowTimestamp.ValueChanged
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.PrintDefaultShowTimestamp = DateTime.ParseExact($"{PrintDefaultShowTimestamp.Value:00.00}", "ss.ff", Nothing).TimeOfDay
+        AppSettingHelper.GetInstance.ActiveProgram.PrintDefaultShowTimestamp = DateTime.ParseExact($"{PrintDefaultShowTimestamp.Value:00.00}", "ss.ff", Nothing).TimeOfDay
 
     End Sub
 #End Region
 
 #Region "镜像显示"
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles PrintMirror.CheckedChanged
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.PrintMirror = PrintMirror.Checked
+        AppSettingHelper.GetInstance.ActiveProgram.PrintMirror = PrintMirror.Checked
         PreviewLabel.Refresh()
 
         ChildPlayWindow.Refresh()
@@ -673,11 +672,11 @@ Public Class MainForm
 
 #Region "播放窗口尺寸"
     Private Sub NumericUpDown5_ValueChanged(sender As Object, e As EventArgs) Handles WindowSizeWidth.ValueChanged
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.WindowSize.Width = WindowSizeWidth.Value
+        AppSettingHelper.GetInstance.ActiveProgram.WindowSize.Width = WindowSizeWidth.Value
 
         ChildPlayWindow.UpdateSizeAndLocation()
         Me.Activate()
@@ -685,11 +684,11 @@ Public Class MainForm
     End Sub
 
     Private Sub NumericUpDown2_ValueChanged(sender As Object, e As EventArgs) Handles WindowSizeHeight.ValueChanged
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.WindowSize.Height = WindowSizeHeight.Value
+        AppSettingHelper.GetInstance.ActiveProgram.WindowSize.Height = WindowSizeHeight.Value
 
         ChildPlayWindow.UpdateSizeAndLocation()
         Me.Activate()
@@ -699,11 +698,11 @@ Public Class MainForm
 
 #Region "播放窗口位置"
     Private Sub NumericUpDown3_ValueChanged(sender As Object, e As EventArgs) Handles WindowLocationX.ValueChanged
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.WindowLocation.X = WindowLocationX.Value
+        AppSettingHelper.GetInstance.ActiveProgram.WindowLocation.X = WindowLocationX.Value
 
         ChildPlayWindow.UpdateSizeAndLocation()
         Me.Activate()
@@ -711,11 +710,11 @@ Public Class MainForm
     End Sub
 
     Private Sub NumericUpDown4_ValueChanged(sender As Object, e As EventArgs) Handles WindowLocationY.ValueChanged
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.WindowLocation.Y = WindowLocationY.Value
+        AppSettingHelper.GetInstance.ActiveProgram.WindowLocation.Y = WindowLocationY.Value
 
         ChildPlayWindow.UpdateSizeAndLocation()
         Me.Activate()
@@ -725,11 +724,11 @@ Public Class MainForm
 
 #Region "全屏显示"
     Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles IsFullScreen.CheckedChanged
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        AppSettingHelper.Settings.ActiveProgram.IsFullScreen = IsFullScreen.Checked
+        AppSettingHelper.GetInstance.ActiveProgram.IsFullScreen = IsFullScreen.Checked
 
         ChildPlayWindow.UpdateSizeAndLocation()
         Me.Activate()
@@ -739,21 +738,21 @@ Public Class MainForm
 
 #Region "播放效果预览"
     Private Sub Label6_Paint(sender As Object, e As PaintEventArgs) Handles PreviewLabel.Paint
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
         e.Graphics.TranslateTransform(PreviewLabel.Width / 2,
-                                      (PreviewLabel.Height - e.Graphics.MeasureString("测试文字 Test string", AppSettingHelper.Settings.ActiveProgram.PrintFont).Height) / 2)
+                                      (PreviewLabel.Height - e.Graphics.MeasureString("测试文字 Test string", AppSettingHelper.GetInstance.ActiveProgram.PrintFont).Height) / 2)
 
-        If AppSettingHelper.Settings.ActiveProgram.PrintMirror Then
+        If AppSettingHelper.GetInstance.ActiveProgram.PrintMirror Then
             '镜像显示
             e.Graphics.ScaleTransform(-1, 1)
         End If
 
         e.Graphics.DrawString("测试文字 Test string",
-                                  AppSettingHelper.Settings.ActiveProgram.PrintFont,
-                                  New SolidBrush(AppSettingHelper.Settings.ActiveProgram.PrintFontColor),
+                                  AppSettingHelper.GetInstance.ActiveProgram.PrintFont,
+                                  New SolidBrush(AppSettingHelper.GetInstance.ActiveProgram.PrintFontColor),
                                   0,
                                   0,
                                   New StringFormat With {
@@ -784,10 +783,10 @@ Public Class MainForm
     ''' 注册全局快捷键
     ''' </summary>
     Public Sub RegisterHotKey()
-        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 1, 0, AppSettingHelper.Settings.HotKeyForPlay)
-        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 2, 0, AppSettingHelper.Settings.HotKeyForPause)
-        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 3, 0, AppSettingHelper.Settings.HotKeyForStop)
-        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 4, 0, AppSettingHelper.Settings.HotKeyForHideWindow)
+        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 1, 0, AppSettingHelper.GetInstance.HotKeyForPlay)
+        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 2, 0, AppSettingHelper.GetInstance.HotKeyForPause)
+        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 3, 0, AppSettingHelper.GetInstance.HotKeyForStop)
+        WindowsHotKeyHelper.RegisterHotKey(Me.Handle.ToInt32, 4, 0, AppSettingHelper.GetInstance.HotKeyForHideWindow)
 
     End Sub
 
@@ -795,10 +794,10 @@ Public Class MainForm
     ''' 注销全局快捷键
     ''' </summary>
     Public Sub UnregisterHotKey()
-        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, AppSettingHelper.Settings.HotKeyForPlay)
-        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, AppSettingHelper.Settings.HotKeyForPause)
-        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, AppSettingHelper.Settings.HotKeyForStop)
-        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, AppSettingHelper.Settings.HotKeyForHideWindow)
+        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, AppSettingHelper.GetInstance.HotKeyForPlay)
+        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, AppSettingHelper.GetInstance.HotKeyForPause)
+        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, AppSettingHelper.GetInstance.HotKeyForStop)
+        WindowsHotKeyHelper.UnregisterHotKey(Me.Handle.ToInt32, AppSettingHelper.GetInstance.HotKeyForHideWindow)
 
     End Sub
 #End Region
@@ -861,8 +860,8 @@ Public Class MainForm
 
     Private Sub TranscribeButton_Click(Optional sender As Object = Nothing,
                                        Optional e As EventArgs = Nothing) Handles TranscribeButton.Click
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing OrElse
-            AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count < 1 Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing OrElse
+            AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count < 1 Then
             Exit Sub
         End If
 
@@ -879,12 +878,12 @@ Public Class MainForm
 
     Private Sub PlayButton_Click(Optional sender As Object = Nothing,
                                  Optional e As EventArgs = Nothing) Handles PlayButton.Click
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing OrElse
-            AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count < 1 Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing OrElse
+            AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count < 1 Then
             Exit Sub
         End If
 
-        'Throw New Exception("测试异常")
+        Throw New Exception("测试异常")
 
         ProgramPlayHelper.Play()
 
@@ -893,8 +892,8 @@ Public Class MainForm
     End Sub
 
     Private Sub ManualPlayButton_Click(sender As Object, e As EventArgs) Handles ManualPlayButton.Click
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing OrElse
-            AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count < 1 Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing OrElse
+            AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count < 1 Then
             Exit Sub
         End If
 

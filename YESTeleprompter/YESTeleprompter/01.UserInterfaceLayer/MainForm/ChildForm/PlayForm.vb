@@ -22,7 +22,7 @@ Public Class PlayForm
             Exit Sub
         End If
 
-        Dim program = AppSettingHelper.Settings.ActiveProgram
+        Dim program = AppSettingHelper.GetInstance.ActiveProgram
 
         Me.WindowState = If(program.IsFullScreen, FormWindowState.Maximized, FormWindowState.Normal)
 
@@ -46,11 +46,11 @@ Public Class PlayForm
     End Sub
 
     Private Sub PlayForm_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
-        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
             Exit Sub
         End If
 
-        Dim program = AppSettingHelper.Settings.ActiveProgram
+        Dim program = AppSettingHelper.GetInstance.ActiveProgram
 
         If ProgramPlayHelper.RunningState = ProgramPlayHelper.OperationState.NoOperation Then
             If String.IsNullOrWhiteSpace(PreviewStr) Then
@@ -60,15 +60,15 @@ Public Class PlayForm
             Else
                 '显示预览字符
                 e.Graphics.Clear(program.PrintBackColor)
-                If AppSettingHelper.Settings.ActiveProgram.PrintMirror Then
+                If AppSettingHelper.GetInstance.ActiveProgram.PrintMirror Then
                     '平移原点坐标
                     e.Graphics.TranslateTransform(Me.Width, 0)
                     '镜像显示
                     e.Graphics.ScaleTransform(-1, 1)
                 End If
                 e.Graphics.DrawString(PreviewStr,
-                                      AppSettingHelper.Settings.ActiveProgram.PrintFont,
-                                      New SolidBrush(AppSettingHelper.Settings.ActiveProgram.PrintFontColor),
+                                      AppSettingHelper.GetInstance.ActiveProgram.PrintFont,
+                                      New SolidBrush(AppSettingHelper.GetInstance.ActiveProgram.PrintFontColor),
                                       0,
                                       0)
 
@@ -78,9 +78,9 @@ Public Class PlayForm
         End If
 
         e.Graphics.Clear(program.PrintBackColor)
-        Dim fontHeight = e.Graphics.MeasureString("测", AppSettingHelper.Settings.ActiveProgram.PrintFont).Height
+        Dim fontHeight = e.Graphics.MeasureString("测", AppSettingHelper.GetInstance.ActiveProgram.PrintFont).Height
 
-        If AppSettingHelper.Settings.ActiveProgram.PrintMirror Then
+        If AppSettingHelper.GetInstance.ActiveProgram.PrintMirror Then
             '平移原点坐标
             e.Graphics.TranslateTransform(Me.Width, 0)
             '镜像显示
@@ -93,14 +93,14 @@ Public Class PlayForm
             Do
 
                 e.Graphics.DrawString(program.ParagraphItems(ProgramPlayHelper.NowPlayParagraphID + rowID).value,
-                                      AppSettingHelper.Settings.ActiveProgram.PrintFont,
-                                      New SolidBrush(AppSettingHelper.Settings.ActiveProgram.PrintFontColor),
+                                      AppSettingHelper.GetInstance.ActiveProgram.PrintFont,
+                                      New SolidBrush(AppSettingHelper.GetInstance.ActiveProgram.PrintFontColor),
                                       0,
                                       rowID * fontHeight)
                 rowID += 1
 
             Loop While rowID * fontHeight < Me.Height AndAlso
-                (ProgramPlayHelper.NowPlayParagraphID + rowID) < AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count
+                (ProgramPlayHelper.NowPlayParagraphID + rowID) < AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count
 
         Catch ex As Exception
 

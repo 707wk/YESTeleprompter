@@ -7,37 +7,29 @@ Public Class AppSettingHelper
     Private Sub New()
     End Sub
 
-#Region "程序标志"
-    Private Shared _GUID As String
+#Region "程序集GUID"
+    <Newtonsoft.Json.JsonIgnore>
+    Private _GUID As String
     ''' <summary>
-    ''' 程序标志
+    ''' 程序集GUID
     ''' </summary>
-    ''' <returns></returns>
-    Public Shared ReadOnly Property GUID As String
+    <Newtonsoft.Json.JsonIgnore>
+    Public ReadOnly Property GUID As String
         Get
-            If String.IsNullOrEmpty(_GUID) Then
-                Dim guid_attr As Attribute = Attribute.GetCustomAttribute(Reflection.Assembly.GetExecutingAssembly(), GetType(Runtime.InteropServices.GuidAttribute))
-                _GUID = CType(guid_attr, Runtime.InteropServices.GuidAttribute).Value
-            End If
-
             Return _GUID
         End Get
     End Property
 #End Region
 
-#Region "程序版本"
-    Private Shared _ProductVersion As String
+#Region "程序集文件版本"
+    <Newtonsoft.Json.JsonIgnore>
+    Private _ProductVersion As String
     ''' <summary>
-    ''' 程序版本
+    ''' 程序集文件版本
     ''' </summary>
-    ''' <returns></returns>
-    Public Shared ReadOnly Property ProductVersion As String
+    <Newtonsoft.Json.JsonIgnore>
+    Public ReadOnly Property ProductVersion As String
         Get
-            If String.IsNullOrEmpty(_ProductVersion) Then
-                Dim assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location
-                _ProductVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(assemblyLocation).ProductVersion
-            End If
-
             Return _ProductVersion
         End Get
     End Property
@@ -47,24 +39,22 @@ Public Class AppSettingHelper
     ''' <summary>
     ''' 实例
     ''' </summary>
-    Private Shared instance As AppSetting
+    Private Shared instance As AppSettingHelper
     ''' <summary>
-    ''' 参数
+    ''' 获取实例
     ''' </summary>
-    Public Shared ReadOnly Property Settings As AppSetting
+    Public Shared ReadOnly Property GetInstance As AppSettingHelper
         Get
             If instance Is Nothing Then
-
                 LoadFromLocaltion()
 
-                '初始化
-                With instance
-                    ''语言包
-                    'Wangk.Resource.MultiLanguageHelper.Init(.SelectLang, My.Application.Info.Title)
+                '程序集GUID
+                Dim guid_attr As Attribute = Attribute.GetCustomAttribute(Reflection.Assembly.GetExecutingAssembly(), GetType(Runtime.InteropServices.GuidAttribute))
+                instance._GUID = CType(guid_attr, Runtime.InteropServices.GuidAttribute).Value
 
-                    ''日志
-                    'Wangk.Tools.LoggerHelper.Init(saveDaysMax:=90)
-                End With
+                '程序集文件版本
+                Dim assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location
+                instance._ProductVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(assemblyLocation).ProductVersion
 
             End If
 
@@ -86,16 +76,17 @@ Public Class AppSettingHelper
 
         '反序列化
         Try
-            instance = JsonConvert.DeserializeObject(Of AppSetting)(
+            instance = JsonConvert.DeserializeObject(Of AppSettingHelper)(
                 System.IO.File.ReadAllText($"{Path}\Hunan Yestech\{My.Application.Info.ProductName}\Data\Setting.json",
                                            System.Text.Encoding.UTF8))
 
         Catch ex As Exception
             '使用默认参数
-            instance = New AppSetting
+            instance = New AppSettingHelper
 
         End Try
 
+        '读取素材
         Try
             Dim tmpDirectoryInfo As New DirectoryInfo("./Data")
             If tmpDirectoryInfo.Exists Then
@@ -103,7 +94,7 @@ Public Class AppSettingHelper
                     Dim tmpProgramInfo = JsonConvert.DeserializeObject(Of ProgramInfo)(
                         System.IO.File.ReadAllText(item.FullName,
                                                    System.Text.Encoding.UTF8))
-                    AppSettingHelper.Settings.ProgramItems.Add(tmpProgramInfo)
+                    AppSettingHelper.GetInstance.ProgramItems.Add(tmpProgramInfo)
                 Next
 
             End If
@@ -139,9 +130,10 @@ Public Class AppSettingHelper
 
         End Try
 
+        '保存素材
         Try
             System.IO.Directory.CreateDirectory("./Data")
-            For Each item In AppSettingHelper.Settings.ProgramItems
+            For Each item In AppSettingHelper.GetInstance.ProgramItems
 
                 Using t As System.IO.StreamWriter = New System.IO.StreamWriter(
                 $"./Data/{item.ID}",
@@ -157,7 +149,6 @@ Public Class AppSettingHelper
             MsgBox(ex.ToString, MsgBoxStyle.Information, My.Application.Info.Title)
         End Try
 
-
     End Sub
 #End Region
 
@@ -165,7 +156,46 @@ Public Class AppSettingHelper
     ''' <summary>
     ''' 日志记录
     ''' </summary>
-    Public Shared Logger As NLog.Logger = NLog.LogManager.GetCurrentClassLogger()
+    <Newtonsoft.Json.JsonIgnore>
+    Public Logger As NLog.Logger = NLog.LogManager.GetCurrentClassLogger()
 #End Region
+
+    ''' <summary>
+    ''' 主窗口尺寸
+    ''' </summary>
+    Public WindowSize As Size
+    ''' <summary>
+    ''' 主窗口位置
+    ''' </summary>
+    Public WindowLocation As Point
+
+    ''' <summary>
+    ''' 当前编辑的素材
+    ''' </summary>
+    <Newtonsoft.Json.JsonIgnore>
+    Public ActiveProgram As ProgramInfo
+
+    ''' <summary>
+    ''' 播放快捷键
+    ''' </summary>
+    Public HotKeyForPlay As Keys = Keys.F5
+    ''' <summary>
+    ''' 暂停播放快捷键
+    ''' </summary>
+    Public HotKeyForPause As Keys = Keys.F6
+    ''' <summary>
+    ''' 停止播放快捷键
+    ''' </summary>
+    Public HotKeyForStop As Keys = Keys.F7
+    ''' <summary>
+    ''' 隐藏播放窗口快捷键
+    ''' </summary>
+    Public HotKeyForHideWindow As Keys = Keys.F8
+
+    ''' <summary>
+    ''' 素材集合
+    ''' </summary>
+    <Newtonsoft.Json.JsonIgnore>
+    Public ProgramItems As New List(Of ProgramInfo)
 
 End Class

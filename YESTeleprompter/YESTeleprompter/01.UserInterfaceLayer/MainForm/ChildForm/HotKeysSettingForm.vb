@@ -9,7 +9,7 @@
                 .Items.Add($"F{i001}")
             Next
 
-            .Text = AppSettingHelper.Settings.HotKeyForPlay.ToString
+            .Text = AppSettingHelper.GetInstance.HotKeyForPlay.ToString
         End With
 
         With PauseComboBox
@@ -18,7 +18,7 @@
                 .Items.Add($"F{i001}")
             Next
 
-            .Text = AppSettingHelper.Settings.HotKeyForPause.ToString
+            .Text = AppSettingHelper.GetInstance.HotKeyForPause.ToString
         End With
 
         With StopComboBox
@@ -27,7 +27,7 @@
                 .Items.Add($"F{i001}")
             Next
 
-            .Text = AppSettingHelper.Settings.HotKeyForStop.ToString
+            .Text = AppSettingHelper.GetInstance.HotKeyForStop.ToString
         End With
 
         With HideComboBox
@@ -36,7 +36,7 @@
                 .Items.Add($"F{i001}")
             Next
 
-            .Text = AppSettingHelper.Settings.HotKeyForHideWindow.ToString
+            .Text = AppSettingHelper.GetInstance.HotKeyForHideWindow.ToString
         End With
 
         AddOrSaveButton.Enabled = False
@@ -93,10 +93,10 @@
 
         UIForm.UnregisterHotKey()
 
-        AppSettingHelper.Settings.HotKeyForPlay = Keys.F1 + PlayComboBox.SelectedIndex
-        AppSettingHelper.Settings.HotKeyForPause = Keys.F1 + PauseComboBox.SelectedIndex
-        AppSettingHelper.Settings.HotKeyForStop = Keys.F1 + StopComboBox.SelectedIndex
-        AppSettingHelper.Settings.HotKeyForHideWindow = Keys.F1 + HideComboBox.SelectedIndex
+        AppSettingHelper.GetInstance.HotKeyForPlay = Keys.F1 + PlayComboBox.SelectedIndex
+        AppSettingHelper.GetInstance.HotKeyForPause = Keys.F1 + PauseComboBox.SelectedIndex
+        AppSettingHelper.GetInstance.HotKeyForStop = Keys.F1 + StopComboBox.SelectedIndex
+        AppSettingHelper.GetInstance.HotKeyForHideWindow = Keys.F1 + HideComboBox.SelectedIndex
 
         UIForm.RegisterHotKey()
 

@@ -168,7 +168,7 @@ Public Class ProgramPlayHelper
     '    ''' 更新修改
     '    ''' </summary>
     '    Public Shared Sub UpdateChange()
-    '        If AppSettingHelper.Settings.ActiveProgram Is Nothing Then
+    '        If AppSettingHelper.GetInstance.ActiveProgram Is Nothing Then
     '            Exit Sub
     '        End If
 
@@ -208,12 +208,12 @@ Public Class ProgramPlayHelper
 
         Try
 
-            Dim tmpShowTimestamp = If(AppSettingHelper.Settings.ActiveProgram.ParagraphItems(NowPlayParagraphID).HaveTimestamp,
-                        AppSettingHelper.Settings.ActiveProgram.ParagraphItems(NowPlayParagraphID).ShowTimestamp,
-                        AppSettingHelper.Settings.ActiveProgram.PrintDefaultShowTimestamp)
+            Dim tmpShowTimestamp = If(AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(NowPlayParagraphID).HaveTimestamp,
+                        AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(NowPlayParagraphID).ShowTimestamp,
+                        AppSettingHelper.GetInstance.ActiveProgram.PrintDefaultShowTimestamp)
             If runTime >= tmpShowTimestamp Then
 
-                If NowPlayParagraphID = AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count - 1 Then
+                If NowPlayParagraphID = AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count - 1 Then
                     'StopPlay()
                     'UIMainForm.Info($"播放完毕")
                     Throw New Exception("播放完毕")
@@ -250,8 +250,8 @@ Public Class ProgramPlayHelper
 
         If NowPlayParagraphID - 1 >= 0 Then
 
-            If NowPlayParagraphID + 1 > AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count Then
-                NowPlayParagraphID = AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count - 1
+            If NowPlayParagraphID + 1 > AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count Then
+                NowPlayParagraphID = AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count - 1
             End If
 
             '切换到下一段
@@ -274,14 +274,14 @@ Public Class ProgramPlayHelper
             Exit Sub
         End If
 
-        If NowPlayParagraphID + 1 < AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count Then
+        If NowPlayParagraphID + 1 < AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count Then
             '切换到下一段
             NowPlayParagraphID += 1
             NowPlayParagraphRunTime = Now - Now
             NowPlayParagraphStartTime = Now
 
         Else
-            NowPlayParagraphID = AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count - 1
+            NowPlayParagraphID = AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count - 1
 
         End If
 
@@ -300,12 +300,12 @@ Public Class ProgramPlayHelper
             Exit Sub
         End If
 
-        If NowPlayParagraphID + 1 <= AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count Then
-            AppSettingHelper.Settings.ActiveProgram.ParagraphItems(NowPlayParagraphID).TranscribeTimestamp = value
+        If NowPlayParagraphID + 1 <= AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count Then
+            AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems(NowPlayParagraphID).TranscribeTimestamp = value
         End If
 
         '录制
-        If NowPlayParagraphID + 1 < AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count Then
+        If NowPlayParagraphID + 1 < AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count Then
             '切换到下一段
             NowPlayParagraphID += 1
             '更新画面

@@ -64,7 +64,7 @@ Public Class RecordShowForm
 
         ProgramSumTime += NowPlayParagraphRunTime
 
-        If ProgramPlayHelper.NowPlayParagraphID >= AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count - 1 Then
+        If ProgramPlayHelper.NowPlayParagraphID >= AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count - 1 Then
             ProgramPlayHelper.PageDn(NowPlayParagraphRunTime)
             Me.Close()
             Exit Sub
@@ -109,7 +109,7 @@ Public Class RecordShowForm
 
         ProgramPlayHelper.StopPlay()
 
-        If ProgramPlayHelper.NowPlayParagraphID < AppSettingHelper.Settings.ActiveProgram.ParagraphItems.Count - 1 Then
+        If ProgramPlayHelper.NowPlayParagraphID < AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count - 1 Then
             UIMainForm.ControlEnabledToStop()
             Exit Sub
         End If
@@ -119,7 +119,7 @@ Public Class RecordShowForm
             Exit Sub
         End If
 
-        For Each item In AppSettingHelper.Settings.ActiveProgram.ParagraphItems
+        For Each item In AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems
             item.HaveTimestamp = True
             item.ShowTimestamp = item.TranscribeTimestamp
         Next

@@ -9,18 +9,21 @@ Namespace My
     ' NetworkAvailabilityChanged:在连接或断开网络连接时引发。
     Partial Friend Class MyApplication
         Private Sub MyApplication_UnhandledException(sender As Object, e As UnhandledExceptionEventArgs) Handles Me.UnhandledException
-            AppSettingHelper.Logger.Error(e.Exception)
+
             AppSettingHelper.SaveToLocaltion()
 
-            MsgBox("程序出现异常,即将退出
+            AppSettingHelper.GetInstance.Logger.Error(e.Exception)
 
-具体信息可在 \Logs\Error 文件夹内查看",
+            MsgBox("应用程序中发生了无法处理的异常，点击""确定""，应用程序将立即关闭
+
+具体异常信息可在 \Logs\Error 文件夹内查看",
                    MsgBoxStyle.Critical)
 
         End Sub
 
         Private Sub MyApplication_Shutdown(sender As Object, e As EventArgs) Handles Me.Shutdown
             AppSettingHelper.SaveToLocaltion()
+
         End Sub
 
     End Class
