@@ -1,0 +1,23 @@
+------------------------------------------------------------------------------
+Timestamp:  2020-05-09 14:34:01.0532
+level    :  Error
+Location :  YESTeleprompter.My.MyApplication.MyApplication_UnhandledException
+Message  :  System.Exception: 测试异常
+   在 YESTeleprompter.MainForm.PlayButton_Click(Object sender, EventArgs e)
+   在 DevComponents.DotNetBar.BaseItem.RaiseClick(eEventSource source)
+   在 DevComponents.DotNetBar.BaseItem.InternalMouseUp(MouseEventArgs objArg)
+   在 DevComponents.DotNetBar.PopupItem.InternalMouseUp(MouseEventArgs objArg)
+   在 DevComponents.DotNetBar.ButtonItem.InternalMouseUp(MouseEventArgs objArg)
+   在 DevComponents.DotNetBar.BaseItem.InternalMouseUp(MouseEventArgs objArg)
+   在 DevComponents.DotNetBar.ItemContainer.InternalMouseUp(MouseEventArgs objArg)
+   在 DevComponents.DotNetBar.ItemControl.OnMouseUp(MouseEventArgs e)
+   在 DevComponents.DotNetBar.RibbonBar.OnMouseUp(MouseEventArgs e)
+   在 System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   在 System.Windows.Forms.Control.WndProc(Message& m)
+   在 System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   在 System.Windows.Forms.ContainerControl.WndProc(Message& m)
+   在 DevComponents.DotNetBar.ItemControl.WndProc(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   在 System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   在 System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+

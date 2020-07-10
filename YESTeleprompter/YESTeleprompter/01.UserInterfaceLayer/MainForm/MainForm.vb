@@ -883,7 +883,7 @@ Public Class MainForm
             Exit Sub
         End If
 
-        Throw New Exception("测试异常")
+        'Throw New Exception("测试异常")
 
         ProgramPlayHelper.Play()
 
