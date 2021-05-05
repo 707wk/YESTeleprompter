@@ -193,8 +193,6 @@ Public Class ProgramPlayHelper
             Exit Sub
         End If
 
-
-
         '上一次更新没完成则不处理
         If Not IsPaintEnd Then
             Exit Sub
@@ -205,6 +203,9 @@ Public Class ProgramPlayHelper
         Dim runTime = NowPlayParagraphRunTime + (Now - NowPlayParagraphStartTime)
 
         UIMainForm.Info($"播放 第 {NowPlayParagraphID + 1} 段: {runTime:mm\:ss\.ff}")
+        UIMainForm.Invoke(Sub()
+                              UIMainForm.ParagraphList.Rows(NowPlayParagraphID).Cells(0).Selected = True
+                          End Sub)
 
         Try
 
@@ -260,6 +261,11 @@ Public Class ProgramPlayHelper
             NowPlayParagraphStartTime = Now
             '更新画面
             UIPlayForm.PaintParagraph()
+
+            UIMainForm.Invoke(Sub()
+                                  UIMainForm.ParagraphList.Rows(NowPlayParagraphID).Cells(0).Selected = True
+                              End Sub)
+
         End If
 
     End Sub
@@ -285,6 +291,10 @@ Public Class ProgramPlayHelper
 
         End If
 
+        UIMainForm.Invoke(Sub()
+                              UIMainForm.ParagraphList.Rows(NowPlayParagraphID).Cells(0).Selected = True
+                          End Sub)
+
         '更新画面
         UIPlayForm.PaintParagraph()
 
@@ -308,6 +318,11 @@ Public Class ProgramPlayHelper
         If NowPlayParagraphID + 1 < AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count Then
             '切换到下一段
             NowPlayParagraphID += 1
+
+            UIMainForm.Invoke(Sub()
+                                  UIMainForm.ParagraphList.Rows(NowPlayParagraphID).Cells(0).Selected = True
+                              End Sub)
+
             '更新画面
             UIPlayForm.PaintParagraph()
         End If

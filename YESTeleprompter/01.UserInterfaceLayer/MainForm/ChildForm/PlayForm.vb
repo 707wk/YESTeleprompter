@@ -69,8 +69,7 @@ Public Class PlayForm
                 e.Graphics.DrawString(PreviewStr,
                                       AppSettingHelper.GetInstance.ActiveProgram.PrintFont,
                                       New SolidBrush(AppSettingHelper.GetInstance.ActiveProgram.PrintFontColor),
-                                      0,
-                                      0)
+                                      New RectangleF(0, 0, Me.Width, Me.Height))
 
             End If
 
@@ -78,7 +77,7 @@ Public Class PlayForm
         End If
 
         e.Graphics.Clear(program.PrintBackColor)
-        Dim fontHeight = e.Graphics.MeasureString("测", AppSettingHelper.GetInstance.ActiveProgram.PrintFont).Height
+        'Dim fontHeight = e.Graphics.MeasureString("测", AppSettingHelper.GetInstance.ActiveProgram.PrintFont).Height
 
         If AppSettingHelper.GetInstance.ActiveProgram.PrintMirror Then
             '平移原点坐标
@@ -89,17 +88,30 @@ Public Class PlayForm
 
         Try
 
+            Dim nowStrPointY As Integer = 0
             Dim rowID = 0
             Do
 
                 e.Graphics.DrawString(program.ParagraphItems(ProgramPlayHelper.NowPlayParagraphID + rowID).value,
                                       AppSettingHelper.GetInstance.ActiveProgram.PrintFont,
                                       New SolidBrush(AppSettingHelper.GetInstance.ActiveProgram.PrintFontColor),
-                                      0,
-                                      rowID * fontHeight)
+                                      New RectangleF(0, nowStrPointY, Me.Width, Me.Height))
+
+                If String.IsNullOrWhiteSpace(program.ParagraphItems(ProgramPlayHelper.NowPlayParagraphID + rowID).value) Then
+                    nowStrPointY += e.Graphics.MeasureString("输出",
+                                                             AppSettingHelper.GetInstance.ActiveProgram.PrintFont,
+                                                             Me.Width).Height
+
+                Else
+                    nowStrPointY += e.Graphics.MeasureString(program.ParagraphItems(ProgramPlayHelper.NowPlayParagraphID + rowID).value,
+                                                             AppSettingHelper.GetInstance.ActiveProgram.PrintFont,
+                                                             Me.Width).Height
+
+                End If
+
                 rowID += 1
 
-            Loop While rowID * fontHeight < Me.Height AndAlso
+            Loop While nowStrPointY < Me.Height AndAlso
                 (ProgramPlayHelper.NowPlayParagraphID + rowID) < AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count
 
         Catch ex As Exception

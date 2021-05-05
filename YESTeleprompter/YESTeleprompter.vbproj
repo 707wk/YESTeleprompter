@@ -96,7 +96,7 @@
       <HintPath>..\packages\UTF.Unknown.2.3.0\lib\net40\UtfUnknown.dll</HintPath>
     </Reference>
     <Reference Include="Wangk.Resource">
-      <HintPath>..\..\WangkNamespace\DLL\Wangk.Resource.dll</HintPath>
+      <HintPath>..\..\..\WangkNamespace\DLL\Wangk.Resource.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

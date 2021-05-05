@@ -15,7 +15,6 @@ Public Class MainForm
 
 #Region "窗口显示"
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AppSettingHelper.GetInstance.Logger.Info("程序启动")
 
         Me.Text = $"{My.Application.Info.Title} V{AppSettingHelper.GetInstance.ProductVersion}"
 
@@ -88,7 +87,7 @@ Public Class MainForm
             .RowTemplate.Height = 30
             .RowTemplate.MinimumHeight = 30
 
-            .MultiSelect = True
+            .MultiSelect = False
             .ReadOnly = False
 
             .VirtualMode = True
@@ -882,8 +881,6 @@ Public Class MainForm
             AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count < 1 Then
             Exit Sub
         End If
-
-        'Throw New Exception("测试异常")
 
         ProgramPlayHelper.Play()
 
