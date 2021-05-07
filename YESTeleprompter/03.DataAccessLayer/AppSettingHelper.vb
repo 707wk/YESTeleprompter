@@ -88,6 +88,7 @@ Public Class AppSettingHelper
 
         '读取素材
         Try
+            System.IO.Directory.CreateDirectory("./Data")
             Dim tmpDirectoryInfo As New DirectoryInfo("./Data")
             If tmpDirectoryInfo.Exists Then
                 For Each item In tmpDirectoryInfo.GetFiles()

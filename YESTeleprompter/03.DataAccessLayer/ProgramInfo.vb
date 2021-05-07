@@ -61,4 +61,14 @@ Public Class ProgramInfo
     ''' </summary>
     Public IsFullScreen As Boolean
 
+    ''' <summary>
+    ''' 是否连续显示
+    ''' </summary>
+    Public IsContinuousDisplay As Boolean = True
+
+    ''' <summary>
+    ''' 文字对齐格式
+    ''' </summary>
+    Public StringFormatID As Integer = 0
+
 End Class

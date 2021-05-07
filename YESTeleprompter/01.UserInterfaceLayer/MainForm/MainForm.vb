@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports Microsoft.AppCenter.Analytics
 Imports Newtonsoft.Json
 
 Public Class MainForm
@@ -28,7 +29,7 @@ Public Class MainForm
 #Region "素材列表"
         With ProgramList
             .BackgroundColor = Color.FromArgb(71, 71, 71)
-            .SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            '.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
             '.RowHeadersVisible = False
             .EnableHeadersVisualStyles = False
@@ -323,6 +324,21 @@ Public Class MainForm
 
         PrintDefaultShowTimestamp.Value = AppSettingHelper.GetInstance.ActiveProgram.PrintDefaultShowTimestamp.ToString("ss\.ff")
         PrintMirror.Checked = AppSettingHelper.GetInstance.ActiveProgram.PrintMirror
+
+        If AppSettingHelper.GetInstance.ActiveProgram.IsContinuousDisplay Then
+            ContinuousDisplay.Checked = True
+        Else
+            NotContinuousDisplay.Checked = True
+        End If
+
+        Select Case AppSettingHelper.GetInstance.ActiveProgram.StringFormatID
+            Case 0
+                StringFormat0.Checked = True
+            Case 1
+                StringFormat1.Checked = True
+            Case 2
+                StringFormat2.Checked = True
+        End Select
 
         WindowSizeWidth.Value = AppSettingHelper.GetInstance.ActiveProgram.WindowSize.Width
         WindowSizeHeight.Value = AppSettingHelper.GetInstance.ActiveProgram.WindowSize.Height
@@ -762,6 +778,53 @@ Public Class MainForm
     End Sub
 #End Region
 
+#Region "段落显示"
+    Private Sub ContinuousDisplay_CheckedChanged(sender As Object, e As EventArgs) Handles ContinuousDisplay.CheckedChanged
+        If ContinuousDisplay.Checked Then
+            AppSettingHelper.GetInstance.ActiveProgram.IsContinuousDisplay = True
+
+            ChildPlayWindow.Refresh()
+        End If
+    End Sub
+
+    Private Sub NotContinuousDisplay_CheckedChanged(sender As Object, e As EventArgs) Handles NotContinuousDisplay.CheckedChanged
+        If NotContinuousDisplay.Checked Then
+            AppSettingHelper.GetInstance.ActiveProgram.IsContinuousDisplay = False
+
+            ChildPlayWindow.Refresh()
+        End If
+    End Sub
+#End Region
+
+#Region "文字对齐方式"
+    Private Sub StringFormat0_CheckedChanged(sender As Object, e As EventArgs) Handles StringFormat0.CheckedChanged
+        If StringFormat0.Checked Then
+            AppSettingHelper.GetInstance.ActiveProgram.StringFormatID = 0
+
+            PreviewLabel.Refresh()
+            ChildPlayWindow.Refresh()
+        End If
+    End Sub
+
+    Private Sub StringFormat1_CheckedChanged(sender As Object, e As EventArgs) Handles StringFormat1.CheckedChanged
+        If StringFormat1.Checked Then
+            AppSettingHelper.GetInstance.ActiveProgram.StringFormatID = 1
+
+            PreviewLabel.Refresh()
+            ChildPlayWindow.Refresh()
+        End If
+    End Sub
+
+    Private Sub StringFormat2_CheckedChanged(sender As Object, e As EventArgs) Handles StringFormat2.CheckedChanged
+        If StringFormat2.Checked Then
+            AppSettingHelper.GetInstance.ActiveProgram.StringFormatID = 2
+
+            PreviewLabel.Refresh()
+            ChildPlayWindow.Refresh()
+        End If
+    End Sub
+#End Region
+
 #End Region
 
 #Region "快捷键设置"
@@ -873,6 +936,8 @@ Public Class MainForm
         }
         RecordWindow.Show()
 
+        Analytics.TrackEvent("录制")
+
     End Sub
 
     Private Sub PlayButton_Click(Optional sender As Object = Nothing,
@@ -886,6 +951,8 @@ Public Class MainForm
 
         ControlEnabledToPlay()
 
+        Analytics.TrackEvent("自动播放")
+
     End Sub
 
     Private Sub ManualPlayButton_Click(sender As Object, e As EventArgs) Handles ManualPlayButton.Click
@@ -897,6 +964,8 @@ Public Class MainForm
         ProgramPlayHelper.ManualPlay()
 
         ControlEnabledToManualPlay()
+
+        Analytics.TrackEvent("手动播放")
 
     End Sub
 

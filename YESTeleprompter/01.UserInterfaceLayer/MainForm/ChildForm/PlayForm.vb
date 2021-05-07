@@ -12,6 +12,33 @@ Public Class PlayForm
     ''' </summary>
     Public PreviewStr As String
 
+    ''' <summary>
+    ''' 文字对齐格式
+    ''' </summary>
+    Private Shared ReadOnly StringFormatArray() = {
+        New StringFormat() With {
+        .Alignment = StringAlignment.Near
+    },
+    New StringFormat() With {
+        .Alignment = StringAlignment.Center
+    },
+    New StringFormat() With {
+        .Alignment = StringAlignment.Far
+    },
+    New StringFormat() With {
+        .Alignment = StringAlignment.Near,
+        .LineAlignment = StringAlignment.Center
+    },
+    New StringFormat() With {
+        .Alignment = StringAlignment.Center,
+        .LineAlignment = StringAlignment.Center
+    },
+    New StringFormat() With {
+        .Alignment = StringAlignment.Far,
+        .LineAlignment = StringAlignment.Center
+    }
+    }
+
     Public Delegate Sub UpdateSizeAndLocationCallback()
     ''' <summary>
     ''' 更新尺寸和位置
@@ -69,7 +96,8 @@ Public Class PlayForm
                 e.Graphics.DrawString(PreviewStr,
                                       AppSettingHelper.GetInstance.ActiveProgram.PrintFont,
                                       New SolidBrush(AppSettingHelper.GetInstance.ActiveProgram.PrintFontColor),
-                                      New RectangleF(0, 0, Me.Width, Me.Height))
+                                      New RectangleF(0, 0, Me.Width, Me.Height),
+                                      StringFormatArray(If(AppSettingHelper.GetInstance.ActiveProgram.IsContinuousDisplay, 0, 3) + AppSettingHelper.GetInstance.ActiveProgram.StringFormatID))
 
             End If
 
@@ -77,7 +105,6 @@ Public Class PlayForm
         End If
 
         e.Graphics.Clear(program.PrintBackColor)
-        'Dim fontHeight = e.Graphics.MeasureString("测", AppSettingHelper.GetInstance.ActiveProgram.PrintFont).Height
 
         If AppSettingHelper.GetInstance.ActiveProgram.PrintMirror Then
             '平移原点坐标
@@ -95,7 +122,8 @@ Public Class PlayForm
                 e.Graphics.DrawString(program.ParagraphItems(ProgramPlayHelper.NowPlayParagraphID + rowID).value,
                                       AppSettingHelper.GetInstance.ActiveProgram.PrintFont,
                                       New SolidBrush(AppSettingHelper.GetInstance.ActiveProgram.PrintFontColor),
-                                      New RectangleF(0, nowStrPointY, Me.Width, Me.Height))
+                                      New RectangleF(0, nowStrPointY, Me.Width, Me.Height),
+                                      StringFormatArray(If(AppSettingHelper.GetInstance.ActiveProgram.IsContinuousDisplay, 0, 3) + AppSettingHelper.GetInstance.ActiveProgram.StringFormatID))
 
                 If String.IsNullOrWhiteSpace(program.ParagraphItems(ProgramPlayHelper.NowPlayParagraphID + rowID).value) Then
                     nowStrPointY += e.Graphics.MeasureString("输出",
@@ -110,6 +138,10 @@ Public Class PlayForm
                 End If
 
                 rowID += 1
+
+                If Not AppSettingHelper.GetInstance.ActiveProgram.IsContinuousDisplay Then
+                    Exit Do
+                End If
 
             Loop While nowStrPointY < Me.Height AndAlso
                 (ProgramPlayHelper.NowPlayParagraphID + rowID) < AppSettingHelper.GetInstance.ActiveProgram.ParagraphItems.Count

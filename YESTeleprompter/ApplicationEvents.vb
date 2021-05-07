@@ -1,4 +1,8 @@
-﻿Imports Microsoft.VisualBasic.ApplicationServices
+﻿Imports System.Globalization
+Imports Microsoft.AppCenter
+Imports Microsoft.AppCenter.Analytics
+Imports Microsoft.AppCenter.Crashes
+Imports Microsoft.VisualBasic.ApplicationServices
 
 Namespace My
     ' 以下事件可用于 MyApplication: 
@@ -23,6 +27,24 @@ Namespace My
 
         Private Sub MyApplication_Shutdown(sender As Object, e As EventArgs) Handles Me.Shutdown
             AppSettingHelper.SaveToLocaltion()
+
+        End Sub
+
+        Private Sub MyApplication_Startup(sender As Object, e As StartupEventArgs) Handles Me.Startup
+
+            Dim countryCode = RegionInfo.CurrentRegion.TwoLetterISORegionName
+            AppCenter.SetCountryCode(countryCode)
+
+            '使用调试器时不记录数据
+            If Debugger.IsAttached Then
+                Analytics.SetEnabledAsync(False)
+            End If
+
+            AppCenter.Start("c10ba049-020d-4823-ac4d-88684fd2bb33",
+                            GetType(Analytics),
+                            GetType(Crashes))
+
+            Analytics.TrackEvent("程序启动")
 
         End Sub
 
